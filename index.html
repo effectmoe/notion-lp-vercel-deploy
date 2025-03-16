@@ -455,7 +455,15 @@
                                 <label for="message">お問い合わせ内容 <span class="required">*</span></label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
+                            <input type="hidden" name="notion_id" value="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">
+                            <input type="hidden" name="form_id" value="1b7b802cb0c6801f8ba3de20a22e93b1">
                             <button type="submit" class="submit-btn">無料相談を申し込む</button>
+                            <div id="form-success" style="display: none; color: green; margin-top: 15px;">
+                                お問い合わせを受け付けました。担当者より折り返しご連絡いたします。
+                            </div>
+                            <div id="form-error" style="display: none; color: red; margin-top: 15px;">
+                                送信中にエラーが発生しました。しばらく経ってから再度お試しください。
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -489,5 +497,68 @@
     </footer>
     
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('inquiry-form');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                const notionId = formData.get('notion_id');
+                const formId = formData.get('form_id');
+                
+                // フォームデータをオブジェクトに変換
+                const formDataObj = {
+                    お名前: formData.get('name'),
+                    メールアドレス: formData.get('email'),
+                    会社名: formData.get('company') || '',
+                    電話番号: formData.get('phone') || '',
+                    お問い合わせ内容: formData.get('message'),
+                    ソース: window.location.href,
+                    タイムスタンプ: new Date().toISOString()
+                };
+                
+                // Notionへのデータ送信
+                fetch('https://notion-forms-api.effectconnect.io/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        notion_id: notionId,
+                        form_id: formId,
+                        data: formDataObj
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // 成功時の処理
+                    document.getElementById('form-success').style.display = 'block';
+                    form.reset();
+                    
+                    // 3秒後に成功メッセージを非表示
+                    setTimeout(() => {
+                        document.getElementById('form-success').style.display = 'none';
+                    }, 5000);
+                })
+                .catch(error => {
+                    // エラー時の処理
+                    console.error('Error:', error);
+                    document.getElementById('form-error').style.display = 'block';
+                    
+                    // 5秒後にエラーメッセージを非表示
+                    setTimeout(() => {
+                        document.getElementById('form-error').style.display = 'none';
+                    }, 5000);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
