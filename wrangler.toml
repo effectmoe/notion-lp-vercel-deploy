@@ -1,0 +1,6 @@
+   name = "notion-landing-page"
+   main = "./index.html"
+   compatibility_date = "2023-01-01"
+
+   [site]
+   bucket = "./"
