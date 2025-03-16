@@ -1,0 +1,26 @@
+.vertical-text {
+    writing-mode: vertical-rl !important;
+    -webkit-writing-mode: vertical-rl !important;
+    -ms-writing-mode: tb-rl !important;
+    text-orientation: upright;
+    position: absolute;
+    top: -20px;
+    right: 190px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: #333;
+    letter-spacing: 2px;
+    line-height: 1.5;
+}
+
+.typing-animation span {
+    opacity: 0;
+    animation: typing 0.15s forwards;
+    display: inline-block;
+}
+
+@keyframes typing {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
