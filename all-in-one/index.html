@@ -1,122 +1,448 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notionのオールインワン情報管理</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <nav class="breadcrumb">
-        <div class="container">
-            <a href="../" class="back-button">←</a>
-            <ul>
-                <li><a href="../">ホーム</a></li>
-                <li class="current">オールインワン情報管理</li>
-            </ul>
-        </div>
-    </nav>
-
-    <header>
-        <div class="container">
-            <h1>Notionのオールインワン情報管理</h1>
-            <p>業務に必要なすべての情報を一箇所で管理・共有できる統合ワークスペース</p>
-        </div>
-    </header>
-
-    <main class="container">
-        <section class="hero">
-            <h2>情報分散の問題を解決する統合型ワークスペース</h2>
-            <p>タスク管理、会議録、プロジェクト計画、顧客管理など、業務に必要なあらゆる情報をひとつのプラットフォームで統合的に管理できます。複数のツールを行き来する必要がなく、チームの情報共有とコラボレーションの効率が大幅に向上します。</p>
-            <div class="pnc-image-container">
-                <!-- PNC画像が入ります -->
+<!DOCTYPE html><html lang="ja">
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Notionのオールインワン情報管理</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            }
+            
+            body {
+                background-color: #f7f6f3;
+                color: #37352f;
+                line-height: 1.6;
+            }
+            
+            header {
+                background-color: #2f3437;
+                color: white;
+                padding: 2rem 0;
+                text-align: center;
+            }
+            
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+                margin: 2rem 0 1rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 2px solid #ebeaea;
+            }
+            
+            p {
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+            }
+            
+            .hero {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+                max-width: 800px;
+                margin: 1rem auto;
+            }
+            
+            .features {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin: 3rem 0;
+            }
+            
+            .feature {
+                flex-basis: 48%;
+                background: white;
+                border-radius: 8px;
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                transition: transform 0.3s ease;
+            }
+            
+            .feature:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .feature h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+            }
+            
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #f7f6f3;
+                border-radius: 8px;
+            }
+            
+            .diagram {
+                background: white;
+                border-radius: 8px;
+                padding: 2rem;
+                margin: 3rem 0;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                text-align: center;
+            }
+            
+            .diagram h2 {
+                text-align: left;
+            }
+            
+            .diagram-img {
+                max-width: 100%;
+                height: auto;
+                margin: 2rem 0;
+            }
+            
+            .benefit {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 1.5rem;
+            }
+            
+            .benefit-icon {
+                flex-shrink: 0;
+                width: 30px;
+                height: 30px;
+                margin-right: 15px;
+                background: #f7f6f3;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .workflow {
+                display: flex;
+                justify-content: space-between;
+                margin: 2rem 0;
+                position: relative;
+            }
+            
+            .workflow-step {
+                flex-basis: 22%;
+                background: white;
+                border-radius: 8px;
+                padding: 1.5rem;
+                text-align: center;
+                position: relative;
+                z-index: 1;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+            
+            .workflow-step h4 {
+                margin: 1rem 0;
+            }
+            
+            .workflow-arrow {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: #ebeaea;
+                z-index: 0;
+            }
+            
+            .cta {
+                background: #2f3437;
+                color: white;
+                text-align: center;
+                padding: 3rem;
+                border-radius: 8px;
+                margin: 3rem 0;
+            }
+            
+            .cta h2 {
+                border-bottom: none;
+                color: white;
+            }
+            
+            .cta-button {
+                display: inline-block;
+                background: #fff;
+                color: #2f3437;
+                padding: 1rem 2rem;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: bold;
+                margin-top: 1.5rem;
+                transition: background 0.3s ease;
+            }
+            
+            .cta-button:hover {
+                background: #f7f6f3;
+            }
+            
+            footer {
+                background: #ebeaea;
+                padding: 2rem;
+                text-align: center;
+                margin-top: 3rem;
+            }
+            
+            /* SVG スタイル */
+            .svg-container {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .all-in-one-diagram {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            
+            /* レスポンシブ対応 */
+            @media (max-width: 768px) {
+                .feature {
+                    flex-basis: 100%;
+                }
+                
+                .workflow {
+                    flex-direction: column;
+                }
+                
+                .workflow-step {
+                    flex-basis: 100%;
+                    margin-bottom: 1.5rem;
+                }
+                
+                .workflow-arrow {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Notionのオールインワン情報管理</h1>
+                <p>業務に必要なすべての情報を一箇所で管理・共有できる統合ワークスペース</p>
             </div>
-        </section>
-
-        <section class="features">
-            <h2>主要機能</h2>
-            <div class="feature-grid">
+        </header>
+        
+        <main class="container">
+            <section class="hero">
+                <h2>情報分散の問題を解決する統合型ワークスペース</h2>
+                <p>タスク管理、会議録、プロジェクト計画、顧客管理など、業務に必要なあらゆる情報をひとつのプラットフォームで統合的に管理できます。複数のツールを行き来する必要がなく、チームの情報共有とコラボレーションの効率が大幅に向上します。</p>
+            </section>
+            
+            <section class="diagram">
+                <h2>Notionのオールインワン情報管理の仕組み</h2>
+                <div class="svg-container">
+                    <svg class="all-in-one-diagram" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 中央のNotionプラットフォーム -->
+                        <rect x="300" y="200" width="200" height="100" rx="15" fill="#2f3437" />
+                        <text x="400" y="255" font-size="24" fill="white" text-anchor="middle">Notion</text>
+                        
+                        <!-- 周りの機能 -->
+                        <!-- タスク管理 -->
+                        <rect x="100" y="50" width="150" height="80" rx="10" fill="#ffffff" stroke="#ebeaea" stroke-width="2" />
+                        <text x="175" y="90" font-size="18" fill="#37352f" text-anchor="middle">タスク管理</text>
+                        <text x="175" y="115" font-size="12" fill="#37352f" text-anchor="middle">期限・進捗・担当者</text>
+                        
+                        <!-- 会議録 -->
+                        <rect x="550" y="50" width="150" height="80" rx="10" fill="#ffffff" stroke="#ebeaea" stroke-width="2" />
+                        <text x="625" y="90" font-size="18" fill="#37352f" text-anchor="middle">会議録</text>
+                        <text x="625" y="115" font-size="12" fill="#37352f" text-anchor="middle">議事録・決定事項</text>
+                        
+                        <!-- プロジェクト計画 -->
+                        <rect x="550" y="370" width="150" height="80" rx="10" fill="#ffffff" stroke="#ebeaea" stroke-width="2" />
+                        <text x="625" y="410" font-size="18" fill="#37352f" text-anchor="middle">プロジェクト計画</text>
+                        <text x="625" y="435" font-size="12" fill="#37352f" text-anchor="middle">ロードマップ・工程表</text>
+                        
+                        <!-- 顧客CRM -->
+                        <rect x="100" y="370" width="150" height="80" rx="10" fill="#ffffff" stroke="#ebeaea" stroke-width="2" />
+                        <text x="175" y="410" font-size="18" fill="#37352f" text-anchor="middle">顧客CRM</text>
+                        <text x="175" y="435" font-size="12" fill="#37352f" text-anchor="middle">顧客情報・対応履歴</text>
+                        
+                        <!-- 知識ベース -->
+                        <rect x="100" y="200" width="150" height="80" rx="10" fill="#ffffff" stroke="#ebeaea" stroke-width="2" />
+                        <text x="175" y="240" font-size="18" fill="#37352f" text-anchor="middle">知識ベース</text>
+                        <text x="175" y="265" font-size="12" fill="#37352f" text-anchor="middle">マニュアル・FAQ</text>
+                        
+                        <!-- 文書管理 -->
+                        <rect x="550" y="200" width="150" height="80" rx="10" fill="#ffffff" stroke="#ebeaea" stroke-width="2" />
+                        <text x="625" y="240" font-size="18" fill="#37352f" text-anchor="middle">文書管理</text>
+                        <text x="625" y="265" font-size="12" fill="#37352f" text-anchor="middle">資料・企画書・提案書</text>
+                        
+                        <!-- 接続線 -->
+                        <line x1="250" y1="90" x2="300" y2="200" stroke="#ebeaea" stroke-width="2" />
+                        <line x1="550" y1="90" x2="500" y2="200" stroke="#ebeaea" stroke-width="2" />
+                        <line x1="250" y1="240" x2="300" y2="250" stroke="#ebeaea" stroke-width="2" />
+                        <line x1="550" y1="240" x2="500" y2="250" stroke="#ebeaea" stroke-width="2" />
+                        <line x1="250" y1="410" x2="300" y2="300" stroke="#ebeaea" stroke-width="2" />
+                        <line x1="550" y1="410" x2="500" y2="300" stroke="#ebeaea" stroke-width="2" />
+                        
+                        <!-- ユーザーアイコン -->
+                        <circle cx="400" cy="50" r="25" fill="#ebeaea" />
+                        <text x="400" y="55" font-size="16" fill="#37352f" text-anchor="middle">User</text>
+                        <line x1="400" y1="75" x2="400" y2="200" stroke="#ebeaea" stroke-width="2" />
+                        
+                        <!-- チームアイコン -->
+                        <circle cx="400" cy="450" r="25" fill="#ebeaea" />
+                        <text x="400" y="455" font-size="16" fill="#37352f" text-anchor="middle">Team</text>
+                        <line x1="400" y1="425" x2="400" y2="300" stroke="#ebeaea" stroke-width="2" />
+                    </svg>
+                </div>
+                <p>Notionでは複数の業務機能を一元管理でき、ユーザーとチームが効率的に情報を共有・活用できます。それぞれの情報は独立して存在しながらも、相互に連携し参照することが可能です。</p>
+            </section>
+            
+            <section class="features">
                 <div class="feature">
-                    <h3>タスク管理の統合</h3>
-                    <p>チームやプロジェクトのタスクをカンバンボードやリスト形式で管理。</p>
-                    <div class="pnc-image-container">
-                        <!-- PNC画像が入ります -->
-                    </div>
+                    <h3>
+                        <div class="feature-icon">📋</div>
+                        タスク管理の統合
+                    </h3>
+                    <p>チームやプロジェクトのタスクをカンバンボードやリスト形式で管理。担当者、期限、優先度、進捗状況を明確に把握できます。他の文書やプロジェクト計画と直接リンクすることで、文脈を失うことなく作業を進められます。</p>
                 </div>
+                
                 <div class="feature">
-                    <h3>会議録の一元管理</h3>
-                    <p>会議の議事録、決定事項、アクションアイテムをすべて記録。</p>
-                    <div class="pnc-image-container">
-                        <!-- PNC画像が入ります -->
+                    <h3>
+                        <div class="feature-icon">📝</div>
+                        会議録の一元管理
+                    </h3>
+                    <p>会議の議事録、決定事項、アクションアイテムをすべて記録し、関連するプロジェクトやタスクと紐づけられます。過去の会議内容を簡単に検索でき、決定事項の追跡や進捗確認がスムーズに行えます。</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>
+                        <div class="feature-icon">📊</div>
+                        プロジェクト計画の可視化
+                    </h3>
+                    <p>ガントチャートやタイムラインでプロジェクトの進捗を可視化。マイルストーン、依存関係、リソース配分など、計画の全体像を把握できます。リアルタイムで更新され、チーム全体で最新状況を共有できます。</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>
+                        <div class="feature-icon">👥</div>
+                        顧客CRMとの連携
+                    </h3>
+                    <p>顧客情報、コミュニケーション履歴、提案内容などを体系的に管理。商談状況や案件の進捗状況をデータベースで一覧化し、チーム全体で最新の顧客情報を共有できます。各種文書や会議録と連携することで、顧客対応の質が向上します。</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>
+                        <div class="feature-icon">🔍</div>
+                        強力な検索機能
+                    </h3>
+                    <p>キーワード、タグ、作成者など様々な条件での検索が可能。膨大な情報の中から必要な文書やデータをすぐに見つけ出せます。関連情報も同時に表示されるため、情報の関連性を失うことなく作業を進められます。</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>
+                        <div class="feature-icon">🔄</div>
+                        シームレスなコラボレーション
+                    </h3>
+                    <p>リアルタイム編集、コメント機能、メンション通知により、チームメンバーとのコラボレーションがスムーズに。変更履歴も自動的に記録されるため、誰がいつどのような変更を行ったかが明確に分かります。</p>
+                </div>
+            </section>
+            
+            <section>
+                <h2>情報統合による業務改善の具体例</h2>
+                
+                <div class="workflow">
+                    <div class="workflow-arrow"></div>
+                    
+                    <div class="workflow-step">
+                        <div class="feature-icon">🔄</div>
+                        <h4>会議の実施</h4>
+                        <p>会議録をNotionで直接記録</p>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="feature-icon">✅</div>
+                        <h4>タスク作成</h4>
+                        <p>会議録から直接タスクを作成</p>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="feature-icon">👤</div>
+                        <h4>担当者割当</h4>
+                        <p>関連文書へのリンク付きで担当者にアサイン</p>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="feature-icon">📈</div>
+                        <h4>進捗管理</h4>
+                        <p>プロジェクト全体の進捗に自動反映</p>
                     </div>
                 </div>
-                <!-- 他の機能も同様に追加 -->
-            </div>
-        </section>
-
-        <section class="workflow">
-            <h2>業務改善の具体例</h2>
-            <div class="workflow-steps">
-                <div class="step">
-                    <h3>Step 1: 会議の実施</h3>
-                    <p>会議録をNotionで直接記録</p>
-                    <div class="pnc-image-container">
-                        <!-- PNC画像が入ります -->
-                    </div>
-                </div>
-                <!-- 他のステップも同様に追加 -->
-            </div>
-        </section>
-
-        <section class="benefits">
-            <h2>オールインワン情報管理のメリット</h2>
-            <div class="benefit-list">
+                
+                <p>このように、情報が連携することで、会議での決定事項がすぐにタスクとなり、担当者に割り当てられ、プロジェクト計画に反映されるといった一連の流れがスムーズになります。情報の分断がなくなり、チーム全体の生産性が向上します。</p>
+            </section>
+            
+            <section>
+                <h2>オールインワン情報管理の主なメリット</h2>
+                
                 <div class="benefit">
-                    <h3>時間の節約</h3>
-                    <p>複数のツールを行き来する必要がなく、情報を探す時間を大幅に削減。</p>
-                    <div class="pnc-image-container">
-                        <!-- PNC画像が入ります -->
+                    <div class="benefit-icon">⏱️</div>
+                    <div>
+                        <h3>時間の節約</h3>
+                        <p>複数のツールを行き来する必要がなく、情報を探す時間を大幅に削減できます。会議録から直接タスクを作成したり、プロジェクト計画から関連文書にアクセスしたりと、スムーズな情報連携により作業効率が向上します。</p>
                     </div>
                 </div>
-                <!-- 他のメリットも同様に追加 -->
-            </div>
-        </section>
-
-        <section class="cta">
-            <h2>すべての業務情報を一箇所に統合しませんか？</h2>
-            <p>情報管理の煩雑さから解放され、本来の業務に集中できる環境を手に入れましょう。</p>
-            <a href="#" class="cta-button">Notionを始める</a>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">EFFECT Co. Ltd.</div>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="../">ホーム</a></li>
-                        <li><a href="../#features">サービス</a></li>
-                        <li><a href="../#use-cases">事例</a></li>
-                        <li><a href="../#about">会社概要</a></li>
-                        <li><a href="../#contact">お問い合わせ</a></li>
-                    </ul>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">🔄</div>
+                    <div>
+                        <h3>情報の一貫性</h3>
+                        <p>すべての情報が一箇所で管理されるため、情報の不一致や重複が防げます。最新情報が常に共有され、チーム全員が同じ情報に基づいて判断・行動できるようになります。</p>
+                    </div>
                 </div>
-                <div class="footer-social">
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">🧠</div>
+                    <div>
+                        <h3>コンテキストの維持</h3>
+                        <p>関連する情報同士が紐づけられているため、情報の背景や経緯を含めた全体像を把握しやすくなります。タスクの理由、会議での議論内容、過去の決定事項など、文脈を失うことなく作業を進められます。</p>
+                    </div>
                 </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 EFFECT Co. Ltd. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-    
-    <script src="../script.js"></script>
-</body>
-</html>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">👥</div>
+                    <div>
+                        <h3>チームコラボレーションの強化</h3>
+                        <p>情報の透明性が高まり、チームメンバー間でのコミュニケーションが円滑になります。誰が何をしているか、プロジェクトの現状はどうなっているかなど、チーム全体の状況把握が容易になります。</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="cta">
+                <h2>すべての業務情報を一箇所に統合しませんか？</h2>
+                <p>情報管理の煩雑さから解放され、本来の業務に集中できる環境を手に入れましょう。</p>
+                <a href="#" class="cta-button">Notionを始める</a>
+            </section>
+        </main>
+        
+        <footer>
+            <p>© 2025 Notion情報管理ソリューション | プライバシーポリシー | 利用規約</p>
+        </footer>
+    </body>
+    </html>
