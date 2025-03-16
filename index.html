@@ -519,6 +519,13 @@
                     タイムスタンプ: new Date().toISOString()
                 };
                 
+                // デバッグ用：送信データをコンソールに出力
+                console.log('送信データ:', {
+                    notion_id: notionId,
+                    form_id: formId,
+                    data: formDataObj
+                });
+                
                 // Notionへのデータ送信
                 fetch('https://notion-forms-api.effectconnect.io/submit', {
                     method: 'POST',
@@ -532,10 +539,15 @@
                     })
                 })
                 .then(response => {
+                    // レスポンスのステータスとヘッダーを確認
+                    console.log('レスポンスステータス:', response.status);
+                    console.log('レスポンスヘッダー:', [...response.headers.entries()]);
+                    
                     // レスポンスのステータスを確認
                     if (response.ok) {
                         return response.json().then(data => {
                             // 成功時の処理
+                            console.log('成功レスポンス:', data);
                             document.getElementById('form-success').style.display = 'block';
                             document.getElementById('form-error').style.display = 'none';
                             form.reset();
@@ -550,13 +562,14 @@
                         return response.json().catch(() => {
                             return { error: 'サーバーエラーが発生しました' };
                         }).then(errorData => {
+                            console.log('エラーレスポンス:', errorData);
                             throw new Error(errorData.error || 'データの送信に失敗しました');
                         });
                     }
                 })
                 .catch(error => {
                     // エラー時の処理
-                    console.error('Error:', error);
+                    console.error('エラー詳細:', error);
                     document.getElementById('form-error').style.display = 'block';
                     document.getElementById('form-success').style.display = 'none';
                     
