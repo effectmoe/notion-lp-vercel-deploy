@@ -532,25 +532,33 @@
                     })
                 })
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                    // レスポンスのステータスを確認
+                    if (response.ok) {
+                        return response.json().then(data => {
+                            // 成功時の処理
+                            document.getElementById('form-success').style.display = 'block';
+                            document.getElementById('form-error').style.display = 'none';
+                            form.reset();
+                            
+                            // 5秒後に成功メッセージを非表示
+                            setTimeout(() => {
+                                document.getElementById('form-success').style.display = 'none';
+                            }, 5000);
+                        });
+                    } else {
+                        // サーバーからのエラーレスポンス
+                        return response.json().catch(() => {
+                            return { error: 'サーバーエラーが発生しました' };
+                        }).then(errorData => {
+                            throw new Error(errorData.error || 'データの送信に失敗しました');
+                        });
                     }
-                    return response.json();
-                })
-                .then(data => {
-                    // 成功時の処理
-                    document.getElementById('form-success').style.display = 'block';
-                    form.reset();
-                    
-                    // 3秒後に成功メッセージを非表示
-                    setTimeout(() => {
-                        document.getElementById('form-success').style.display = 'none';
-                    }, 5000);
                 })
                 .catch(error => {
                     // エラー時の処理
                     console.error('Error:', error);
                     document.getElementById('form-error').style.display = 'block';
+                    document.getElementById('form-success').style.display = 'none';
                     
                     // 5秒後にエラーメッセージを非表示
                     setTimeout(() => {
