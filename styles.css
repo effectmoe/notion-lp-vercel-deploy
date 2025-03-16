@@ -364,6 +364,23 @@ section:nth-child(even) {
     font-size: 14px;
 }
 
+/* feature-cardがリンクの場合のスタイル */
+a.feature-card {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+a.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+a.feature-card h3 {
+    color: #333; /* 標準的なテキストカラー */
+}
+
 /* Integration Section */
 .integration-logos {
     display: flex;
