@@ -1,114 +1,385 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notion × Claude - 業務システム構築</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion プラスアルファ - EFFECT Co. Ltd.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* インラインでスタイルを定義して確実に適用 */
+        .vertical-container {
+            position: absolute;
+            top: 0;
+            left: 30px; /* 左側（ロゴに近いほう）に配置 */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .vertical-text-char {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            margin: 0;
+            font-weight: 500;
+            font-size: 16px;
+            color: #333;
+            animation: fadeIn 0.15s forwards;
+            opacity: 0;
+            line-height: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 各文字に対して遅延設定 */
+        .char-1 { animation-delay: 0.1s; }
+        .char-2 { animation-delay: 0.25s; }
+        .char-3 { animation-delay: 0.4s; }
+        .char-4 { animation-delay: 0.55s; }
+        .char-5 { animation-delay: 0.7s; }
+        .char-6 { animation-delay: 0.85s; }
+        .char-7 { animation-delay: 1s; }
+        .char-8 { animation-delay: 1.15s; }
+        .char-9 { animation-delay: 1.3s; }
+        .char-10 { animation-delay: 1.45s; }
+        .char-11 { animation-delay: 1.6s; }
+        .char-12 { animation-delay: 1.75s; }
+        .char-13 { animation-delay: 1.9s; }
+        .char-14 { animation-delay: 2.05s; }
+    </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="logo">EFFECT Co. Ltd.</div>
-      <button class="menu-button">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <div class="notion-logo">
-              <!-- Notionのロゴ画像 -->
+    <header>
+        <div class="header-content">
+            <div class="logo">EFFECT Co. Ltd.</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">ホーム</a></li>
+                    <li><a href="#">サービス</a></li>
+                    <li><a href="#">料金</a></li>
+                    <li><a href="#contact" class="contact-btn">お問い合わせはこちら</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <h1>Notionプラスアルファで作るスマホ世代の簡単システム</h1>
-            <p>Notionを活用したシステム構築で業務プロセスを改革。低コスト・短期間で導入可能な次世代の業務システムをご提案します。</p>
-            <div class="cta-buttons">
-              <a href="#contact" class="btn primary-btn">無料相談を予約する</a>
-              <a href="https://www.street-academy.com/myclass/178974" class="btn secondary-btn" target="_blank" rel="noopener noreferrer">Notionで学ぶ</a>
-              <a href="#demo" class="btn orange-btn">デモを見る</a>
-            </div>
-          </div>
-          <div class="hero-image">
-            <!-- メインビジュアル画像 -->
-          </div>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <section id="features" class="features">
-      <div class="container">
-        <h2>特徴</h2>
-        <!-- 特徴セクションの内容 -->
-      </div>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="notion-logo">
+                            <div class="logo-container">
+                                <img src="Notion-logo-s.svg.png" alt="Notion Logo" class="notion-img">
+                                <span class="plus">+</span>
+                                <span class="at-sign">@</span>
+                            </div>
+                        </div>
+                        <h1>Notionプラスアルファで作る<br><span>スマホ世代の簡単システム</span></h1>
+                        <p>Notionを活用したシステム構築で業務プロセスを改革。<br>低コスト・短期間で導入可能な次世代の業務システムをご提案します。</p>
+                        <div class="cta-buttons">
+                            <a href="#contact" class="btn primary-btn">無料相談を予約する</a>
+                            <a href="https://www.street-academy.com/myclass/178974" class="btn secondary-btn" target="_blank" rel="noopener noreferrer">Notionで学ぶ</a>
+                            <a href="#demo" class="btn orange-btn">デモを見る</a>
+                          </div>
+                    </div>
 
-    <section id="integrations" class="integrations">
-      <div class="container">
-        <h2>統合</h2>
-        <!-- 統合セクションの内容 -->
-      </div>
-    </section>
+                    <div class="hero-image">
+                        <img src="1957dad0a3720.png" alt="ビジネスパーソンのイラスト">
+                        
+                        <!-- 新しい構造での縦書きテキスト - 位置調整済み -->
+                        <div class="vertical-container">
+                            <div class="vertical-text-char char-1">そ</div>
+                            <div class="vertical-text-char char-2">の</div>
+                            <div class="vertical-text-char char-3">シ</div>
+                            <div class="vertical-text-char char-4">ス</div>
+                            <div class="vertical-text-char char-5">テ</div>
+                            <div class="vertical-text-char char-6">ム</div>
+                            <div class="vertical-text-char char-7">、</div>
+                            <div class="vertical-text-char char-8">イ</div>
+                            <div class="vertical-text-char char-9">マ</div>
+                            <div class="vertical-text-char char-10">ド</div>
+                            <div class="vertical-text-char char-11">キ</div>
+                            <div class="vertical-text-char char-12">で</div>
+                            <div class="vertical-text-char char-13">す</div>
+                            <div class="vertical-text-char char-14">か</div>
+                            <div class="vertical-text-char char-15">？</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="system-design" class="system-design">
-      <div class="container">
-        <h2>システム設計</h2>
-        <!-- システム設計セクションの内容 -->
-      </div>
-    </section>
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">最先端のシステム統合機能</h2>
+                <p class="section-desc">Notionの基本スキルで十分!便利なシステムのベストプラットフォーム。あらゆるビジネスプロセスを一緒に。複数のワークスペースも連携します。</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>オールインワン情報管理</h3>
+                        <p>タスク管理、ドキュメント作成、知識ベース、顧客管理、営業管理などをひとつのプラットフォームで統合。サイロ化したデータからの解放を実現します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>内部ツール連携</h3>
+                        <p>Slack, Google Apps, Teams, Outlookなど、既に使用している社内ツールとノーコードで連携。追加の開発コスト無しでNotionと情報を共有します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>APIによるデータ連携</h3>
+                        <p>独自開発のAPIコネクタを使用して、既存システムやサードパーティサービスとNotionを連携。データの流れを自動化し、手動入力を削減します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>ワークフロー自動化</h3>
+                        <p>ビジネスプロセスに合わせたワークフローをNotionで自動化。ステータス変更、通知、承認フローなど、煩雑な業務をスムーズに処理します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>マルチビューデータベース</h3>
+                        <p>同じデータを異なる視点で表示。カレンダー、カンバン、リスト、ギャラリーなど、用途に応じた最適な表示形式で情報を整理します。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>セキュリティとアクセス管理</h3>
+                        <p>ロールベースのアクセス制御、詳細な権限設定、監査ログ機能を実装。機密情報を保護しながら、必要な人に必要な情報だけを共有します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="why-notion" class="why-notion">
-      <div class="container">
-        <h2>なぜNotionなのか</h2>
-        <!-- なぜNotionセクションの内容 -->
-      </div>
-    </section>
+        <section class="integration" id="integration">
+            <div class="container">
+                <h2 class="section-title">主要サービスとの連携</h2>
+                <div class="integration-logos">
+                    <div class="logo-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" alt="Slack">
+                        <span>Slack</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Workspace">
+                        <span>Google Workspace</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                        <span>Figma</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                        <span>GitHub</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" alt="Trello">
+                        <span>Trello</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" alt="Jira">
+                        <span>Jira</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dropbox/dropbox-original.svg" alt="Dropbox">
+                        <span>Dropbox</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zoom/zoom-original.svg" alt="Zoom">
+                        <span>Zoom</span>
+                    </div>
+                    <div class="logo-item more">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span>and more</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="testimonials" class="testimonials">
-      <div class="container">
-        <h2>お客様の声</h2>
-        <!-- お客様の声セクションの内容 -->
-      </div>
-    </section>
+        <section class="benefits" id="benefits">
+            <div class="container">
+                <h2 class="section-title">効率的なシステム制作と価格</h2>
+                <p class="section-desc">通常のシステム開発と比べて1/3の工数、1/5のコスト、トレーニング不要のユーザビリティ。あらゆるビジネスプロセスのデジタル化を低コストで実現します。</p>
+                
+                <div class="benefits-content">
+                    <div class="benefits-text">
+                        <ul class="benefits-list">
+                            <li>✓ 業界平均の1/5のコストでのシステム開発</li>
+                            <li>✓ 導入期間は最短2週間〜1ヶ月程度</li>
+                            <li>✓ APIによるレガシーシステムとの連携</li>
+                        </ul>
+                    </div>
+                    <div class="benefits-image">
+                        <img src="images/database-icon.png" alt="データベースアイコン" class="database-icon">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2>お問い合わせ</h2>
-        <!-- お問い合わせフォーム -->
-      </div>
-    </section>
+        <section class="why-notion" id="why-notion">
+            <div class="container">
+                <h2 class="section-title">なぜ、今Notionなのか？</h2>
+                <p class="section-desc">従来のシステムに比べて、使いやすいだけでなく、低価格でも高機能な業務最適化が実現します。</p>
+                
+                <div class="why-notion-grid">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>コスト削減と業務効率サイト</h3>
+                        <p>一般的なシステム開発の1/5程度のコストで、同等以上の機能を実現。初期費用を抑えながら業務効率を向上させます。</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>シンプルなUIとユーザビリティ</h3>
+                        <p>直感的で使いやすいインターフェースにより、ITリテラシーの低いユーザーでも簡単に操作できます。トレーニングコストを大幅に削減。</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h3>カスタマイズ性の高さ</h3>
+                        <p>ビジネスニーズに合わせて柔軟にカスタマイズ可能。成長するビジネスに合わせて機能を拡張していくことができます。</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>迅速な改善と機能拡張</h3>
+                        <p>アジャイル開発手法による迅速なプロトタイピングと反復改善。ビジネス要件の変化に素早く対応し、継続的な改善を実現します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="demo" class="demo">
-      <div class="container">
-        <h2>デモ</h2>
-        <!-- デモセクションの内容 -->
-      </div>
-    </section>
-  </main>
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <h2 class="section-title">お客様の声</h2>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">「Notionを使ったシステムが、これほどシンプルで使いやすいとは思いませんでした。以前は複雑なエクセルシートを駆使して顧客管理をしていましたが、今はNotionで全てがスマートに管理できています。特に、モバイルでも快適に使える点が気に入っています。」</p>
+                        <div class="testimonial-author">田中様</div>
+                        <div class="testimonial-company">株式会社〇〇</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">「当社はNotionベースのプロジェクト管理システムを導入して半年が経ちました。導入前は様々なツールを使い分けていましたが、今はNotionひとつで情報共有からタスク管理、スケジュール管理まで全てが完結します。社内のコミュニケーションが円滑になり、業務効率が格段に向上しました。」</p>
+                        <div class="testimonial-author">佐藤様</div>
+                        <div class="testimonial-company">株式会社〇〇</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 EFFECT Co. Ltd. All rights reserved.</p>
-    </div>
-  </footer>
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2 class="section-title">お問い合わせ</h2>
+                <p class="section-desc">Notionシステムに関するご質問やご相談は、お気軽にお問い合わせください。</p>
+                
+                <div class="contact-content">
+                    <div class="company-info">
+                        <div class="company-logo">EFFECT</div>
+                        <div class="company-details">
+                            <p><strong>Notionセットアップサービス</strong></p>
+                            <p>お客様のニーズに合わせたNotionワークスペースのセットアップと構築をお手伝いします。</p>
+                            <ul class="company-links">
+                                <li><a href="#">導入事例</a></li>
+                                <li><a href="#">Notionシステム開発について</a></li>
+                                <li><a href="#">料金プラン</a></li>
+                                <li><a href="#">よくあるご質問</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="inquiry-form">
+                            <div class="form-group">
+                                <label for="name">お名前 <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">メールアドレス <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">会社名</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">電話番号</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">お問い合わせ内容 <span class="required">*</span></label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">無料相談を申し込む</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <div class="mobile-menu">
-    <ul>
-      <li><a href="#features">特徴</a></li>
-      <li><a href="#integrations">統合</a></li>
-      <li><a href="#system-design">システム設計</a></li>
-      <li><a href="#why-notion">なぜNotion</a></li>
-      <li><a href="#testimonials">お客様の声</a></li>
-      <li><a href="#contact">お問い合わせ</a></li>
-      <li><a href="#demo">デモ</a></li>
-    </ul>
-  </div>
-
-  <script src="script.js"></script>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">EFFECT Co. Ltd.</div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#">ホーム</a></li>
+                        <li><a href="#">サービス</a></li>
+                        <li><a href="#">事例</a></li>
+                        <li><a href="#">会社概要</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EFFECT Co. Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>
