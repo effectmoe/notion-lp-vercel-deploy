@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notionのセキュリティとアクセス管理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f7f6f3;
+            color: #37352f;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2f3437;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ebeaea;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 3rem 0;
+        }
+        
+        .feature {
+            flex-basis: 48%;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f7f6f3;
+            border-radius: 8px;
+        }
+        
+        .diagram {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .diagram h2 {
+            text-align: left;
+        }
+        
+        .diagram-img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem 0;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+            background: #f7f6f3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .workflow {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .workflow-step {
+            flex-basis: 22%;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .workflow-step h4 {
+            margin: 1rem 0;
+        }
+        
+        .workflow-arrow {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #ebeaea;
+            z-index: 0;
+        }
+        
+        .cta {
+            background: #2f3437;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+        
+        .cta h2 {
+            border-bottom: none;
+            color: white;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #2f3437;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #f7f6f3;
+        }
+        
+        footer {
+            background: #ebeaea;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        /* セキュリティレベル表示 */
+        .security-level {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        
+        .security-level-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 0 0.5rem;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .security-level-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .security-level-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .security-level-desc {
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* 権限マトリクス表 */
+        .permission-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .permission-matrix th, .permission-matrix td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #ebeaea;
+        }
+        
+        .permission-matrix th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+        
+        .permission-matrix tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .permission-yes {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .permission-no {
+            color: #F44336;
+        }
+        
+        .permission-limited {
+            color: #FF9800;
+        }
+        
+        /* ユースケース表示 */
+        .use-case {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .use-case h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ebeaea;
+            padding-bottom: 0.5rem;
+        }
+        
+        /* SVG スタイル */
+        .svg-container {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .security-diagram {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* タブレット */
+        @media (max-width: 992px) {
+            .workflow {
+                flex-wrap: wrap;
+            }
+            
+            .workflow-step {
+                flex-basis: 45%;
+                margin-bottom: 1.5rem;
+            }
+            
+            .security-level {
+                flex-wrap: wrap;
+            }
+            
+            .security-level-item {
+                flex-basis: 45%;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .feature {
+                flex-basis: 100%;
+            }
+            
+            .workflow-step {
+                flex-basis: 100%;
+            }
+            
+            .workflow-arrow {
+                display: none;
+            }
+            
+            .security-level-item {
+                flex-basis: 100%;
+            }
+            
+            .permission-matrix {
+                font-size: 0.8rem;
+            }
+            
+            .permission-matrix th, .permission-matrix td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Notionのセキュリティとアクセス管理</h1>
+            <p>企業レベルのセキュリティと柔軟なアクセス制御で情報を適切に保護・共有</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h2>ビジネス情報を安全に管理・共有するための統合セキュリティソリューション</h2>
+            <p>Notionのセキュリティとアクセス管理機能は、重要な情報を保護しながら、必要なユーザーに適切なレベルでの情報アクセスを可能にします。ロールベースのアクセス制御や詳細な権限設定により、機密情報が適切に保護され、情報のセキュリティとコラボレーションの両立を実現します。</p>
+        </section>
+        
+        <section class="diagram">
+            <h2>Notionのセキュリティとアクセス管理の仕組み</h2>
+            <div class="svg-container">
+                <svg class="security-diagram" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- メインのワークスペース表現 -->
+                    <rect x="200" y="150" width="400" height="300" rx="20" fill="#f5f5f5" stroke="#ddd" stroke-width="2" />
+                    <text x="400" y="180" font-size="24" fill="#333" text-anchor="middle">Notionワークスペース</text>
+                    
+                    <!-- ロックされたエリア（機密情報） -->
+                    <rect x="250" y="220" width="120" height="100" rx="10" fill="#ffebee" stroke="#ef5350" stroke-width="1" />
+                    <text x="310" y="250" font-size="14" fill="#333" text-anchor="middle">経営戦略</text>
+                    <text x="310" y="270" font-size="12" fill="#333" text-anchor="middle">(制限付きアクセス)</text>
+                    <path d="M310 290 L310 300 L300 300 L300 320 L320 320 L320 300 L310 300" fill="none" stroke="#ef5350" stroke-width="2" />
+                    <circle cx="310" cy="290" r="10" fill="#ef5350" />
+                    
+                    <!-- 部分的にロックされたエリア -->
+                    <rect x="430" y="220" width="120" height="100" rx="10" fill="#e8f5e9" stroke="#66bb6a" stroke-width="1" />
+                    <text x="490" y="250" font-size="14" fill="#333" text-anchor="middle">プロジェクト計画</text>
+                    <text x="490" y="270" font-size="12" fill="#333" text-anchor="middle">(編集権限制限)</text>
+                    <path d="M490 290 L490 300 L480 300 L480 320 L500 320 L500 300 L490 300" fill="none" stroke="#66bb6a" stroke-width="2" />
+                    <circle cx="490" cy="290" r="10" fill="#66bb6a" />
+                    
+                    <!-- オープンエリア -->
+                    <rect x="340" y="350" width="120" height="70" rx="10" fill="#e3f2fd" stroke="#42a5f5" stroke-width="1" />
+                    <text x="400" y="380" font-size="14" fill="#333" text-anchor="middle">社内ナレッジ</text>
+                    <text x="400" y="400" font-size="12" fill="#333" text-anchor="middle">(全員閲覧可)</text>
+                    
+                    <!-- ユーザーグループ -->
+                    <circle cx="100" cy="200" r="40" fill="#f3e5f5" stroke="#9c27b0" stroke-width="1" />
+                    <text x="100" y="205" font-size="14" fill="#333" text-anchor="middle">管理者</text>
+                    
+                    <circle cx="100" cy="300" r="40" fill="#fff3e0" stroke="#ff9800" stroke-width="1" />
+                    <text x="100" y="305" font-size="14" fill="#333" text-anchor="middle">編集者</text>
+                    
+                    <circle cx="100" cy="400" r="40" fill="#e1f5fe" stroke="#29b6f6" stroke-width="1" />
+                    <text x="100" y="405" font-size="14" fill="#333" text-anchor="middle">閲覧者</text>
+                    
+                    <!-- アクセス権限の矢印 -->
+                    <!-- 管理者は全てにアクセス可能 -->
+                    <line x1="140" y1="200" x2="250" y2="250" stroke="#9c27b0" stroke-width="2" />
+                    <polygon points="250,250 235,245 240,255" fill="#9c27b0" />
+                    
+                    <line x1="140" y1="200" x2="430" y2="250" stroke="#9c27b0" stroke-width="2" />
+                    <polygon points="430,250 415,245 420,255" fill="#9c27b0" />
+                    
+                    <line x1="140" y1="200" x2="340" y2="370" stroke="#9c27b0" stroke-width="2" />
+                    <polygon points="340,370 325,365 330,375" fill="#9c27b0" />
+                    
+                    <!-- 編集者は一部編集可、一部閲覧不可 -->
+                    <line x1="140" y1="300" x2="430" y2="250" stroke="#ff9800" stroke-width="2" />
+                    <polygon points="430,250 415,245 420,255" fill="#ff9800" />
+                    
+                    <line x1="140" y1="300" x2="340" y2="370" stroke="#ff9800" stroke-width="2" />
+                    <polygon points="340,370 325,365 330,375" fill="#ff9800" />
+                    
+                    <!-- 閲覧者は社内ナレッジのみアクセス可能 -->
+                    <line x1="140" y1="400" x2="340" y2="380" stroke="#29b6f6" stroke-width="2" />
+                    <polygon points="340,380 325,375 330,385" fill="#29b6f6" />
+                    
+                    <!-- 監査ログ表現 -->
+                    <rect x="250" y="450" width="300" height="80" rx="10" fill="#f5f5f5" stroke="#ddd" stroke-width="1" />
+                    <text x="400" y="480" font-size="16" fill="#333" text-anchor="middle">監査ログ</text>
+                    <text x="400" y="505" font-size="12" fill="#666" text-anchor="middle">誰が、いつ、何にアクセスしたかを記録</text>
+                    
+                    <!-- 管理コンソール表現 -->
+                    <rect x="600" y="300" width="150" height="100" rx="10" fill="#f5f5f5" stroke="#ddd" stroke-width="1" />
+                    <text x="675" y="330" font-size="14" fill="#333" text-anchor="middle">管理コンソール</text>
+                    <text x="675" y="350" font-size="12" fill="#666" text-anchor="middle">権限設定</text>
+                    <text x="675" y="370" font-size="12" fill="#666" text-anchor="middle">セキュリティポリシー</text>
+                    <text x="675" y="390" font-size="12" fill="#666" text-anchor="middle">ユーザー管理</text>
+                    
+                    <path d="M600 350 C550 350, 520 300, 480 300" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,5" />
+                    <polygon points="480,300 495,295 495,305" fill="#333" />
+                    
+                    <!-- セキュリティレイヤー表現 -->
+                    <rect x="200" y="80" width="400" height="40" rx="5" fill="#e8eaf6" stroke="#3f51b5" stroke-width="1" />
+                    <text x="400" y="105" font-size="14" fill="#333" text-anchor="middle">エンドツーエンド暗号化 + SSO + 2要素認証</text>
+                </svg>
+            </div>
+            <p>Notionのセキュリティとアクセス管理は、複数のレイヤーで情報を保護します。最上位のセキュリティレイヤーでは暗号化やSSO、2要素認証などの技術的対策を講じています。ワークスペース内では、ロールベースのアクセス制御により、ユーザーの役割に応じて適切な権限が割り当てられます。管理者は全てのコンテンツにアクセスでき、編集者は一部の文書を編集でき、閲覧者は許可された文書のみを閲覧できるといった具合です。また、全ての操作は監査ログに記録され、セキュリティ監査や問題追跡に活用できます。</p>
+        </section>
+        
+        <section class="features">
+            <div class="feature">
+                <h3>
+                    <div class="feature-icon">👥</div>
+                    ロールベースのアクセス制御
+                </h3>
+                <p>組織内の役割や職務に基づいて適切なアクセス権限を割り当てるロールベースのアクセス制御を実装しています。管理者、編集者、コメント可能な閲覧者、閲覧のみ可能なユーザーなど、標準的なロールが用意されており、それぞれに適切な権限が設定されています。また、カスタムロールを作成することで、組織特有の役割や責任に合わせた権限設定も可能です。例えば、「マーケティング責任者」というロールを作成し、マーケティング関連のドキュメントには全ての権限を、その他の文書には閲覧権限のみを付与するといった柔軟な設定ができます。ロールベースの制御により、ユーザーごとに個別に権限を設定する手間が省け、一貫した権限管理が可能になります。</p>
+            </div>
+            
+            <div class="feature">
+                <h3>
+                    <div class="feature-icon">🔐</div>
+                    詳細な権限設定
+                </h3>
+                <p>ページ、データベース、ブロックレベルで細かく権限を設定できる柔軟な制御機能を提供しています。閲覧、コメント、編集、共有、管理など、操作ごとに権限を設定でき、文書の機密性や重要性に応じた適切なアクセス制御が可能です。例えば、プロジェクト計画書の全体は関係者全員が閲覧できるようにしつつ、予算情報が含まれるセクションは管理職のみがアクセスできるよう制限することができます。また、グループや部門単位での権限付与も可能で、「財務部門のみ編集可能」「マーケティングチームは閲覧のみ」といった設定も簡単に行えます。これにより、情報漏洩のリスクを最小限に抑えつつ、必要な協働作業を促進できます。</p>
+            </div>
+            
+            <div class="feature">
+                <h3>
+                    <div class="feature-icon">📋</div>
+                    監査ログ機能
+                </h3>
+                <p>システム内で行われた全てのアクションを記録する包括的な監査ログ機能を備えています。ユーザーのログイン／ログアウト、文書の作成／編集／削除、権限変更、設定変更など、重要な操作が全て時刻とユーザー情報とともに記録されます。管理者はこれらのログを閲覧・検索し、不審なアクティビティがないか監視したり、問題発生時の追跡調査に活用したりできます。例えば、機密文書への不正アクセスが疑われる場合、該当文書に関するアクセスログを確認して調査できます。また、コンプライアンス要件を満たすために必要な証跡としても活用でき、監査やセキュリティ評価の際の重要な資料となります。ログデータはエクスポートも可能で、長期保存や外部ツールでの分析にも対応しています。</p>
+            </div>
+            
+            <div class="feature">
+                <h3>
+                    <div class="feature-icon">🔒</div>
+                    高度な認証オプション
+                </h3>
+                <p>安全なアクセスを確保するための複数の認証オプションをサポートしています。シングルサインオン（SSO）との統合により、既存の認証システムを活用して一貫したユーザー管理が可能です。Google、Microsoft、Okta、OneLoginなどの主要IDプロバイダーとの連携をサポートし、ユーザーは社内の認証情報を使ってNotionにアクセスできます。また、二要素認証（2FA）を強制適用することで、パスワード漏洩のリスクを軽減し、不正アクセスを防止できます。SMSコード、認証アプリ、ハードウェアキーなど複数の二要素認証方式に対応し、組織のセキュリティポリシーに合わせて選択可能です。さらに、セッションタイムアウトや自動ログアウト機能も設定でき、共有デバイスからの不正アクセスリスクも軽減できます。</p>
+            </div>
+            
+            <div class="feature">
+                <h3>
+                    <div class="feature-icon">⚙️</div>
+                    セキュリティポリシー管理
+                </h3>
+                <p>組織全体のセキュリティを一元管理するための包括的なポリシー設定機能を提供しています。パスワードの複雑さ要件、アカウントロックアウト設定、セッション管理など、基本的なセキュリティポリシーから、デバイス制限、IPアドレス制限、コンテンツ共有制限などの高度な設定まで幅広く対応しています。例えば、機密データへのアクセスを社内ネットワークからのみに制限したり、モバイルデバイスからの特定操作を禁止したりといった細かな制御が可能です。また、部門ごとに異なるセキュリティポリシーを適用することもでき、財務部門には厳格なポリシーを、マーケティング部門にはより柔軟なポリシーを適用するといった運用もサポートしています。これらのポリシーは管理コンソールから一元管理でき、組織全体のセキュリティ状況を常に把握できます。</p>
+            </div>
+            
+            <div class="feature">
+                <h3>
+                    <div class="feature-icon">🔍</div>
+                    アクセス可視化と分析
+                </h3>
+                <p>組織内の情報アクセス状況を可視化し、分析するための機能を提供しています。誰がどのコンテンツにアクセスしているか、どのような権限が付与されているかを一目で把握できるダッシュボードにより、情報共有の全体像を把握できます。過剰な権限が付与されていないか、機密情報への不必要なアクセス権がないかなど、セキュリティリスクを特定し改善することが可能です。また、利用統計データを活用して、情報の利用パターンを分析し、セキュリティ対策の最適化や情報アクセスの効率化に役立てることができます。例えば、ほとんど使われていない共有設定を特定して整理したり、頻繁にアクセスされる情報の保護レベルを強化したりといった対応が可能になります。これらの分析結果はレポートとしてエクスポートでき、経営層へのセキュリティ状況報告や監査対応にも活用できます。</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>権限レベルと機能</h2>
+            
+            <table class="permission-matrix">
+                <tr>
+                    <th>機能／権限</th>
+                    <th>管理者</th>
+                    <th>編集者</th>
+                    <th>コメント可能な閲覧者</th>
+                    <th>閲覧者</th>
+                </tr>
+                <tr>
+                    <td>コンテンツの閲覧</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-yes">✓</td>
+                </tr>
+                <tr>
+                    <td>コメントの追加</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-no">✗</td>
+                </tr>
+                <tr>
+                    <td>コンテンツの編集</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-no">✗</td>
+                    <td class="permission-no">✗</td>
+                </tr>
+                <tr>
+                    <td>新規ページの作成</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-no">✗</td>
+                    <td class="permission-no">✗</td>
+                </tr>
+                <tr>
+                    <td>ページの削除</td>
+                    <td class="permission-yes">✓</td>
+                    <td class="permission-limited">〇 (自分が作成したもののみ)</td>
+                    <td class="permission-no">✗</td>
+                    <td class="permission-no">✗</td>
+                </tr>
+                <tr>
+                    <td>権限の設定</td>
+                    <td class="permission-yes">✓</td>
