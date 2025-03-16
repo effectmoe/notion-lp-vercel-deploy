@@ -1,0 +1,2 @@
+# notion-lp-last02
+ 
