@@ -2,10 +2,7 @@
   "name": "notion-landing-page",
   "version": "1.0.0",
   "description": "Notion Landing Page with Contact Form",
-  "scripts": {
-    "deploy": "wrangler pages deploy ./"
-  },
-  "devDependencies": {
+  "dependencies": {
     "wrangler": "^4.0.0"
   }
 }
