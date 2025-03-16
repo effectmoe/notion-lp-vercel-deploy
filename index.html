@@ -455,7 +455,7 @@
                                 <label for="message">お問い合わせ内容 <span class="required">*</span></label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
-                            <input type="hidden" name="notion_id" value="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">
+                            <input type="hidden" name="notion_id" value="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">
                             <input type="hidden" name="form_id" value="1b7b802cb0c6801f8ba3de20a22e93b1">
                             <button type="submit" class="submit-btn">無料相談を申し込む</button>
                             <div id="form-success" style="display: none; color: green; margin-top: 15px;">
@@ -541,7 +541,7 @@
                 submitBtn.textContent = '送信中...';
                 submitBtn.disabled = true;
                 
-                fetch('https://notion-forms-api.effectconnect.io/submit', {
+                fetch('https://notion-forms.effectconnect.io/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
