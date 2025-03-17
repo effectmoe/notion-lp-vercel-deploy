@@ -764,7 +764,6 @@ footer {
 }
 
 @media (max-width: 576px) {
-
     .features-grid,
     .why-notion-grid {
         grid-template-columns: 1fr;
@@ -772,10 +771,14 @@ footer {
 
     .integration-logos {
         gap: 15px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
     }
 
     .logo-item {
-        width: 70px;
+        width: 100%;
+        max-width: 70px;
     }
 }
 
