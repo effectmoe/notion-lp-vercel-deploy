@@ -1,0 +1,29 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Base cylinder -->
+  <ellipse cx="100" cy="40" rx="70" ry="25" fill="#a4c3d2" />
+  <ellipse cx="100" cy="40" rx="60" ry="20" fill="#cbe2f0" />
+  
+  <!-- Middle cylinder -->
+  <path d="M170,40 v60 a70,25 0 0,1 -140,0 v-60" fill="#a4c3d2" />
+  <path d="M160,40 v60 a60,20 0 0,1 -120,0 v-60" fill="#8badbe" />
+  
+  <!-- Bottom cylinder -->
+  <ellipse cx="100" cy="160" rx="70" ry="25" fill="#7691a0" />
+  <ellipse cx="100" cy="100" rx="70" ry="25" fill="#a4c3d2" />
+  <ellipse cx="100" cy="100" rx="60" ry="20" fill="#cbe2f0" />
+  
+  <!-- Lines for detail -->
+  <path d="M40,40 v60" stroke="#555" stroke-width="1.5" fill="none" />
+  <path d="M160,40 v60" stroke="#555" stroke-width="1.5" fill="none" />
+  
+  <path d="M40,100 v60" stroke="#555" stroke-width="1.5" fill="none" />
+  <path d="M160,100 v60" stroke="#555" stroke-width="1.5" fill="none" />
+  
+  <!-- Data lines -->
+  <line x1="60" y1="35" x2="140" y2="35" stroke="#555" stroke-width="1.5" />
+  <line x1="60" y1="45" x2="140" y2="45" stroke="#555" stroke-width="1.5" />
+  
+  <line x1="60" y1="95" x2="140" y2="95" stroke="#555" stroke-width="1.5" />
+  <line x1="60" y1="105" x2="140" y2="105" stroke="#555" stroke-width="1.5" />
+</svg>
