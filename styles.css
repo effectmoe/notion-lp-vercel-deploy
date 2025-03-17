@@ -767,3 +767,136 @@ footer {
         width: 70px;
     }
 }
+
+/* Instructor Section Styles */
+.instructor-section {
+    padding: 80px 0;
+    background-color: #f5f5f5;
+}
+
+.instructor-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.instructor-section .section-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.instructor-section .subtitle {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+.instructor-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.instructor-image {
+    flex: 0 0 300px;
+    text-align: center;
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background-color: #FFDE59;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge i {
+    color: #FF9500;
+}
+
+.instructor-benefits {
+    flex: 1;
+    min-width: 300px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-item i {
+    font-size: 24px;
+    color: #FF9500;
+    margin-right: 15px;
+    padding-top: 5px;
+}
+
+.benefit-text h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.benefit-text p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .instructor-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .instructor-image {
+        margin-bottom: 30px;
+    }
+    
+    .instructor-section .section-title {
+        font-size: 28px;
+    }
+    
+    .instructor-section .subtitle {
+        font-size: 18px;
+    }
+}
