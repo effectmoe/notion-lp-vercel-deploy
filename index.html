@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notion プラスアルファ - EFFECT Co. Ltd.</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -13,11 +15,12 @@
         .vertical-container {
             position: absolute;
             top: 0;
-            left: 30px; /* 左側（ロゴに近いほう）に配置 */
+            left: 30px;
+            /* 左側（ロゴに近いほう）に配置 */
             display: flex;
             flex-direction: column;
         }
-        
+
         .vertical-text-char {
             writing-mode: vertical-rl;
             text-orientation: upright;
@@ -31,26 +34,72 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-        
+
         /* 各文字に対して遅延設定 */
-        .char-1 { animation-delay: 0.1s; }
-        .char-2 { animation-delay: 0.25s; }
-        .char-3 { animation-delay: 0.4s; }
-        .char-4 { animation-delay: 0.55s; }
-        .char-5 { animation-delay: 0.7s; }
-        .char-6 { animation-delay: 0.85s; }
-        .char-7 { animation-delay: 1s; }
-        .char-8 { animation-delay: 1.15s; }
-        .char-9 { animation-delay: 1.3s; }
-        .char-10 { animation-delay: 1.45s; }
-        .char-11 { animation-delay: 1.6s; }
-        .char-12 { animation-delay: 1.75s; }
-        .char-13 { animation-delay: 1.9s; }
-        .char-14 { animation-delay: 2.05s; }
-        
+        .char-1 {
+            animation-delay: 0.1s;
+        }
+
+        .char-2 {
+            animation-delay: 0.25s;
+        }
+
+        .char-3 {
+            animation-delay: 0.4s;
+        }
+
+        .char-4 {
+            animation-delay: 0.55s;
+        }
+
+        .char-5 {
+            animation-delay: 0.7s;
+        }
+
+        .char-6 {
+            animation-delay: 0.85s;
+        }
+
+        .char-7 {
+            animation-delay: 1s;
+        }
+
+        .char-8 {
+            animation-delay: 1.15s;
+        }
+
+        .char-9 {
+            animation-delay: 1.3s;
+        }
+
+        .char-10 {
+            animation-delay: 1.45s;
+        }
+
+        .char-11 {
+            animation-delay: 1.6s;
+        }
+
+        .char-12 {
+            animation-delay: 1.75s;
+        }
+
+        .char-13 {
+            animation-delay: 1.9s;
+        }
+
+        .char-14 {
+            animation-delay: 2.05s;
+        }
+
         /* Google Formsのスタイリング */
         .google-form-container {
             width: 100%;
@@ -60,21 +109,25 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             background: #fff;
         }
-        
+
         .notion-form-iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-        
+
         /* iframeのリサイズを自動化するJS */
         @media (max-width: 768px) {
             .google-form-container {
-                height: 850px; /* モバイル用に高さを調整 */
+                height: 850px;
+                /* モバイル用に高さを調整 */
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -109,14 +162,15 @@
                         <p>Notionを活用したシステム構築で業務プロセスを改革。<br>低コスト・短期間で導入可能な次世代の業務システムをご提案します。</p>
                         <div class="cta-buttons">
                             <a href="#contact" class="btn primary-btn">無料相談を予約する</a>
-                            <a href="https://www.street-academy.com/myclass/178974" class="btn secondary-btn" target="_blank" rel="noopener noreferrer">Notionを学ぶ</a>
+                            <a href="https://www.street-academy.com/myclass/178974" class="btn secondary-btn"
+                                target="_blank" rel="noopener noreferrer">Notionを学ぶ</a>
                             <a href="#demo" class="btn orange-btn">Notionで未来の顧客管理</a>
-                          </div>
+                        </div>
                     </div>
 
                     <div class="hero-image">
                         <img src="images/notion-screenshot.png" alt="ビジネスパーソンのイラスト">
-                        
+
                         <!-- 新しい構造での縦書きテキスト - 位置調整済み -->
                         <div class="vertical-container">
                             <div class="vertical-text-char char-1">そ</div>
@@ -144,7 +198,7 @@
             <div class="container">
                 <h2 class="section-title">最先端のシステム統合機能</h2>
                 <p class="section-desc">Notionの基本スキルで十分!便利なシステムのベストプラットフォーム。あらゆるビジネスプロセスを一緒に。複数のワークスペースも連携します。</p>
-                
+
                 <div class="features-grid">
                     <a href="./all-in-one/" class="feature-card">
                         <div class="feature-icon">
@@ -294,7 +348,7 @@
                     justify-content: center;
                     margin-top: 40px;
                 }
-                
+
                 .logo-item {
                     display: flex;
                     flex-direction: column;
@@ -306,37 +360,37 @@
                     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                     transition: transform 0.3s, box-shadow 0.3s;
                 }
-                
+
                 .logo-item:hover {
                     transform: translateY(-5px);
                     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
                 }
-                
+
                 .logo-item i {
                     font-size: 40px;
                     margin-bottom: 10px;
                 }
-                
+
                 .logo-item span {
                     font-size: 14px;
                     color: #666;
                     font-weight: 500;
                 }
-                
+
                 @media (max-width: 768px) {
                     .integration-logos {
                         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
                         gap: 15px;
                     }
-                    
+
                     .logo-item {
                         padding: 10px;
                     }
-                    
+
                     .logo-item i {
                         font-size: 30px;
                     }
-                    
+
                     .logo-item span {
                         font-size: 12px;
                     }
@@ -348,7 +402,7 @@
             <div class="container">
                 <h2 class="section-title">効率的なシステム制作と価格</h2>
                 <p class="section-desc">通常のシステム開発と比べて圧倒的なコストパフォーマンス、トレーニング不要のユーザビリティ。あらゆるビジネスプロセスのデジタル化を低コストで実現します。</p>
-                
+
                 <div class="benefits-content">
                     <div class="benefits-text">
                         <ul class="benefits-list">
@@ -364,20 +418,24 @@
             </div>
         </section>
 
+
         <section class="instructor-section">
             <div class="container">
                 <h2 class="section-title">ストアカの人気講師がNotionシステムを開発します</h2>
                 <div class="subtitle">講座を通じてユーザーの課題感を熟知していることが強みです</div>
-                
+
                 <div class="instructor-content">
                     <div class="instructor-image">
-                        <img src="https://placehold.jp/300x300.png" alt="Notion講師" class="profile-img">
+                        <img src="/data/chats/pmmb5d/workspace/uploads/195a53e5cc275.png" alt="Notion講師"
+                            class="profile-img">
                         <div class="badges">
                             <span class="badge"><i class="fas fa-trophy"></i> ストアカ人気講師</span>
                             <span class="badge"><i class="fas fa-medal"></i> 5つ星評価</span>
                         </div>
+                        <a href="https://www.street-academy.com/myclass/178974" class="course-button"
+                            target="_blank">ストアカ講座を見る</a>
                     </div>
-                    
+
                     <div class="instructor-benefits">
                         <div class="benefit-item">
                             <i class="fas fa-smile"></i>
@@ -386,7 +444,7 @@
                                 <p>オンライン上だけでなく、直接コミュニケーションを取ることができるため、より安心してサービスを利用いただけます。</p>
                             </div>
                         </div>
-                        
+
                         <div class="benefit-item">
                             <i class="fas fa-star"></i>
                             <div class="benefit-text">
@@ -394,7 +452,7 @@
                                 <p>これまでの講座で多くの受講生から高い評価をいただいています。実績と信頼があるからこそ、質の高いシステムをお届けします。</p>
                             </div>
                         </div>
-                        
+
                         <div class="benefit-item">
                             <i class="fas fa-chalkboard-teacher"></i>
                             <div class="benefit-text">
@@ -407,11 +465,12 @@
             </div>
         </section>
 
+
         <section class="why-notion" id="why-notion">
             <div class="container">
                 <h2 class="section-title">なぜ、今Notionなのか？</h2>
                 <p class="section-desc">従来のシステムに比べて、使いやすいだけでなく、低価格でも高機能な業務最適化が実現します。</p>
-                
+
                 <div class="why-notion-grid">
                     <div class="why-card">
                         <div class="why-icon">
@@ -448,7 +507,7 @@
         <section class="testimonials" id="testimonials">
             <div class="container">
                 <h2 class="section-title">お客様の声</h2>
-                
+
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="rating">
@@ -458,7 +517,9 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">「Notionを使ったシステムが、これほどシンプルで使いやすいとは思いませんでした。以前は複雑なエクセルシートを駆使して顧客管理をしていましたが、今はNotionで全てがスマートに管理できています。特に、モバイルでも快適に使える点が気に入っています。」</p>
+                        <p class="testimonial-text">
+                            「Notionを使ったシステムが、これほどシンプルで使いやすいとは思いませんでした。以前は複雑なエクセルシートを駆使して顧客管理をしていましたが、今はNotionで全てがスマートに管理できています。特に、モバイルでも快適に使える点が気に入っています。」
+                        </p>
                         <div class="testimonial-author">田中様</div>
                         <div class="testimonial-company">株式会社〇〇</div>
                     </div>
@@ -470,7 +531,9 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
                         </div>
-                        <p class="testimonial-text">「当社はNotionベースのプロジェクト管理システムを導入して半年が経ちました。導入前は様々なツールを使い分けていましたが、今はNotionひとつで情報共有からタスク管理、スケジュール管理まで全てが完結します。社内のコミュニケーションが円滑になり、業務効率が格段に向上しました。」</p>
+                        <p class="testimonial-text">
+                            「当社はNotionベースのプロジェクト管理システムを導入して半年が経ちました。導入前は様々なツールを使い分けていましたが、今はNotionひとつで情報共有からタスク管理、スケジュール管理まで全てが完結します。社内のコミュニケーションが円滑になり、業務効率が格段に向上しました。」
+                        </p>
                         <div class="testimonial-author">佐藤様</div>
                         <div class="testimonial-company">株式会社〇〇</div>
                     </div>
@@ -482,7 +545,7 @@
             <div class="container">
                 <h2 class="section-title">お問い合わせ</h2>
                 <p class="section-desc">Notionシステムに関するご質問やご相談は、お気軽にお問い合わせください。</p>
-                
+
                 <div class="contact-content">
                     <div class="company-info">
                         <div class="company-logo">EFFECT</div>
@@ -557,17 +620,17 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('inquiry-form');
-            
-            form.addEventListener('submit', function(e) {
+
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 const formData = new FormData(form);
-                
+
                 // フォームデータをオブジェクトに変換
                 const formDataObj = {
                     name: formData.get('name'),
@@ -578,23 +641,23 @@
                     source: window.location.href,
                     timestamp: new Date().toISOString()
                 };
-                
+
                 // デバッグ用：送信データをコンソールに出力
                 console.log('送信データ:', formDataObj);
-                
+
                 // Notionへのデータ送信
                 const requestData = {
                     data: formDataObj
                 };
-                
+
                 console.log('送信データ:', requestData);
-                
+
                 // フォーム送信中の表示
                 const submitBtn = form.querySelector('.submit-btn');
                 const originalBtnText = submitBtn.textContent;
                 submitBtn.textContent = '送信中...';
                 submitBtn.disabled = true;
-                
+
                 fetch('https://notion-form-api.vercel.app/api/submit', {
                     method: 'POST',
                     headers: {
@@ -603,40 +666,41 @@
                     },
                     body: JSON.stringify(requestData)
                 })
-                .then(response => {
-                    console.log('レスポンスステータス:', response.status);
-                    
-                    if (response.ok) {
-                        // 成功
-                        document.getElementById('form-success').style.display = 'block';
-                        document.getElementById('form-error').style.display = 'none';
-                        form.reset();
-                    } else {
-                        // エラー
-                        console.error('サーバーエラー:', response.status);
+                    .then(response => {
+                        console.log('レスポンスステータス:', response.status);
+
+                        if (response.ok) {
+                            // 成功
+                            document.getElementById('form-success').style.display = 'block';
+                            document.getElementById('form-error').style.display = 'none';
+                            form.reset();
+                        } else {
+                            // エラー
+                            console.error('サーバーエラー:', response.status);
+                            document.getElementById('form-error').style.display = 'block';
+                            document.getElementById('form-success').style.display = 'none';
+                        }
+                    })
+                    .catch(error => {
+                        // ネットワークエラーなど
+                        console.error('通信エラー:', error);
                         document.getElementById('form-error').style.display = 'block';
                         document.getElementById('form-success').style.display = 'none';
-                    }
-                })
-                .catch(error => {
-                    // ネットワークエラーなど
-                    console.error('通信エラー:', error);
-                    document.getElementById('form-error').style.display = 'block';
-                    document.getElementById('form-success').style.display = 'none';
-                })
-                .finally(() => {
-                    // ボタンを元に戻す
-                    submitBtn.textContent = originalBtnText;
-                    submitBtn.disabled = false;
-                    
-                    // 5秒後にメッセージを非表示
-                    setTimeout(() => {
-                        document.getElementById('form-success').style.display = 'none';
-                        document.getElementById('form-error').style.display = 'none';
-                    }, 5000);
-                });
+                    })
+                    .finally(() => {
+                        // ボタンを元に戻す
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+
+                        // 5秒後にメッセージを非表示
+                        setTimeout(() => {
+                            document.getElementById('form-success').style.display = 'none';
+                            document.getElementById('form-error').style.display = 'none';
+                        }, 5000);
+                    });
             });
         });
     </script>
 </body>
+
 </html>

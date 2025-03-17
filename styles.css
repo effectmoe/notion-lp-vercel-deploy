@@ -126,7 +126,8 @@ header {
 }
 
 .notion-img {
-    width: 140px; /* タイトルの幅の50%くらいに大きくする */
+    width: 140px;
+    /* タイトルの幅の50%くらいに大きくする */
     height: auto;
 }
 
@@ -153,7 +154,8 @@ header {
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.3;
-    width: 280px; /* ロゴサイズの基準となる幅 */
+    width: 280px;
+    /* ロゴサイズの基準となる幅 */
 }
 
 .hero-text h1 span {
@@ -242,11 +244,12 @@ header {
 .vertical-container {
     position: absolute;
     top: 0;
-    left: 30px; /* 左側（ロゴに近いほう）に配置 */
+    left: 30px;
+    /* 左側（ロゴに近いほう）に配置 */
     display: flex;
     flex-direction: column;
 }
-        
+
 .vertical-text-char {
     writing-mode: vertical-rl;
     text-orientation: upright;
@@ -260,8 +263,13 @@ header {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Sections */
@@ -374,11 +382,12 @@ a.feature-card {
 
 a.feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 a.feature-card h3 {
-    color: #333; /* 標準的なテキストカラー */
+    color: #333;
+    /* 標準的なテキストカラー */
 }
 
 /* Integration Section */
@@ -686,7 +695,7 @@ footer {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .why-notion-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -696,20 +705,21 @@ footer {
     .main-nav {
         display: none;
     }
-    
+
     .mobile-menu-btn {
         display: flex;
     }
-    
+
     .hero-content {
         flex-direction: column;
     }
-    
-    .hero-text, .hero-image {
+
+    .hero-text,
+    .hero-image {
         flex: none;
         width: 100%;
     }
-    
+
     .vertical-text {
         position: relative;
         writing-mode: horizontal-tb;
@@ -720,33 +730,33 @@ footer {
         flex-direction: row;
         justify-content: center;
     }
-    
+
     .vertical-container {
         position: static;
         margin-top: 20px;
         flex-direction: row;
         justify-content: center;
     }
-    
+
     .vertical-text-char {
         writing-mode: horizontal-tb;
     }
-    
+
     .benefits-content,
     .contact-content {
         flex-direction: column;
     }
-    
+
     .testimonials-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-content {
         flex-direction: column;
         gap: 20px;
         align-items: center;
     }
-    
+
     .footer-links ul {
         flex-wrap: wrap;
         justify-content: center;
@@ -754,21 +764,21 @@ footer {
 }
 
 @media (max-width: 576px) {
+
     .features-grid,
     .why-notion-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .integration-logos {
         gap: 15px;
     }
-    
+
     .logo-item {
         width: 70px;
     }
 }
 
-/* Instructor Section Styles */
 .instructor-section {
     padding: 80px 0;
     background-color: #f5f5f5;
@@ -811,7 +821,7 @@ footer {
     width: 300px;
     height: 300px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     object-fit: cover;
 }
@@ -831,7 +841,7 @@ footer {
     border-radius: 20px;
     font-size: 14px;
     font-weight: 600;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -839,6 +849,25 @@ footer {
 
 .badge i {
     color: #FF9500;
+}
+
+.course-button {
+    display: inline-block;
+    background-color: #2E6DFF;
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(46, 109, 255, 0.3);
+}
+
+.course-button:hover {
+    background-color: #1A5AE8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(46, 109, 255, 0.4);
 }
 
 .instructor-benefits {
@@ -853,7 +882,7 @@ footer {
     padding: 15px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
 }
 
@@ -887,15 +916,15 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .instructor-image {
         margin-bottom: 30px;
     }
-    
+
     .instructor-section .section-title {
         font-size: 28px;
     }
-    
+
     .instructor-section .subtitle {
         font-size: 18px;
     }
