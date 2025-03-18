@@ -397,6 +397,8 @@ a.feature-card h3 {
     gap: 20px;
     margin-top: 30px;
     justify-items: center;
+    padding: 0;
+    width: 100%;
 }
 
 .logo-item {
@@ -405,6 +407,8 @@ a.feature-card h3 {
     align-items: center;
     width: 100%;
     max-width: 80px;
+    margin: 0;
+    padding: 0;
 }
 
 .logo-item img {
@@ -773,15 +777,20 @@ footer {
     .integration-logos {
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
+        padding: 0;
+        margin: 20px 0 0 0;
     }
 
     .logo-item {
         max-width: 60px;
+        margin: 0;
+        padding: 0;
     }
 
     .logo-item img {
         width: 30px;
         height: 30px;
+        margin-bottom: 5px;
     }
 
     .logo-item span {
