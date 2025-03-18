@@ -127,7 +127,7 @@ header {
 }
 
 .notion-img {
-    width: 140px;
+    width: 170px;
     /* タイトルの幅の50%くらいに大きくする */
     height: auto;
 }
@@ -155,7 +155,7 @@ header {
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.3;
-    width: 280px;
+    width: 480px;
     /* ロゴサイズの基準となる幅 */
 }
 
@@ -244,8 +244,8 @@ header {
 /* Vertical Container - インラインスタイルを補強 */
 .vertical-container {
     position: absolute;
-    top: 0;
-    left: 30px;
+    top: 100px;
+    left: 100px;
     /* 左側（ロゴに近いほう）に配置 */
     display: flex;
     flex-direction: column;
