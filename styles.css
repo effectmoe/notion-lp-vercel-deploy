@@ -770,15 +770,24 @@ footer {
     }
 
     .integration-logos {
-        gap: 15px;
+        gap: 10px;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         justify-items: center;
     }
 
     .logo-item {
         width: 100%;
-        max-width: 70px;
+        max-width: 60px;
+    }
+
+    .logo-item img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo-item span {
+        font-size: 10px;
     }
 }
 
