@@ -1031,7 +1031,7 @@ footer {
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    color: #61645c;
+    color: transparent;
     letter-spacing: -0.5px;
   }
   
@@ -1111,6 +1111,64 @@ footer {
     margin: 0;
     color: var(--text-secondary);
     line-height: 1.6;
+  }
+  
+  /* リンクカード */
+  .link-cards-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .link-section-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--text-color);
+  }
+  
+  .link-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  
+  .link-card-content {
+    flex-grow: 1;
+  }
+  
+  .link-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+    color: var(--primary-color);
+  }
+  
+  .link-source {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  
+  .link-card-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-color);
+    font-size: 14px;
+    padding-left: 15px;
   }
   
   /* CTA カード */
