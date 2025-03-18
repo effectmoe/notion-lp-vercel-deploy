@@ -981,246 +981,193 @@ footer {
 }
 
 
-/* design1/notion-alt1.css */
-/* Minimalist approach with better spacing and card layout */
+/* simple-cards.css */
+/* シンプルなカードデザインのスタイル */
 
-/* Notion風デザイン変数 */
 :root {
-    --notion-alt1-bg-color: #ffffff;
-    --notion-alt1-text-color: #37352f;
-    --notion-alt1-light-gray: #f7f7f7;
-    --notion-alt1-gray: #e9e9e9;
-    --notion-alt1-light-blue: #ebeefe;
-    --notion-alt1-blue: #2f80ed;
-    --notion-alt1-light-green: #dbeddb;
-    --notion-alt1-green: #0f7b6c;
-    --notion-alt1-light-orange: #faebdd;
-    --notion-alt1-orange: #d9730d;
-    --notion-alt1-light-red: #fee6e3;
-    --notion-alt1-red: #eb5757;
-    --notion-alt1-light-purple: #e4dffc;
-    --notion-alt1-purple: #9b51e0;
-    --notion-alt1-light-yellow: #fbf3db;
-    --notion-alt1-yellow: #dfab01;
-    --notion-alt1-light-pink: #fdebf0;
-    --notion-alt1-pink: #ff7faa;
-    --notion-alt1-light-teal: #ddedea;
-    --notion-alt1-teal: #0b9888;
-    --notion-alt1-light-cyan: #ddebf1;
-    --notion-alt1-cyan: #0b6e99;
-}
-
-/* コンテナスタイル */
-.notion-alt1-container {
-    max-width: 800px;
-    margin: 60px auto;
-    background-color: var(--notion-alt1-bg-color);
+    --primary-color: #2f80ed;
+    --primary-gradient: linear-gradient(135deg, #2f80ed, #9b51e0);
+    --text-color: #37352f;
+    --text-secondary: #6b6b6b;
+    --bg-color: #ffffff;
+    --card-bg: #f7f7f7;
+    --highlight-bg: rgba(47, 128, 237, 0.05);
+    --shadow: rgba(0, 0, 0, 0.06) 0px 2px 12px;
+    
+    /* Icon colors */
+    --blue-color: #2f80ed;
+    --blue-bg: #ebeefe;
+    --orange-color: #d9730d;
+    --orange-bg: #faebdd;
+    --teal-color: #0b9888;
+    --teal-bg: #ddedea;
+  }
+  
+  body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    color: var(--notion-alt1-text-color);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.5;
-}
-
-/* ヘッダースタイル */
-.notion-alt1-header {
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  /* ヘッダー */
+  .header {
     text-align: center;
-    margin-bottom: 50px;
-    padding: 0 20px;
-}
-
-.notion-alt1-header h2 {
+    margin-bottom: 60px;
+  }
+  
+  .header h1 {
     font-size: 42px;
     font-weight: 700;
     margin-bottom: 12px;
-    background: linear-gradient(135deg, #2f80ed, #9b51e0);
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     letter-spacing: -0.5px;
-}
-
-.notion-alt1-subheading {
+  }
+  
+  .header p {
     font-size: 20px;
-    color: #6b6b6b;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-/* カードコンテナ */
-.notion-alt1-cards {
-    margin-bottom: 25px;
-    padding: 0 20px;
-}
-
-/* カードスタイル */
-.notion-alt1-card {
-    background-color: var(--notion-alt1-light-gray);
+    color: var(--text-secondary);
+    margin-top: 0;
+  }
+  
+  /* カードコンテナ */
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  
+  @media (min-width: 768px) {
+    .cards-container {
+      flex-direction: row;
+    }
+    
+    .card {
+      flex: 1;
+    }
+  }
+  
+  /* カード */
+  .card {
+    background-color: var(--card-bg);
     border-radius: 12px;
     padding: 30px;
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
-    align-items: flex-start;
-    gap: 24px;
-}
-
-.notion-alt1-card:hover {
+    flex-direction: column;
+  }
+  
+  .card:hover {
     transform: translateY(-2px);
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 12px;
-}
-
-.notion-alt1-card-icon {
-    font-size: 28px;
-    height: 60px;
-    width: 60px;
-    min-width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    color: var(--notion-alt1-blue);
-    background-color: var(--notion-alt1-light-blue);
-}
-
-.notion-alt1-card-icon.orange {
-    color: var(--notion-alt1-orange);
-    background-color: var(--notion-alt1-light-orange);
-}
-
-.notion-alt1-card-icon.teal {
-    color: var(--notion-alt1-teal);
-    background-color: var(--notion-alt1-light-teal);
-}
-
-.notion-alt1-card-content {
+    box-shadow: var(--shadow);
+  }
+  
+  /* カード画像 */
+  .card-image {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover .card-image img {
+    transform: scale(1.02);
+  }
+  
+  /* カードコンテンツ */
+  .card-content {
     flex-grow: 1;
-}
-
-.notion-alt1-card h3 {
+  }
+  
+  .card-content h2 {
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 10px;
-    letter-spacing: -0.2px;
-}
-
-.notion-alt1-card p {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: var(--text-color);
+  }
+  
+  .card-content p {
     font-size: 16px;
-    margin-bottom: 20px;
+    margin: 0;
+    color: var(--text-secondary);
     line-height: 1.6;
-    color: #4b4b4b;
-}
-
-/* タグスタイル */
-.notion-alt1-card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.notion-alt1-tag {
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.notion-alt1-tag.blue {
-    background-color: var(--notion-alt1-light-blue);
-    color: var(--notion-alt1-blue);
-}
-
-.notion-alt1-tag.green {
-    background-color: var(--notion-alt1-light-green);
-    color: var(--notion-alt1-green);
-}
-
-.notion-alt1-tag.purple {
-    background-color: var(--notion-alt1-light-purple);
-    color: var(--notion-alt1-purple);
-}
-
-.notion-alt1-tag.orange {
-    background-color: var(--notion-alt1-light-orange);
-    color: var(--notion-alt1-orange);
-}
-
-.notion-alt1-tag.red {
-    background-color: var(--notion-alt1-light-red);
-    color: var(--notion-alt1-red);
-}
-
-.notion-alt1-tag.yellow {
-    background-color: var(--notion-alt1-light-yellow);
-    color: var(--notion-alt1-yellow);
-}
-
-.notion-alt1-tag.teal {
-    background-color: var(--notion-alt1-light-teal);
-    color: var(--notion-alt1-teal);
-}
-
-.notion-alt1-tag.cyan {
-    background-color: var(--notion-alt1-light-cyan);
-    color: var(--notion-alt1-cyan);
-}
-
-.notion-alt1-tag.pink {
-    background-color: var(--notion-alt1-light-pink);
-    color: var(--notion-alt1-pink);
-}
-
-/* CTA部分 */
-.notion-alt1-cta {
+  }
+  
+  /* CTA カード */
+  .cta-card {
     background: linear-gradient(135deg, rgba(47, 128, 237, 0.05), rgba(155, 81, 224, 0.05));
     border-radius: 12px;
     padding: 40px;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 40px 20px 0;
-}
-
-@media (min-width: 768px) {
-    .notion-alt1-cta {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-        align-items: center;
+  }
+  
+  @media (min-width: 768px) {
+    .cta-card {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      align-items: center;
     }
-}
-
-.notion-alt1-cta-content {
-    margin-bottom: 25px;
-}
-
-@media (min-width: 768px) {
-    .notion-alt1-cta-content {
-        margin-bottom: 0;
-        margin-right: 30px;
+    
+    .cta-content {
+      margin-right: 24px;
     }
-}
-
-.notion-alt1-cta h3 {
+  }
+  
+  .cta-content h2 {
     font-size: 24px;
     font-weight: 600;
+    margin-top: 0;
     margin-bottom: 12px;
-    letter-spacing: -0.2px;
-}
-
-.notion-alt1-highlight {
-    background: linear-gradient(135deg, #2f80ed, #9b51e0);
+  }
+  
+  .highlight {
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     font-weight: 700;
-}
-
-.notion-alt1-cta p {
+  }
+  
+  .cta-content p {
     font-size: 16px;
-    color: #4b4b4b;
-}
-
-.notion-alt1-button {
-    background-color: #2f80ed;
+    color: var(--text-secondary);
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+  
+  @media (min-width: 768px) {
+    .cta-content p {
+      margin-bottom: 0;
+    }
+  }
+  
+  .cta-button {
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 6px;
@@ -1231,28 +1178,37 @@ footer {
     display: flex;
     align-items: center;
     transition: background-color 0.3s, transform 0.2s;
-}
-
-.notion-alt1-button:hover {
+  }
+  
+  .cta-button:hover {
     background-color: #1a66c9;
     transform: translateY(-2px);
-}
-
-.notion-alt1-button i {
+  }
+  
+  .cta-button i {
     margin-left: 8px;
-}
-
-/* レスポンシブデザイン */
-@media (max-width: 768px) {
-    .notion-alt1-card {
-        flex-direction: column;
+  }
+  
+  /* レスポンシブ調整 - モバイル */
+  @media (max-width: 767px) {
+    .header h1 {
+      font-size: 32px;
     }
-
-    .notion-alt1-card-icon {
-        margin-bottom: 15px;
+    
+    .header p {
+      font-size: 18px;
     }
-
-    .notion-alt1-header h2 {
-        font-size: 34px;
+    
+    .card {
+      width: 100%;
     }
-}
+    
+    .cta-card {
+      padding: 30px;
+    }
+    
+    .cta-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
