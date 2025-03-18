@@ -1,0 +1,275 @@
+/* notion-module.css */
+/* このCSSをメインのスタイルシートに追加するか、
+   別ファイルとして読み込んでください */
+
+/* Notion風デザイン変数 */
+:root {
+  --notion-bg-color: #ffffff;
+  --notion-text-color: #37352f;
+  --notion-light-gray: #ebeced;
+  --notion-gray: #e9e9e9;
+  --notion-light-blue: #ebeefe;
+  --notion-blue: #2f80ed;
+  --notion-light-green: #dbeddb;
+  --notion-green: #0f7b6c;
+  --notion-light-orange: #faebdd;
+  --notion-orange: #d9730d;
+  --notion-light-red: #fee6e3;
+  --notion-red: #eb5757;
+  --notion-light-purple: #e4dffc;
+  --notion-purple: #9b51e0;
+  --notion-light-yellow: #fbf3db;
+  --notion-yellow: #dfab01;
+  --notion-light-pink: #fdebf0;
+  --notion-pink: #ff7faa;
+  --notion-light-teal: #ddedea;
+  --notion-teal: #0b9888;
+  --notion-light-cyan: #ddebf1;
+  --notion-cyan: #0b6e99;
+}
+
+/* コンテナスタイル */
+.notion-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--notion-bg-color);
+  border-radius: 12px;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, 
+              rgba(15, 15, 15, 0.1) 0px 2px 4px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--notion-text-color);
+  line-height: 1.5;
+}
+
+/* ヘッダースタイル */
+.notion-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.notion-header h2 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #2f80ed, #9b51e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.notion-subheading {
+  font-size: 18px;
+  color: #6b6b6b;
+}
+
+/* カードコンテナ */
+.notion-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* カードスタイル */
+.notion-card {
+  background-color: var(--notion-bg-color);
+  border-radius: 8px;
+  padding: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
+              rgba(15, 15, 15, 0.1) 0px 2px 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.notion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
+              rgba(15, 15, 15, 0.2) 0px 8px 16px;
+}
+
+.notion-card-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: var(--notion-blue);
+  background-color: var(--notion-light-blue);
+}
+
+.notion-card:nth-child(2) .notion-card-icon {
+  color: var(--notion-orange);
+  background-color: var(--notion-light-orange);
+}
+
+.notion-card:nth-child(3) .notion-card-icon {
+  color: var(--notion-teal);
+  background-color: var(--notion-light-teal);
+}
+
+.notion-card-content {
+  flex-grow: 1;
+}
+
+.notion-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.notion-card p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #4b4b4b;
+}
+
+/* タグスタイル */
+.notion-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.notion-tag {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.notion-tag.blue {
+  background-color: var(--notion-light-blue);
+  color: var(--notion-blue);
+}
+
+.notion-tag.green {
+  background-color: var(--notion-light-green);
+  color: var(--notion-green);
+}
+
+.notion-tag.purple {
+  background-color: var(--notion-light-purple);
+  color: var(--notion-purple);
+}
+
+.notion-tag.orange {
+  background-color: var(--notion-light-orange);
+  color: var(--notion-orange);
+}
+
+.notion-tag.red {
+  background-color: var(--notion-light-red);
+  color: var(--notion-red);
+}
+
+.notion-tag.yellow {
+  background-color: var(--notion-light-yellow);
+  color: var(--notion-yellow);
+}
+
+.notion-tag.teal {
+  background-color: var(--notion-light-teal);
+  color: var(--notion-teal);
+}
+
+.notion-tag.cyan {
+  background-color: var(--notion-light-cyan);
+  color: var(--notion-cyan);
+}
+
+.notion-tag.pink {
+  background-color: var(--notion-light-pink);
+  color: var(--notion-pink);
+}
+
+/* CTA部分 */
+.notion-cta {
+  background: linear-gradient(135deg, rgba(47, 128, 237, 0.1), rgba(155, 81, 224, 0.1));
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .notion-cta {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.notion-cta-content {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .notion-cta-content {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+}
+
+.notion-cta h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.notion-highlight {
+  background: linear-gradient(135deg, #2f80ed, #9b51e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+.notion-cta p {
+  font-size: 16px;
+  color: #4b4b4b;
+}
+
+.notion-button {
+  background-color: #2f80ed;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.notion-button:hover {
+  background-color: #1a66c9;
+}
+
+.notion-button i {
+  margin-left: 8px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .notion-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .notion-header h2 {
+    font-size: 32px;
+  }
+  
+  .notion-container {
+    padding: 20px;
+  }
+}
