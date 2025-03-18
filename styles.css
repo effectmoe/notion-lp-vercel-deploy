@@ -392,18 +392,19 @@ a.feature-card h3 {
 
 /* Integration Section */
 .integration-logos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     margin-top: 30px;
+    justify-items: center;
 }
 
 .logo-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100px;
+    width: 100%;
+    max-width: 80px;
 }
 
 .logo-item img {
@@ -771,13 +772,9 @@ footer {
 
     .integration-logos {
         gap: 10px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-items: center;
     }
 
     .logo-item {
-        width: 100%;
         max-width: 60px;
     }
 
