@@ -26,7 +26,8 @@ body {
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0;
+    width: 100%;
 }
 
 /* Header Styles */
@@ -275,6 +276,8 @@ header {
 /* Sections */
 section {
     padding: 80px 0;
+    width: 100%;
+    overflow: hidden;
 }
 
 section:nth-child(even) {
@@ -393,13 +396,14 @@ a.feature-card h3 {
 /* Integration Section */
 .integration-logos {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    margin-top: 30px;
+    margin: 30px auto 0;
     justify-items: center;
+    align-items: center;
     padding: 0;
     width: 100%;
-    max-width: 100%;
+    max-width: 800px;
 }
 
 .logo-item {
@@ -408,20 +412,20 @@ a.feature-card h3 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 60px;
+    max-width: 50px;
     margin: 0;
     padding: 0;
 }
 
 .logo-item img {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 5px;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 4px;
     object-fit: contain;
 }
 
 .logo-item span {
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text-light);
     text-align: center;
     width: 100%;
@@ -776,36 +780,52 @@ footer {
 }
 
 @media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
+
     .features-grid,
     .why-notion-grid {
         grid-template-columns: 1fr;
     }
 
     .integration-logos {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 8px;
-        padding: 0;
-        margin: 20px 0 0 0;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        max-width: 100%;
     }
 
     .logo-item {
-        max-width: 50px;
+        max-width: 45px;
     }
 
     .logo-item img {
-        width: 25px;
-        height: 25px;
-        margin-bottom: 4px;
+        width: 20px;
+        height: 20px;
     }
 
     .logo-item span {
-        font-size: 9px;
+        font-size: 8px;
     }
 }
 
 @media (max-width: 370px) {
     .integration-logos {
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .logo-item {
+        max-width: 60px;
+    }
+
+    .logo-item img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .logo-item span {
+        font-size: 9px;
     }
 }
 
