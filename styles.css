@@ -771,6 +771,7 @@ footer {
     }
 
     .integration-logos {
+        grid-template-columns: repeat(4, 1fr);
         gap: 10px;
     }
 
@@ -785,6 +786,12 @@ footer {
 
     .logo-item span {
         font-size: 10px;
+    }
+}
+
+@media (max-width: 370px) {
+    .integration-logos {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
