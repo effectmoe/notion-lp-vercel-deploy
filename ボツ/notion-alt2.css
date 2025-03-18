@@ -1,0 +1,275 @@
+/* design2/notion-alt2.css */
+/* Horizontal layout with better visual hierarchy */
+
+/* Notion風デザイン変数 */
+:root {
+  --notion-alt2-bg-color: #ffffff;
+  --notion-alt2-text-color: #37352f;
+  --notion-alt2-border-color: #efefef;
+  --notion-alt2-light-blue: #ebeefe;
+  --notion-alt2-blue: #2f80ed;
+  --notion-alt2-light-green: #dbeddb;
+  --notion-alt2-green: #0f7b6c;
+  --notion-alt2-light-orange: #faebdd;
+  --notion-alt2-orange: #d9730d;
+  --notion-alt2-light-red: #fee6e3;
+  --notion-alt2-red: #eb5757;
+  --notion-alt2-light-purple: #e4dffc;
+  --notion-alt2-purple: #9b51e0;
+  --notion-alt2-light-yellow: #fbf3db;
+  --notion-alt2-yellow: #dfab01;
+  --notion-alt2-light-pink: #fdebf0;
+  --notion-alt2-pink: #ff7faa;
+  --notion-alt2-light-teal: #ddedea;
+  --notion-alt2-teal: #0b9888;
+  --notion-alt2-light-cyan: #ddebf1;
+  --notion-alt2-cyan: #0b6e99;
+}
+
+/* コンテナスタイル */
+.notion-alt2-container {
+  max-width: 900px;
+  margin: 60px auto;
+  background-color: var(--notion-alt2-bg-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--notion-alt2-text-color);
+  line-height: 1.5;
+}
+
+/* ヘッダースタイル */
+.notion-alt2-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 0 20px;
+}
+
+.notion-alt2-badge {
+  display: inline-block;
+  background-color: #f1f1f1;
+  color: #6b6b6b;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.notion-alt2-header h2 {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: -0.3px;
+}
+
+.notion-alt2-subheading {
+  font-size: 18px;
+  color: #6b6b6b;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* フィーチャーセクション */
+.notion-alt2-feature {
+  display: flex;
+  align-items: flex-start;
+  padding: 32px 25px;
+  margin: 0 20px 20px;
+  border-bottom: 1px solid var(--notion-alt2-border-color);
+}
+
+.notion-alt2-feature:last-of-type {
+  border-bottom: none;
+  margin-bottom: 40px;
+}
+
+.notion-alt2-feature-icon {
+  font-size: 24px;
+  height: 54px;
+  width: 54px;
+  min-width: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: var(--notion-alt2-blue);
+  background-color: var(--notion-alt2-light-blue);
+  margin-right: 30px;
+  margin-top: 2px;
+}
+
+.notion-alt2-feature-icon.orange {
+  color: var(--notion-alt2-orange);
+  background-color: var(--notion-alt2-light-orange);
+}
+
+.notion-alt2-feature-icon.teal {
+  color: var(--notion-alt2-teal);
+  background-color: var(--notion-alt2-light-teal);
+}
+
+.notion-alt2-feature-content {
+  flex-grow: 1;
+}
+
+.notion-alt2-feature h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.notion-alt2-feature p {
+  font-size: 16px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+  color: #4b4b4b;
+  max-width: 600px;
+}
+
+/* タグスタイル */
+.notion-alt2-feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.notion-alt2-tag {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.notion-alt2-tag.blue {
+  background-color: var(--notion-alt2-light-blue);
+  color: var(--notion-alt2-blue);
+}
+
+.notion-alt2-tag.green {
+  background-color: var(--notion-alt2-light-green);
+  color: var(--notion-alt2-green);
+}
+
+.notion-alt2-tag.purple {
+  background-color: var(--notion-alt2-light-purple);
+  color: var(--notion-alt2-purple);
+}
+
+.notion-alt2-tag.orange {
+  background-color: var(--notion-alt2-light-orange);
+  color: var(--notion-alt2-orange);
+}
+
+.notion-alt2-tag.red {
+  background-color: var(--notion-alt2-light-red);
+  color: var(--notion-alt2-red);
+}
+
+.notion-alt2-tag.yellow {
+  background-color: var(--notion-alt2-light-yellow);
+  color: var(--notion-alt2-yellow);
+}
+
+.notion-alt2-tag.teal {
+  background-color: var(--notion-alt2-light-teal);
+  color: var(--notion-alt2-teal);
+}
+
+.notion-alt2-tag.cyan {
+  background-color: var(--notion-alt2-light-cyan);
+  color: var(--notion-alt2-cyan);
+}
+
+.notion-alt2-tag.pink {
+  background-color: var(--notion-alt2-light-pink);
+  color: var(--notion-alt2-pink);
+}
+
+/* CTA部分 */
+.notion-alt2-cta {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 20px;
+}
+
+@media (min-width: 768px) {
+  .notion-alt2-cta {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+  }
+}
+
+.notion-alt2-cta-content {
+  margin-bottom: 25px;
+}
+
+@media (min-width: 768px) {
+  .notion-alt2-cta-content {
+    margin-bottom: 0;
+    margin-right: 30px;
+  }
+}
+
+.notion-alt2-cta h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.notion-alt2-highlight {
+  color: var(--notion-alt2-blue);
+  font-weight: 700;
+}
+
+.notion-alt2-cta p {
+  font-size: 16px;
+  color: #4b4b4b;
+}
+
+.notion-alt2-button {
+  background-color: #2f80ed;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 26px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.notion-alt2-button:hover {
+  background-color: #1a66c9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.notion-alt2-button i {
+  margin-left: 8px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .notion-alt2-feature {
+    flex-direction: column;
+  }
+  
+  .notion-alt2-feature-icon {
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+  
+  .notion-alt2-header h2 {
+    font-size: 32px;
+  }
+}
