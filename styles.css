@@ -634,7 +634,7 @@ a.feature-card h3 {
 }
 
 .submit-btn {
-    background-color: #8b5cf6;
+    background-color: #6d95a7;
     color: white;
     border: none;
     padding: 12px 24px;
@@ -646,7 +646,7 @@ a.feature-card h3 {
 }
 
 .submit-btn:hover {
-    background-color: #7c4fec;
+    background-color: #90b1c0;
 }
 
 /* Footer */
@@ -1239,7 +1239,7 @@ footer {
   }
   
   .cta-button:hover {
-    background-color: #1a66c9;
+    background-color: #6d95a7;
     transform: translateY(-2px);
   }
   
