@@ -1250,11 +1250,11 @@ footer {
   /* レスポンシブ調整 - モバイル */
   @media (max-width: 767px) {
     .header h1 {
-      font-size: 20px;
+      font-size: 24px;
     }
     
     .header p {
-      font-size: 18px;
+      font-size: 16px;
     }
     
     .card {
