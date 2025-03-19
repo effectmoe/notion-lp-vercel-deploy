@@ -696,7 +696,7 @@ a.feature-card h3 {
 footer {
     background-color: #37352f;
     color: white;
-    padding: 60px 0 30px;
+    /* padding: 60px 0 30px; */
 }
 
 .footer-content {
