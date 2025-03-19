@@ -2,6 +2,7 @@
 /* Main Pricing Hero Section */
 .pricing-hero {
     background: var(--bg-secondary);
+    /* padding: 80px 0 60px; */
     text-align: center;
 }
 

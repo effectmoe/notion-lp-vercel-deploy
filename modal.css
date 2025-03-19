@@ -96,7 +96,7 @@
 /* Redesign for header sections */
 .pricing-hero {
     background-color: #ffffff;
-    padding: 100px 0 60px;
+    /* padding: 100px 0 60px; */
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid rgba(55, 53, 47, 0.09);
