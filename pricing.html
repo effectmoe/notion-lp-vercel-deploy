@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>料金プラン - EFFECT Co. Ltd.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pricing.css">
+    <link rel="stylesheet" href="modal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">EFFECT<br>Co. Ltd.</a>
+
+            <!-- Desktop Menu -->
+            <nav class="nav-menu">
+                <a href="index.html">ホーム</a>
+                <a href="pricing.html" class="active">料金</a>
+                <a href="#services">サービス</a>
+                <a href="#contact" class="contact-btn">お問い合わせはこちら</a>
+            </nav>
+
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav class="mobile-menu" id="mobile-menu">
+            <a href="index.html">ホーム</a>
+            <a href="pricing.html" class="active">料金</a>
+            <a href="#services">サービス</a>
+            <a href="#contact" class="contact-btn">お問い合わせはこちら</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="pricing-hero">
+            <div class="container">
+                <div class="pricing-hero-content">
+                    <h1>価格プラン</h1>
+                    <p>Notion活用でビジネスを次のレベルへ。あなたのニーズに合わせた適切なプランをお選びください。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-plans">
+            <div class="container">
+                <div class="pricing-tabs">
+                    <button class="pricing-tab active" data-filter="all">すべてのプラン</button>
+                    <button class="pricing-tab" data-filter="system">システム構築</button>
+                    <button class="pricing-tab" data-filter="database">データベース化</button>
+                    <button class="pricing-tab" data-filter="app">アプリプラン</button>
+                </div>
+
+                <div class="pricing-comparison">
+                    <div class="pricing-grid">
+                        <!-- プラン1: システム構築 -->
+                        <div class="pricing-card" data-category="system">
+                            <div class="pricing-card-header">
+                                <h3>全企業対象！Notionを使ったシステム構築</h3>
+                                <div class="pricing-price">
+                                    <span class="price">5万円〜</span>
+                                </div>
+                                <p class="pricing-description">フリーランスからスタートアップまで、安心価格親切対応致します。</p>
+                            </div>
+                            <div class="pricing-card-body">
+                                <div class="pricing-features">
+                                    <p class="feature-category">＜Notionデータベースを利用したサービスとなります＞</p>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i>タスク管理</li>
+                                        <li><i class="fas fa-check"></i>スケジュール管理</li>
+                                        <li><i class="fas fa-check"></i>顧客管理</li>
+                                        <li><i class="fas fa-check"></i>メール自動送信</li>
+                                        <li><i class="fas fa-check"></i>お問い合わせフォーム構築</li>
+                                        <li><i class="fas fa-check"></i>会計システム構築</li>
+                                        <li><i class="fas fa-check"></i>ビジネスアプリ構築</li>
+                                        <li><i class="fas fa-check"></i>LP構築</li>
+                                        <li><i class="fas fa-check"></i>WordPress連携</li>
+                                        <li><i class="fas fa-check"></i>名刺自動読み取り</li>
+                                        <li><i class="fas fa-check"></i>議事録自動生成</li>
+                                        <li><i class="fas fa-check"></i>その他</li>
+                                    </ul>
+                                    <p class="pricing-note">※お選びいただく機能によって価格は変動致します</p>
+                                </div>
+                            </div>
+                            <div class="pricing-card-footer">
+                                <a href="#contact" class="btn primary-btn pricing-btn">お問い合わせ</a>
+                            </div>
+                        </div>
+
+                        <!-- プラン2: アナログ企業のための情報資産データベース化 -->
+                        <div class="pricing-card" data-category="database">
+                            <div class="pricing-card-header">
+                                <h3>アナログ企業のための情報資産データベース化</h3>
+                                <div class="pricing-price">
+                                    <span class="price">50万円〜</span>
+                                </div>
+                            </div>
+                            <div class="pricing-card-body">
+                                <div class="pricing-features">
+                                    <p class="feature-category">＜Notionデータベースを利用したサービスとなります＞</p>
+                                    <p>社内に眠っている書類やファイルを、Notionのデータベースに取り込みます。貴重な情報資産を活きた資産に変え、これからの経営戦略のために再利用します。</p>
+                                </div>
+                            </div>
+                            <div class="pricing-card-footer">
+                                <a href="#contact" class="btn primary-btn pricing-btn">お問い合わせ</a>
+                            </div>
+                        </div>
+
+                        <!-- プラン3: 未来顧客管理アプリ -ConnectHub- -->
+                        <div class="pricing-card coming-soon" data-category="app">
+                            <div class="pricing-card-header">
+                                <h3>未来顧客管理アプリ -ConnectHub-</h3>
+                                <div class="pricing-status">
+                                    <span class="status-tag">近日公開予定</span>
+                                </div>
+                                <div class="pricing-price">
+                                    <span class="price-type">サブスクリプションプラン</span>
+                                </div>
+                            </div>
+                            <div class="pricing-card-body">
+                                <div class="pricing-features">
+                                    <p>日々の営業活動を企業別に分析し、今後の顧客獲得のためのアクションプランを立案します。ビジネスチャンスを見逃さない頼もしいパートナーです。</p>
+                                    <p class="pricing-note">※営業状況を把握し、アプリ内コンテンツは自動更新されます。</p>
+                                </div>
+                            </div>
+                            <div class="pricing-card-footer">
+                                <a href="#notify" class="btn secondary-btn pricing-btn">リリース通知を受け取る</a>
+                            </div>
+                        </div>
+
+                        <!-- プラン4: 経営戦略アプリ -OwnStory- -->
+                        <div class="pricing-card coming-soon" data-category="app">
+                            <div class="pricing-card-header">
+                                <h3>経営戦略アプリ -OwnStory-</h3>
+                                <div class="pricing-status">
+                                    <span class="status-tag">近日公開予定</span>
+                                </div>
+                                <div class="pricing-price">
+                                    <span class="price-type">サブスクリプションプラン</span>
+                                </div>
+                            </div>
+                            <div class="pricing-card-body">
+                                <div class="pricing-features">
+                                    <p>今までの歩みを分析しこれからの経営物語を描く、あなたに特化した経営戦略アプリです。ポケットの中の隠れた指揮官です。</p>
+                                    <p class="pricing-note">※経営状況を把握し、アプリ内コンテンツは自動更新されます。</p>
+                                </div>
+                            </div>
+                            <div class="pricing-card-footer">
+                                <a href="#notify" class="btn secondary-btn pricing-btn">リリース通知を受け取る</a>
+                            </div>
+                        </div>
+
+                        <!-- プラン5: 事務代行アプリ -LittleManager- -->
+                        <div class="pricing-card coming-soon" data-category="app">
+                            <div class="pricing-card-header">
+                                <h3>事務代行アプリ -LittleManager-</h3>
+                                <div class="pricing-status">
+                                    <span class="status-tag dev-tag">現在開発中</span>
+                                </div>
+                                <div class="pricing-price">
+                                    <span class="price-type">サブスクリプションプラン</span>
+                                </div>
+                            </div>
+                            <div class="pricing-card-body">
+                                <div class="pricing-features">
+                                    <p>あなたに代わってアプリ内でタスクをこなす有能な事務代行サービスです。</p>
+                                </div>
+                            </div>
+                            <div class="pricing-card-footer">
+                                <a href="#notify" class="btn secondary-btn pricing-btn">開発状況を確認する</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-faq">
+            <div class="container">
+                <h2 class="section-title">よくある質問</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>料金はどのように決定されますか？</h3>
+                        <p>構築するシステムの規模や機能によって料金が変動します。詳細なお見積もりはお問い合わせ後、ご要件をヒアリングした上でご提案いたします。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>支払い方法はどのようになっていますか？</h3>
+                        <p>一般的なシステム構築は着手金と納品時の分割払いに対応しております。サブスクリプションプランは月額または年額でのお支払いが可能です。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>納期はどのくらいかかりますか？</h3>
+                        <p>シンプルなシステムであれば約2週間、複雑なデータベース連携を伴うシステムは1〜2ヶ月程度を目安にしています。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>既存システムとの連携は可能ですか？</h3>
+                        <p>はい、可能です。APIを通じて既存システムとNotionを連携させることができます。詳細はお問い合わせください。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Notionで業務を変革しませんか？</h2>
+                    <p>あなたのビジネス課題に最適なソリューションをご提案します。まずはお気軽にご相談ください。<br>専門スタッフが丁寧にサポートいたします。</p>
+                    <a href="#contact" class="cta-btn">無料相談を予約する <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2 class="section-title">お問い合わせ</h2>
+                <p class="section-desc">Notionシステムに関するご質問やご相談は、お気軽にお問い合わせください。</p>
+
+                <div class="contact-content">
+                    <div class="company-info">
+                        <div class="company-logo">EFFECT</div>
+                        <div class="company-details">
+                            <p><strong>Notionセットアップサービス</strong></p>
+                            <p>お客様のニーズに合わせたNotionワークスペースのセットアップと構築をお手伝いします。</p>
+                            <ul class="company-links">
+                                <li><a href="#">導入事例</a></li>
+                                <li><a href="#">Notionシステム開発について</a></li>
+                                <li><a href="pricing.html">料金プラン</a></li>
+                                <li><a href="#">よくあるご質問</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="inquiry-form">
+                            <div class="form-group">
+                                <label for="name">お名前 <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">メールアドレス <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">会社名</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">電話番号</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">お問い合わせ内容 <span class="required">*</span></label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">無料相談を申し込む</button>
+                            <div id="form-success" style="display: none; color: green; margin-top: 15px;">
+                                お問い合わせを受け付けました。担当者より折り返しご連絡いたします。
+                            </div>
+                            <div id="form-error" style="display: none; color: red; margin-top: 15px;">
+                                送信中にエラーが発生しました。しばらく経ってから再度お試しください。
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">EFFECT Co. Ltd.</div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="pricing.html">料金</a></li>
+                        <li><a href="#">事例</a></li>
+                        <li><a href="#">会社概要</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="X"><i class="fab fa-twitter" style="color: #ffffff;"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EFFECT Co. Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="modal.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            hamburgerBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Pricing tabs
+            const pricingTabs = document.querySelectorAll('.pricing-tab');
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            
+            pricingTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Update active tab
+                    pricingTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter pricing cards
+                    const filter = this.getAttribute('data-filter');
+                    
+                    pricingCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Form submission
+            const form = document.getElementById('inquiry-form');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                // フォームデータをオブジェクトに変換
+                const formDataObj = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    company: formData.get('company') || '',
+                    phone: formData.get('phone') || '',
+                    message: formData.get('message'),
+                    source: window.location.href,
+                    timestamp: new Date().toISOString()
+                };
+
+                // デバッグ用：送信データをコンソールに出力
+                console.log('送信データ:', formDataObj);
+
+                // Notionへのデータ送信
+                const requestData = {
+                    data: formDataObj
+                };
+
+                console.log('送信データ:', requestData);
+
+                // フォーム送信中の表示
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.textContent = '送信中...';
+                submitBtn.disabled = true;
+
+                fetch('https://notion-form-api.vercel.app/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                })
+                    .then(response => {
+                        console.log('レスポンスステータス:', response.status);
+
+                        if (response.ok) {
+                            // 成功
+                            document.getElementById('form-success').style.display = 'block';
+                            document.getElementById('form-error').style.display = 'none';
+                            form.reset();
+                        } else {
+                            // エラー
+                            console.error('サーバーエラー:', response.status);
+                            document.getElementById('form-error').style.display = 'block';
+                            document.getElementById('form-success').style.display = 'none';
+                        }
+                    })
+                    .catch(error => {
+                        // ネットワークエラーなど
+                        console.error('通信エラー:', error);
+                        document.getElementById('form-error').style.display = 'block';
+                        document.getElementById('form-success').style.display = 'none';
+                    })
+                    .finally(() => {
+                        // ボタンを元に戻す
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+
+                        // 5秒後にメッセージを非表示
+                        setTimeout(() => {
+                            document.getElementById('form-success').style.display = 'none';
+                            document.getElementById('form-error').style.display = 'none';
+                        }, 5000);
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+/* Pricing Page Styles - inspired by Notion's pricing page */
+/* Main Pricing Hero Section */
+.pricing-hero {
+    background: var(--bg-secondary);
+    padding: 80px 0 60px;
+    text-align: center;
+}
+
+.pricing-hero-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.pricing-hero-content p {
+    font-size: 24px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Pricing Tabs */
+.pricing-tabs {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pricing-tab {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pricing-tab:hover {
+    background: rgba(55, 53, 47, 0.08);
+}
+
+.pricing-tab.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Pricing Grid Layout */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 40px 0;
+}
+
+/* Pricing Card Styles */
+.pricing-card {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+.pricing-card-body {
+    padding: 24px;
+    flex-grow: 1;
+}
+
+.pricing-card-footer {
+    padding: 24px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+/* Featured Card */
+.pricing-card.featured {
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 5px 20px rgba(55, 53, 47, 0.1);
+}
+
+.featured-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+/* Coming Soon Cards */
+.pricing-card.coming-soon {
+    background: var(--bg-secondary);
+    opacity: 0.9;
+}
+
+.pricing-status {
+    margin: 10px 0;
+}
+
+.status-tag {
+    display: inline-block;
+    background: #FFC107;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.dev-tag {
+    background: #2196F3;
+    color: white;
+}
+
+/* Pricing Heading and Price */
+.pricing-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    color: var(--text-color);
+}
+
+.pricing-price {
+    margin-bottom: 16px;
+}
+
+.price {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.price-type {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.pricing-description {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 10px 0 0;
+}
+
+/* Features List */
+.pricing-features ul {
+    padding: 0;
+    margin: 16px 0;
+    list-style: none;
+}
+
+.pricing-features li {
+    padding: 8px 0;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pricing-features i.fa-check {
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+.feature-category {
+    font-weight: 600;
+    margin: 0 0 16px;
+    color: var(--text-color);
+}
+
+.pricing-note {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    font-style: italic;
+}
+
+/* Buttons */
+.pricing-btn {
+    width: 100%;
+    padding: 12px;
+    font-weight: 500;
+}
+
+/* FAQ Section */
+.pricing-faq {
+    background: var(--bg-secondary);
+    padding: 80px 0;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--text-color);
+}
+
+.faq-item p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* CTA Section */
+.pricing-cta {
+    background: linear-gradient(120deg, #477a8d, #37352f);
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.cta-content p {
+    font-size: 18px;
+    margin-bottom: 32px;
+    opacity: 0.9;
+}
+
+.cta-btn {
+    padding: 14px 32px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .pricing-hero-content h1 {
+        font-size: 38px;
+    }
+
+    .pricing-hero-content p {
+        font-size: 20px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-content h2 {
+        font-size: 30px;
+    }
+
+    .cta-content p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-tab {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
