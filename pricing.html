@@ -51,10 +51,18 @@
                     <h1>価格プラン</h1>
                     <p>Notion活用でビジネスを次のレベルへ。あなたのニーズに合わせた適切なプランをお選びください。</p>
                 </div>
+                <div class="page-nav">
+                    <nav class="anchor-nav">
+                        <a href="#pricing-plans" class="anchor-link">プラン一覧</a>
+                        <a href="#pricing-faq" class="anchor-link">よくある質問</a>
+                        <a href="#pricing-cta" class="anchor-link">お問い合わせ</a>
+                        <a href="#contact" class="anchor-link">お問い合わせフォーム</a>
+                    </nav>
+                </div>
             </div>
         </section>
 
-        <section class="pricing-plans">
+        <section class="pricing-plans" id="pricing-plans">
             <div class="container">
                 <div class="pricing-tabs">
                     <button class="pricing-tab active" data-filter="all">すべてのプラン</button>
@@ -187,7 +195,7 @@
             </div>
         </section>
 
-        <section class="pricing-faq">
+        <section class="pricing-faq" id="pricing-faq">
             <div class="container">
                 <h2 class="section-title">よくある質問</h2>
                 <div class="faq-grid">
@@ -211,7 +219,7 @@
             </div>
         </section>
 
-        <section class="pricing-cta">
+        <section class="pricing-cta" id="pricing-cta">
             <div class="container">
                 <div class="cta-content">
                     <h2>Notionで業務を変革しませんか？</h2>
@@ -311,6 +319,17 @@
 
             hamburgerBtn.addEventListener('click', function () {
                 mobileMenu.classList.toggle('active');
+            });
+            
+            // Handle anchor links and close mobile menu when clicked
+            const anchorLinks = document.querySelectorAll('.anchor-link, a[href^="#"]');
+            anchorLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                    }
+                });
             });
 
             // Pricing tabs
