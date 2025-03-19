@@ -1031,7 +1031,7 @@ footer {
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    color: #477a8d;
     letter-spacing: -0.5px;
   }
   
