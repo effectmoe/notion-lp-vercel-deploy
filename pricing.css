@@ -35,7 +35,7 @@
 
 .pricing-box .pricing-hero-content {
     width: 50%;
-    position: relative;
+    /* PC画角の左側タイトルが入っている箱 */
 }
 
 .vertical-container {
@@ -44,8 +44,14 @@
     left: 0;
     display: flex;
     flex-direction: column;
+    /* PC画角の縦書き文字の箱 */
 }
 
+.hero-image2 {
+    width: 50%;
+    position: relative;
+    /* PC画角の女性画像が入っている箱 */
+  }
 
 .hero-image2 img {
     width: 60%;
