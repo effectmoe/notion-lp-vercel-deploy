@@ -48,6 +48,13 @@
 
     .hero-image2 {
         width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-image2 img {
+        width: 100%;
+        position: relative;
+        right: -30%;
     }
 }
 
