@@ -312,8 +312,8 @@
 
 /* CTA Section */
 .pricing-cta {
-    background: linear-gradient(120deg, #477a8d, #37352f);
-    padding: 80px 0;
+    background: #d0d2d6;
+    /* padding: 80px 0; */
     text-align: center;
     color: white;
 }
