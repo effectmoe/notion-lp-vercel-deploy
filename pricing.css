@@ -43,21 +43,33 @@
 
 @media screen and (max-width:768px) {
     .pricing-hero-content {
-        width: 100%;
-        margin-bottom: 10%;
+      width: 100%;
+      margin-bottom: 10%;
     }
-
+  
     .hero-image2 {
-        width: 100%;
-        overflow: hidden;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
     }
-
+  
     .hero-image2 img {
-        width: 110%;
-        position: relative;
-        right: -30%;
+      width: 100%;
+      position: relative;
+      right: -30%;
     }
-}
+  
+    .vertical-container {
+      position: absolute;
+      flex-direction: column;
+      top: 0;
+      left: 0;
+    }
+  
+    .vertical-text-char {
+      writing-mode: vertical-rl;
+    }
+  }
 
 
 /* Pricing Tabs */
