@@ -34,14 +34,14 @@
     align-items: center;
 }
 
-.company-image-container {
+/* .company-image-container {
     position: relative;
     padding: 20px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     background-color: #fff;
     overflow: hidden;
-}
+} */
 
 .company-image {
     width: 100%;
