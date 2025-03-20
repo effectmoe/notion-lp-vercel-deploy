@@ -1,0 +1,338 @@
+/* Company Page Styles */
+
+/* Hero Section */
+.company-hero {
+    background-color: #f7f7f7;
+    padding: 100px 0 60px;
+    text-align: center;
+}
+
+.company-hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    color: #333;
+}
+
+.company-hero-content p {
+    font-size: 20px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Company Profile Section */
+.company-profile {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.company-profile-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.company-image-container {
+    position: relative;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.company-image {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Vertical Text */
+.vertical-text-container {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.8;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+}
+
+.company-info h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #333;
+}
+
+.company-address {
+    margin-bottom: 35px;
+}
+
+.address-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.address-item i {
+    font-size: 24px;
+    color: #0070f3;
+    margin-right: 15px;
+    margin-top: 4px;
+}
+
+.address-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #444;
+}
+
+.company-philosophy,
+.company-vision {
+    margin-bottom: 30px;
+}
+
+.company-philosophy h3,
+.company-vision h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #333;
+    font-weight: 600;
+}
+
+.company-philosophy p,
+.company-vision p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* Company Values Section */
+.company-values {
+    padding: 80px 0;
+    background-color: #f7f7f7;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.value-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.value-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #e6f7ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+}
+
+.value-icon i {
+    font-size: 30px;
+    color: #0070f3;
+}
+
+.value-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.value-card p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666;
+}
+
+/* Services Section */
+.company-services {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.services-list {
+    margin-top: 50px;
+}
+
+.service-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding: 30px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s;
+}
+
+.service-item:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    background-color: #0070f3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+}
+
+.service-icon i {
+    font-size: 26px;
+    color: #fff;
+}
+
+.service-details h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #333;
+}
+
+.service-details p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 80px 0;
+    background-color: #0070f3;
+    color: #fff;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.cta-content p {
+    font-size: 18px;
+    margin-bottom: 35px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+/* Active Nav Link */
+.nav-menu a.active,
+.mobile-menu a.active {
+    font-weight: 600;
+    color: #0070f3;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .company-profile-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .company-image-container {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .company-hero-content h1 {
+        font-size: 36px;
+    }
+    
+    .company-hero-content p {
+        font-size: 18px;
+    }
+    
+    .company-info h2 {
+        font-size: 28px;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .service-icon {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .cta-content h2 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .company-hero {
+        padding: 80px 0 40px;
+    }
+    
+    .company-hero-content h1 {
+        font-size: 30px;
+    }
+    
+    .vertical-text {
+        font-size: 16px;
+        padding: 15px 8px;
+    }
+    
+    .vertical-text-container {
+        right: 15px;
+    }
+    
+    .company-philosophy h3,
+    .company-vision h3,
+    .value-card h3,
+    .service-details h3 {
+        font-size: 20px;
+    }
+    
+    .service-item {
+        padding: 20px;
+    }
+}
