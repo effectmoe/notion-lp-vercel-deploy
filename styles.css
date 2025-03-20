@@ -511,7 +511,7 @@ a.feature-card h3 {
 }
 
 .database-icon {
-    width: 500px;
+    width: 100%;
     height: auto;
 }
 
@@ -838,9 +838,9 @@ footer {
         max-width: 100%;
     }
 
-    .logo-item {
+    /* .logo-item {
         max-width: 45px;
-    }
+    } */
 
     .logo-item img {
         width: 20px;
@@ -858,9 +858,9 @@ footer {
         gap: 10px;
     }
 
-    .logo-item {
+    /* .logo-item {
         max-width: 60px;
-    }
+    } */
 
     .logo-item img {
         width: 25px;
