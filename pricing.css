@@ -38,43 +38,45 @@
 }
 
 .hero-image2 img {
-    width: 100%;
+    width: 60%;
+    display: block;
+    margin-left: auto;
 }
 
 @media screen and (max-width:768px) {
     .pricing-hero-content {
-      width: 100%;
-      margin-bottom: 10%;
-      /* 画像上のテキスト */
+        width: 100%;
+        margin-bottom: 10%;
+        /* 画像上のテキスト */
     }
-  
+
     .hero-image2 {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      /* 画像を囲っている箱 */
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        /* 画像を囲っている箱 */
     }
-  
+
     .hero-image2 img {
-      width: 100%;
-      position: relative;
-      right: -30%;
-      /* 女性画像の大きさと位置 */
+        width: 100%;
+        position: relative;
+        right: -30%;
+        /* 女性画像の大きさと位置 */
     }
-  
+
     .vertical-container {
-      position: absolute;
-      flex-direction: column;
-      top: 10%;
-      left: 30%;
-      /* 縦書きコメントの位置調整 */
+        position: absolute;
+        flex-direction: column;
+        top: 10%;
+        left: 30%;
+        /* 縦書きコメントの位置調整 */
     }
-  
+
     .vertical-text-char {
-      writing-mode: vertical-rl;
-      /* 縦書きだよという指示 */
+        writing-mode: vertical-rl;
+        /* 縦書きだよという指示 */
     }
-  }
+}
 
 
 /* Pricing Tabs */
