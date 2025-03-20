@@ -206,6 +206,7 @@
                                 <a href="#notify" class="btn secondary-btn pricing-btn">開発状況を確認する</a>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -336,11 +337,11 @@
             hamburgerBtn.addEventListener('click', function () {
                 mobileMenu.classList.toggle('active');
             });
-            
+
             // Handle anchor links and close mobile menu when clicked
             const anchorLinks = document.querySelectorAll('.anchor-link, a[href^="#"]');
             anchorLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     // Close mobile menu if open
                     if (mobileMenu.classList.contains('active')) {
                         mobileMenu.classList.remove('active');
@@ -351,16 +352,16 @@
             // Pricing tabs
             const pricingTabs = document.querySelectorAll('.pricing-tab');
             const pricingCards = document.querySelectorAll('.pricing-card');
-            
+
             pricingTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
+                tab.addEventListener('click', function () {
                     // Update active tab
                     pricingTabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     // Filter pricing cards
                     const filter = this.getAttribute('data-filter');
-                    
+
                     pricingCards.forEach(card => {
                         if (filter === 'all' || card.getAttribute('data-category') === filter) {
                             card.style.display = 'flex';
@@ -371,84 +372,87 @@
                 });
             });
 
-            // Form submission
-            const form = document.getElementById('inquiry-form');
 
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const formData = new FormData(form);
-
-                // フォームデータをオブジェクトに変換
-                const formDataObj = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    company: formData.get('company') || '',
-                    phone: formData.get('phone') || '',
-                    message: formData.get('message'),
-                    source: window.location.href,
-                    timestamp: new Date().toISOString()
-                };
-
-                // デバッグ用：送信データをコンソールに出力
-                console.log('送信データ:', formDataObj);
-
-                // Notionへのデータ送信
-                const requestData = {
-                    data: formDataObj
-                };
-
-                console.log('送信データ:', requestData);
-
-                // フォーム送信中の表示
-                const submitBtn = form.querySelector('.submit-btn');
-                const originalBtnText = submitBtn.textContent;
-                submitBtn.textContent = '送信中...';
-                submitBtn.disabled = true;
-
-                fetch('https://notion-form-api.vercel.app/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(requestData)
-                })
-                    .then(response => {
-                        console.log('レスポンスステータス:', response.status);
-
-                        if (response.ok) {
-                            // 成功
-                            document.getElementById('form-success').style.display = 'block';
-                            document.getElementById('form-error').style.display = 'none';
-                            form.reset();
-                        } else {
-                            // エラー
-                            console.error('サーバーエラー:', response.status);
-                            document.getElementById('form-error').style.display = 'block';
-                            document.getElementById('form-success').style.display = 'none';
-                        }
-                    })
-                    .catch(error => {
-                        // ネットワークエラーなど
-                        console.error('通信エラー:', error);
-                        document.getElementById('form-error').style.display = 'block';
-                        document.getElementById('form-success').style.display = 'none';
-                    })
-                    .finally(() => {
-                        // ボタンを元に戻す
-                        submitBtn.textContent = originalBtnText;
-                        submitBtn.disabled = false;
-
-                        // 5秒後にメッセージを非表示
-                        setTimeout(() => {
-                            document.getElementById('form-success').style.display = 'none';
-                            document.getElementById('form-error').style.display = 'none';
-                        }, 5000);
-                    });
-            });
         });
     </script>
 </body>
 
 </html>
+
+
+// Form submission
+const form = document.getElementById('inquiry-form');
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    // フォームデータをオブジェクトに変換
+    const formDataObj = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        company: formData.get('company') || '',
+        phone: formData.get('phone') || '',
+        message: formData.get('message'),
+        source: window.location.href,
+        timestamp: new Date().toISOString()
+    };
+
+    // デバッグ用：送信データをコンソールに出力
+    console.log('送信データ:', formDataObj);
+
+    // Notionへのデータ送信
+    const requestData = {
+        data: formDataObj
+    };
+
+    console.log('送信データ:', requestData);
+
+    // フォーム送信中の表示
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = '送信中...';
+    submitBtn.disabled = true;
+
+    fetch('https://notion-form-api.vercel.app/api/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+        .then(response => {
+            console.log('レスポンスステータス:', response.status);
+
+            if (response.ok) {
+                // 成功
+                document.getElementById('form-success').style.display = 'block';
+                document.getElementById('form-error').style.display = 'none';
+                form.reset();
+            } else {
+                // エラー
+                console.error('サーバーエラー:', response.status);
+                document.getElementById('form-error').style.display = 'block';
+                document.getElementById('form-success').style.display = 'none';
+            }
+        })
+        .catch(error => {
+            // ネットワークエラーなど
+            console.error('通信エラー:', error);
+            document.getElementById('form-error').style.display = 'block';
+            document.getElementById('form-success').style.display = 'none';
+        })
+        .finally(() => {
+            // ボタンを元に戻す
+            submitBtn.textContent = originalBtnText;
+            submitBtn.disabled = false;
+
+            // 5秒後にメッセージを非表示
+            setTimeout(() => {
+                document.getElementById('form-success').style.display = 'none';
+                document.getElementById('form-error').style.display = 'none';
+            }, 5000);
+        });
+});
