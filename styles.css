@@ -1329,6 +1329,7 @@ body {
     .hero-box {
         padding-left: 0;
         padding-right: 0;
+        padding-bottom: 0;
     }
 
     .hero-text {
