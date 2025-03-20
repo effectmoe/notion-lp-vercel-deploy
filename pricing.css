@@ -31,17 +31,13 @@
 
 .pricing-hero-content {
     width: 50%;
-}
-
-.pricing-box .pricing-hero-content {
-    width: 50%;
     /* PC画角の左側タイトルが入っている箱 */
 }
 
 .vertical-container {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 10%;
+    left: 30%;
     display: flex;
     flex-direction: column;
     /* PC画角の縦書き文字の箱 */
