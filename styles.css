@@ -850,12 +850,6 @@ footer {
     .logo-item span {
         font-size: 8px;
     }
-
-    .hero-box {
-        padding-left: 0;
-        padding-right: 0;
-        /* 女性の画像を調整するためのパディング */
-    }
 }
 
 @media (max-width: 370px) {
@@ -1328,3 +1322,12 @@ body {
         justify-content: center;
     }
 }
+
+
+/* TOPの女性画像のパディング調整 */
+@media screen and (max-width:576px) {
+    .hero-box {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
