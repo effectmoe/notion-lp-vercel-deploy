@@ -1327,7 +1327,12 @@ body {
 /* TOPの女性画像のパディング調整 */
 @media screen and (max-width:576px) {
     .hero-box {
-      padding-left: 0;
-      padding-right: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
-  }
+
+    .hero-text {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
