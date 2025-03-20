@@ -173,20 +173,6 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">EFFECT Co. Ltd.</div>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="index.html">ホーム</a></li>
-                        <li><a href="index.html#features">サービス</a></li>
-                        <li><a href="pricing.html">料金</a></li>
-                        <li><a href="company.html">会社概要</a></li>
-                        <li><a href="#contact">お問い合わせ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <a href="#" aria-label="X"><i class="fab fa-twitter" style="color: #ffffff;"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
             </div>
             <div class="copyright">
                 <p>&copy; 2025 EFFECT Co. Ltd. All Rights Reserved.</p>
@@ -194,86 +180,6 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
-    <script src="modal.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mobile menu toggle
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            hamburgerBtn.addEventListener('click', function () {
-                mobileMenu.classList.toggle('active');
-            });
-
-            // Handle smooth scrolling for anchor links
-            const anchorLinks = document.querySelectorAll('a[href^="#"]');
-            anchorLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-
-                        // Close mobile menu if open
-                        if (mobileMenu.classList.contains('active')) {
-                            mobileMenu.classList.remove('active');
-                        }
-                    }
-                });
-            });
-
-            // Form submission handling
-            const form = document.getElementById('inquiry-form');
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    const formData = new FormData(form);
-                    const formDataObj = {
-                        name: formData.get('name'),
-                        email: formData.get('email'),
-                        company: formData.get('company') || '',
-                        phone: formData.get('phone') || '',
-                        message: formData.get('message'),
-                        source: window.location.href,
-                        timestamp: new Date().toISOString()
-                    };
-
-                    // Debug: log form data
-                    console.log('送信データ:', formDataObj);
-
-                    // Form submission UI
-                    const submitBtn = form.querySelector('.submit-btn');
-                    const originalBtnText = submitBtn.textContent;
-                    submitBtn.textContent = '送信中...';
-                    submitBtn.disabled = true;
-
-                    // Simulate form submission for demo purposes
-                    setTimeout(() => {
-                        document.getElementById('form-success').style.display = 'block';
-                        document.getElementById('form-error').style.display = 'none';
-                        form.reset();
-
-                        // Reset button after submission
-                        submitBtn.textContent = originalBtnText;
-                        submitBtn.disabled = false;
-
-                        // Hide success message after 5 seconds
-                        setTimeout(() => {
-                            document.getElementById('form-success').style.display = 'none';
-                        }, 5000);
-                    }, 1500);
-                });
-            }
-        });
-    </script>
 </body>
 
 </html>
