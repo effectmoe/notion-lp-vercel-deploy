@@ -246,7 +246,7 @@
             </div>
         </section>
 
-        <section class="contact" id="contact">
+        <!-- <section class="contact" id="contact">
             <div class="container">
                 <h2 class="section-title">お問い合わせ</h2>
                 <p class="section-desc">Notionシステムに関するご質問やご相談は、お気軽にお問い合わせください。</p>
@@ -298,13 +298,13 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
 
-    <footer>
+    <!-- <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">EFFECT Co. Ltd.</div>
+                <div class="footer-logo">EFFECT Co. Ltd.</div> -->
                 <!-- <div class="footer-links">
                     <ul>
                         <li><a href="index.html">ホーム</a></li>
@@ -319,14 +319,14 @@
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div> -->
-            </div>
+            <!-- </div>
             <div class="copyright">
                 <p>&copy; 2025 EFFECT Co. Ltd. All Rights Reserved.</p>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script>
     <script src="modal.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -372,87 +372,84 @@
                 });
             });
 
+            // Form submission
+            const form = document.getElementById('inquiry-form');
 
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                // フォームデータをオブジェクトに変換
+                const formDataObj = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    company: formData.get('company') || '',
+                    phone: formData.get('phone') || '',
+                    message: formData.get('message'),
+                    source: window.location.href,
+                    timestamp: new Date().toISOString()
+                };
+
+                // デバッグ用：送信データをコンソールに出力
+                console.log('送信データ:', formDataObj);
+
+                // Notionへのデータ送信
+                const requestData = {
+                    data: formDataObj
+                };
+
+                console.log('送信データ:', requestData);
+
+                // フォーム送信中の表示
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.textContent = '送信中...';
+                submitBtn.disabled = true;
+
+                fetch('https://notion-form-api.vercel.app/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                })
+                    .then(response => {
+                        console.log('レスポンスステータス:', response.status);
+
+                        if (response.ok) {
+                            // 成功
+                            document.getElementById('form-success').style.display = 'block';
+                            document.getElementById('form-error').style.display = 'none';
+                            form.reset();
+                        } else {
+                            // エラー
+                            console.error('サーバーエラー:', response.status);
+                            document.getElementById('form-error').style.display = 'block';
+                            document.getElementById('form-success').style.display = 'none';
+                        }
+                    })
+                    .catch(error => {
+                        // ネットワークエラーなど
+                        console.error('通信エラー:', error);
+                        document.getElementById('form-error').style.display = 'block';
+                        document.getElementById('form-success').style.display = 'none';
+                    })
+                    .finally(() => {
+                        // ボタンを元に戻す
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+
+                        // 5秒後にメッセージを非表示
+                        setTimeout(() => {
+                            document.getElementById('form-success').style.display = 'none';
+                            document.getElementById('form-error').style.display = 'none';
+                        }, 5000);
+                    });
+            });
         });
-    </script>
+    </script> -->
 </body>
 
 </html>
-
-
-// Form submission
-const form = document.getElementById('inquiry-form');
-
-form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-    // フォームデータをオブジェクトに変換
-    const formDataObj = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        company: formData.get('company') || '',
-        phone: formData.get('phone') || '',
-        message: formData.get('message'),
-        source: window.location.href,
-        timestamp: new Date().toISOString()
-    };
-
-    // デバッグ用：送信データをコンソールに出力
-    console.log('送信データ:', formDataObj);
-
-    // Notionへのデータ送信
-    const requestData = {
-        data: formDataObj
-    };
-
-    console.log('送信データ:', requestData);
-
-    // フォーム送信中の表示
-    const submitBtn = form.querySelector('.submit-btn');
-    const originalBtnText = submitBtn.textContent;
-    submitBtn.textContent = '送信中...';
-    submitBtn.disabled = true;
-
-    fetch('https://notion-form-api.vercel.app/api/submit', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(requestData)
-    })
-        .then(response => {
-            console.log('レスポンスステータス:', response.status);
-
-            if (response.ok) {
-                // 成功
-                document.getElementById('form-success').style.display = 'block';
-                document.getElementById('form-error').style.display = 'none';
-                form.reset();
-            } else {
-                // エラー
-                console.error('サーバーエラー:', response.status);
-                document.getElementById('form-error').style.display = 'block';
-                document.getElementById('form-success').style.display = 'none';
-            }
-        })
-        .catch(error => {
-            // ネットワークエラーなど
-            console.error('通信エラー:', error);
-            document.getElementById('form-error').style.display = 'block';
-            document.getElementById('form-success').style.display = 'none';
-        })
-        .finally(() => {
-            // ボタンを元に戻す
-            submitBtn.textContent = originalBtnText;
-            submitBtn.disabled = false;
-
-            // 5秒後にメッセージを非表示
-            setTimeout(() => {
-                document.getElementById('form-success').style.display = 'none';
-                document.getElementById('form-error').style.display = 'none';
-            }, 5000);
-        });
-});
