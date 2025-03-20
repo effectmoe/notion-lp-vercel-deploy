@@ -23,6 +23,35 @@
     margin: 0 auto;
 }
 
+.pricing-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.pricing-hero-content {
+    width: 50%;
+}
+
+.hero-image2 {
+    width: 50%;
+}
+
+.hero-image2 img {
+    width: 100%;
+}
+
+@media screen and (max-width:768px) {
+    .pricing-hero-content {
+        width: 100%;
+    }
+
+    .hero-image2 {
+        width: 100%;
+    }
+}
+
+
 /* Pricing Tabs */
 .pricing-tabs {
     display: flex;
