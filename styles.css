@@ -455,7 +455,7 @@ a.feature-card h3 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 50px;
+    /* max-width: 50px; */
     margin: 0;
     padding: 0;
 }
