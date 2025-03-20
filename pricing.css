@@ -33,9 +33,19 @@
     width: 50%;
 }
 
-.hero-image2 {
+.pricing-box .pricing-hero-content {
     width: 50%;
+    position: relative;
 }
+
+.vertical-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
 
 .hero-image2 img {
     width: 60%;
