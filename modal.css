@@ -137,7 +137,7 @@
 /* Notion-style CTA section */
 .pricing-cta {
     background-color: #f7f6f3;
-    /* padding: 100px 0; */
+    padding: 100px 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -237,7 +237,7 @@ body.modal-open {
     }
     
     .cta-content h2 {
-        font-size: 28px;
+        font-size: 30px;
     }
     
     .cta-content p {
