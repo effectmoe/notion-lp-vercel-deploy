@@ -20,7 +20,7 @@
 
             <!-- Desktop Menu -->
             <nav class="nav-menu">
-                <a href="#">ホーム</a>
+                <a href="index.html">ホーム</a>
                 <a href="pricing.html">料金プラン</a>
                 <a href="pricing.html#pricing-faq">よくある質問</a>
                 <a href="company.html">企業情報</a>
@@ -37,7 +37,7 @@
 
         <!-- Mobile Menu -->
         <nav class="mobile-menu" id="mobile-menu">
-            <a href="#">ホーム</a>
+            <a href="index.html">ホーム</a>
             <a href="pricing.html">料金プラン</a>
             <a href="pricing.html#pricing-faq">よくある質問</a>
             <a href="company.html">企業情報</a>
@@ -191,6 +191,27 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // モバイルメニューの処理
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            hamburgerBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // すべてのメニューリンクに対して処理を追加
+            const allMenuLinks = document.querySelectorAll('.nav-menu a, .mobile-menu a');
+            allMenuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
