@@ -112,7 +112,7 @@
             <nav class="nav-menu">
                 <a href="index.html">ホーム</a>
                 <a href="pricing.html" class="active">料金プラン</a>
-                <a href="company.html">企業情報</a>
+                <a href="#services">サービス</a>
                 <a href="#contact" class="contact-btn">お問い合わせ</a>
             </nav>
 
@@ -128,7 +128,7 @@
         <nav class="mobile-menu" id="mobile-menu">
             <a href="index.html">ホーム</a>
             <a href="pricing.html" class="active">料金</a>
-            <a href="company.html">企業情報</a>
+            <a href="#services">サービス</a>
             <a href="#contact" class="contact-btn">お問い合わせはこちら</a>
         </nav>
     </header>
@@ -329,22 +329,51 @@
         <section class="pricing-faq" id="pricing-faq">
             <div class="container container-pricing-botom">
                 <h2 class="section-title">よくある質問</h2>
+                <div class="faq-tabs">
+                    <button class="faq-tab active" data-faq-filter="category1">カテゴリ1</button>
+                    <button class="faq-tab" data-faq-filter="category2">カテゴリ2</button>
+                    <button class="faq-tab" data-faq-filter="category3">カテゴリ3</button>
+                    <button class="faq-tab" data-faq-filter="category4">カテゴリ4</button>
+                </div>
                 <div class="faq-grid">
-                    <div class="faq-item">
+                    <!-- カテゴリ1の質問 -->
+                    <div class="faq-item" data-faq-category="category1">
                         <h3>料金はどのように決定されますか？</h3>
                         <p>構築するシステムの規模や機能によって料金が変動します。詳細なお見積もりはお問い合わせ後、ご要件をヒアリングした上でご提案いたします。</p>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item" data-faq-category="category1">
                         <h3>支払い方法はどのようになっていますか？</h3>
                         <p>一般的なシステム構築は着手金と納品時の分割払いに対応しております。サブスクリプションプランは月額または年額でのお支払いが可能です。</p>
                     </div>
-                    <div class="faq-item">
+                    
+                    <!-- カテゴリ2の質問 -->
+                    <div class="faq-item" data-faq-category="category2">
                         <h3>納期はどのくらいかかりますか？</h3>
                         <p>シンプルなシステムであれば約2週間、複雑なデータベース連携を伴うシステムは1〜2ヶ月程度を目安にしています。</p>
                     </div>
-                    <div class="faq-item">
+                    <div class="faq-item" data-faq-category="category2">
                         <h3>既存システムとの連携は可能ですか？</h3>
                         <p>はい、可能です。APIを通じて既存システムとNotionを連携させることができます。詳細はお問い合わせください。</p>
+                    </div>
+                    
+                    <!-- カテゴリ3の質問 -->
+                    <div class="faq-item" data-faq-category="category3">
+                        <h3>サポート期間はどのくらいですか？</h3>
+                        <p>基本的なサポートは納品から1年間無料で提供しております。その後は有償のサポートプランをご用意しております。</p>
+                    </div>
+                    <div class="faq-item" data-faq-category="category3">
+                        <h3>カスタマイズの範囲はどこまで可能ですか？</h3>
+                        <p>Notionの標準機能に加え、APIを使った外部サービス連携やカスタム機能の実装も可能です。具体的なご要望についてはお気軽にご相談ください。</p>
+                    </div>
+                    
+                    <!-- カテゴリ4の質問 -->
+                    <div class="faq-item" data-faq-category="category4">
+                        <h3>データの安全性は確保されていますか？</h3>
+                        <p>Notionは高度なセキュリティ対策を講じており、重要なデータは暗号化されて保存されます。セキュリティに関する詳細な情報は別途ご案内いたします。</p>
+                    </div>
+                    <div class="faq-item" data-faq-category="category4">
+                        <h3>複数のユーザーで利用することは可能ですか？</h3>
+                        <p>もちろん可能です。チームでの共同作業を前提とした権限設定やワークフロー構築もサポートいたします。</p>
                     </div>
                 </div>
             </div>
@@ -484,6 +513,36 @@
                     });
                 });
             });
+            
+            // FAQ tabs
+            const faqTabs = document.querySelectorAll('.faq-tab');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            // Show the first category items by default
+            showFaqCategory('category1');
+            
+            faqTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Update active tab
+                    faqTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter FAQ items
+                    const filter = this.getAttribute('data-faq-filter');
+                    showFaqCategory(filter);
+                });
+            });
+            
+            function showFaqCategory(category) {
+                // Hide all FAQ items first
+                faqItems.forEach(item => {
+                    if (item.getAttribute('data-faq-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
 
             // Form submission
             const form = document.getElementById('inquiry-form');
