@@ -565,6 +565,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // モバイルメニューの処理
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const mobileMenu = document.getElementById('mobile-menu');
 
@@ -572,61 +573,65 @@
                 mobileMenu.classList.toggle('active');
             });
 
-            // Handle anchor links and close mobile menu when clicked
+            // アンカーリンクの処理
             const anchorLinks = document.querySelectorAll('.anchor-link, a[href^="#"]');
             anchorLinks.forEach(link => {
                 link.addEventListener('click', function () {
-                    // Close mobile menu if open
                     if (mobileMenu.classList.contains('active')) {
                         mobileMenu.classList.remove('active');
                     }
                 });
             });
 
-            // Pricing tabs
+            // プライシングタブの処理
             const pricingTabs = document.querySelectorAll('.pricing-tab');
             const pricingCards = document.querySelectorAll('.pricing-card');
 
+            // デフォルトで「すべてのプラン」を表示
+            showPricingCategory('all');
+
             pricingTabs.forEach(tab => {
                 tab.addEventListener('click', function () {
-                    // Update active tab
+                    // アクティブタブの更新
                     pricingTabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
 
-                    // Filter pricing cards
+                    // プライシングカードのフィルタリング
                     const filter = this.getAttribute('data-filter');
-
-                    pricingCards.forEach(card => {
-                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
+                    showPricingCategory(filter);
                 });
             });
 
-            // FAQ tabs
+            function showPricingCategory(category) {
+                pricingCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // FAQタブの処理
             const faqTabs = document.querySelectorAll('.faq-tab');
             const faqItems = document.querySelectorAll('.faq-item');
 
-            // Show the first category items by default
+            // デフォルトで最初のカテゴリを表示
             showFaqCategory('category1');
 
             faqTabs.forEach(tab => {
                 tab.addEventListener('click', function () {
-                    // Update active tab
+                    // アクティブタブの更新
                     faqTabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
 
-                    // Filter FAQ items
+                    // FAQアイテムのフィルタリング
                     const filter = this.getAttribute('data-faq-filter');
                     showFaqCategory(filter);
                 });
             });
 
             function showFaqCategory(category) {
-                // Hide all FAQ items first
                 faqItems.forEach(item => {
                     if (item.getAttribute('data-faq-category') === category) {
                         item.style.display = 'block';
@@ -636,82 +641,65 @@
                 });
             }
 
-            // Form submission
+            // フォーム送信の処理
             const form = document.getElementById('inquiry-form');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
 
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
+                    const formData = new FormData(form);
+                    const formDataObj = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        company: formData.get('company') || '',
+                        phone: formData.get('phone') || '',
+                        message: formData.get('message'),
+                        source: window.location.href,
+                        timestamp: new Date().toISOString()
+                    };
 
-                const formData = new FormData(form);
+                    const requestData = {
+                        data: formDataObj
+                    };
 
-                // フォームデータをオブジェクトに変換
-                const formDataObj = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    company: formData.get('company') || '',
-                    phone: formData.get('phone') || '',
-                    message: formData.get('message'),
-                    source: window.location.href,
-                    timestamp: new Date().toISOString()
-                };
+                    const submitBtn = form.querySelector('.submit-btn');
+                    const originalBtnText = submitBtn.textContent;
+                    submitBtn.textContent = '送信中...';
+                    submitBtn.disabled = true;
 
-                // デバッグ用：送信データをコンソールに出力
-                console.log('送信データ:', formDataObj);
-
-                // Notionへのデータ送信
-                const requestData = {
-                    data: formDataObj
-                };
-
-                console.log('送信データ:', requestData);
-
-                // フォーム送信中の表示
-                const submitBtn = form.querySelector('.submit-btn');
-                const originalBtnText = submitBtn.textContent;
-                submitBtn.textContent = '送信中...';
-                submitBtn.disabled = true;
-
-                fetch('https://notion-form-api.vercel.app/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(requestData)
-                })
-                    .then(response => {
-                        console.log('レスポンスステータス:', response.status);
-
-                        if (response.ok) {
-                            // 成功
-                            document.getElementById('form-success').style.display = 'block';
-                            document.getElementById('form-error').style.display = 'none';
-                            form.reset();
-                        } else {
-                            // エラー
-                            console.error('サーバーエラー:', response.status);
+                    fetch('https://notion-form-api.vercel.app/api/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(requestData)
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                document.getElementById('form-success').style.display = 'block';
+                                document.getElementById('form-error').style.display = 'none';
+                                form.reset();
+                            } else {
+                                document.getElementById('form-error').style.display = 'block';
+                                document.getElementById('form-success').style.display = 'none';
+                            }
+                        })
+                        .catch(error => {
                             document.getElementById('form-error').style.display = 'block';
                             document.getElementById('form-success').style.display = 'none';
-                        }
-                    })
-                    .catch(error => {
-                        // ネットワークエラーなど
-                        console.error('通信エラー:', error);
-                        document.getElementById('form-error').style.display = 'block';
-                        document.getElementById('form-success').style.display = 'none';
-                    })
-                    .finally(() => {
-                        // ボタンを元に戻す
-                        submitBtn.textContent = originalBtnText;
-                        submitBtn.disabled = false;
+                        })
+                        .finally(() => {
+                            submitBtn.textContent = originalBtnText;
+                            submitBtn.disabled = false;
 
-                        // 5秒後にメッセージを非表示
-                        setTimeout(() => {
-                            document.getElementById('form-success').style.display = 'none';
-                            document.getElementById('form-error').style.display = 'none';
-                        }, 5000);
-                    });
-            });
+                            setTimeout(() => {
+                                document.getElementById('form-success').style.display = 'none';
+                                document.getElementById('form-error').style.display = 'none';
+                            }, 5000);
+                        });
+                });
+            }
         });
     </script>
 </body>
