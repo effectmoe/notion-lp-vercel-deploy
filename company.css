@@ -3,7 +3,7 @@
 /* Hero Section */
 .company-hero {
     background-color: #f7f7f7;
-    padding: 100px 0 60px;
+    /* padding: 100px 0 60px; */
     text-align: center;
 }
 
@@ -14,7 +14,7 @@
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    color: #37352f;
 }
 
 .company-hero-content p {

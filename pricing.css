@@ -86,7 +86,68 @@
 
     .vertical-text-char {
         writing-mode: vertical-rl;
-        /* 縦書きだよという指示 */
+        text-orientation: upright;
+        margin: 0;
+        font-weight: 500;
+        font-size: 16px;
+        color: #333;
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        animation: fadeInUpScale 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeInUpScale {
+        from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+        }
+        50% {
+            opacity: 0.8;
+            transform: translateY(5px) scale(1.02);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* 各文字のアニメーション遅延を調整 */
+    .char-1 { animation-delay: 0.1s; }
+    .char-2 { animation-delay: 0.13s; }
+    .char-3 { animation-delay: 0.16s; }
+    .char-4 { animation-delay: 0.19s; }
+    .char-5 { animation-delay: 0.22s; }
+    .char-6 { animation-delay: 0.25s; }
+    .char-7 { animation-delay: 0.28s; }
+    .char-8 { animation-delay: 0.31s; }
+    .char-9 { animation-delay: 0.34s; }
+    .char-10 { animation-delay: 0.37s; }
+    .char-11 { animation-delay: 0.40s; }
+    .char-12 { animation-delay: 0.43s; }
+    .char-13 { animation-delay: 0.46s; }
+    .char-14 { animation-delay: 0.49s; }
+    .char-15 { animation-delay: 0.52s; }
+    .char-16 { animation-delay: 0.55s; }
+
+    /* ホバー効果を追加 */
+    .vertical-container:hover .vertical-text-char {
+        transform: translateY(-2px);
+        transition: transform 0.3s ease;
+    }
+
+    @media screen and (max-width: 768px) {
+        .vertical-text-char {
+            font-size: 16px;
+            animation-duration: 0.5s;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .vertical-text-char {
+            font-size: 14px;
+            animation-duration: 0.4s;
+        }
     }
 }
 
