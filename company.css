@@ -320,6 +320,11 @@
         flex-direction: column;
     }
 
+    company-hero {
+        background: var(--bg-secondary);
+        padding: 0;
+    }
+
     .company-hero-content,
     .company-image-container {
         width: 100%;
@@ -351,9 +356,9 @@
     }
 
     .company-image-container img {
-        width: 40%;
+        width: 50%;
         position: relative;
-        right: -60%;
+        right: -20%;
         /* 女性画像の大きさと位置 */
     }
 
