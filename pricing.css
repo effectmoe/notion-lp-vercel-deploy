@@ -226,9 +226,9 @@
 }
 
 .pricing-tab.active {
-    background: var(--primary-color);
+    background: #2f5b8e;
     color: white;
-    border-color: var(--primary-color);
+    border-color: #2f5b8e;
 }
 
 /* Pricing Grid Layout */
@@ -276,7 +276,7 @@
 
 /* Featured Card */
 .pricing-card.featured {
-    border: 2px solid var(--primary-color);
+    border: 2px solid #2f5b8e;
     box-shadow: 0 5px 20px rgba(55, 53, 47, 0.1);
 }
 
@@ -284,7 +284,7 @@
     position: absolute;
     top: 12px;
     right: 12px;
-    background: var(--primary-color);
+    background: #2f5b8e;
     color: white;
     font-size: 12px;
     font-weight: 500;
@@ -338,7 +338,7 @@
 .price-type {
     font-size: 18px;
     font-weight: 500;
-    color: var(--primary-color);
+    color: #2f5b8e;
 }
 
 .pricing-description {
@@ -363,7 +363,7 @@
 }
 
 .pricing-features i.fa-check {
-    color: var(--primary-color);
+    color: #2f5b8e;
     font-size: 14px;
 }
 
@@ -437,7 +437,7 @@
 }
 
 .official-sources a {
-    color: var(--primary-color);
+    color: #2f5b8e;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -494,9 +494,9 @@
 }
 
 .faq-tab.active {
-    background: var(--primary-color);
+    background: #2f5b8e;
     color: white;
-    border-color: var(--primary-color);
+    border-color: #2f5b8e;
 }
 
 .faq-grid {
@@ -677,7 +677,7 @@
     }
 
     .official-sources a {
-        color: var(--primary-color);
+        color: #2f5b8e;
         text-decoration: none;
         transition: color 0.3s ease;
     }

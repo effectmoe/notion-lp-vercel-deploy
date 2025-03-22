@@ -93,7 +93,7 @@
 
 .address-item i {
     font-size: 24px;
-    color: #0070f3;
+    color: #2f5b8e;
     margin-right: 15px;
     margin-top: 4px;
 }
@@ -164,7 +164,7 @@
 
 .value-icon i {
     font-size: 30px;
-    color: #0070f3;
+    color: #2f5b8e;
 }
 
 .value-card h3 {
@@ -208,7 +208,7 @@
     flex-shrink: 0;
     width: 70px;
     height: 70px;
-    background-color: #0070f3;
+    background-color: #2f5b8e;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -237,7 +237,7 @@
 /* CTA Section */
 .cta-section {
     padding: 80px 0;
-    background-color: #0070f3;
+    background-color: #2f5b8e;
     color: #fff;
     text-align: center;
 }
@@ -261,7 +261,7 @@
 .nav-menu a.active,
 .mobile-menu a.active {
     font-weight: 600;
-    color: #0070f3;
+    color: #2f5b8e;
 }
 
 .vertical-container2 {
