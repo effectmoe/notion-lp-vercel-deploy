@@ -289,7 +289,7 @@
 
 .vertical-container2 {
     position: absolute;
-    top: 10%;
+    top: 0;
     left: 15%;
     display: flex;
     flex-direction: column;
