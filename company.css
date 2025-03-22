@@ -2,15 +2,15 @@
 
 /* Hero Section */
 .company-hero {
-    background-color: #f7f7f7;
-    /* padding: 100px 0 60px; */
-    text-align: center;
+    background: var(--bg-secondary);
+    padding: 80px 0 60px;
+}
 
+.company-box {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-
 }
 
 .company-hero-content {
@@ -25,6 +25,11 @@
     /* PC画角の女性画像が入っている箱 */
 }
 
+.company-image-container img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+}
 
 .company-hero-content h1 {
     font-size: 48px;
@@ -33,14 +38,13 @@
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    color: #37352f;
+    color: transparent;
 }
 
 .company-hero-content p {
     font-size: 24px;
     color: var(--text-secondary);
     max-width: 600px;
-    margin: 0 auto;
 }
 
 /* Company Profile Section */
@@ -311,19 +315,25 @@
     }
 }
 
-
 @media (max-width: 768px) {
+    .company-box {
+        flex-direction: column;
+    }
 
     .company-hero-content,
     .company-image-container {
         width: 100%;
         padding-right: 0;
+        text-align: center;
     }
-    
+
     .company-hero-content {
         margin-bottom: 30px;
     }
-}
+
+    .company-hero-content p {
+        margin: 0 auto;
+    }
 
     .company-hero-content h1 {
         font-size: 38px;
@@ -341,9 +351,9 @@
     }
 
     .company-image-container img {
-        width: 100%;
+        width: 40%;
         position: relative;
-        right: -30%;
+        right: -60%;
         /* 女性画像の大きさと位置 */
     }
 
@@ -386,7 +396,6 @@
 }
 
 @media (max-width: 480px) {
-
     .company-hero-content h1 {
         font-size: 30px;
     }
