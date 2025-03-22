@@ -317,12 +317,11 @@
     .vertical-container2 {
         position: absolute;
         top: 10%;
-        left: 30%;
+        left: 20%;
         display: flex;
         flex-direction: column;
         /* 縦書きコメントの位置調整 */
     }
-
     .vertical-text-char {
         writing-mode: vertical-rl;
         /* 縦書きだよという指示 */
@@ -363,8 +362,33 @@
         padding: 15px 8px;
     }
     
-    .vertical-text-container {
+    /* .vertical-text-container {
         right: 15px;
+    } */
+
+    .company-image-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        /* 画像を囲っている箱 */
+    }
+    .company-image-container img {
+        width: 100%;
+        position: relative;
+        right: -30%;
+        /* 女性画像の大きさと位置 */
+    }
+    .vertical-container2 {
+        position: absolute;
+        top: 5%;
+        left: 20%;
+        display: flex;
+        flex-direction: column;
+        /* 縦書きコメントの位置調整 */
+    }
+    .vertical-text-char {
+        writing-mode: vertical-rl;
+        /* 縦書きだよという指示 */
     }
     
     .company-philosophy h3,
