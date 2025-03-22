@@ -9,14 +9,17 @@
 
 .company-hero-content h1 {
     font-size: 48px;
-    margin-bottom: 16px;
     font-weight: 700;
-    color: #333;
+    margin-bottom: 16px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .company-hero-content p {
-    font-size: 20px;
-    color: #666;
+    font-size: 24px;
+    color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -261,6 +264,20 @@
     color: #0070f3;
 }
 
+.vertical-container2 {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    display: flex;
+    flex-direction: column;
+    /* 縦書きコメントの位置調整 */
+}
+
+.vertical-text-char {
+    writing-mode: vertical-rl;
+    /* 縦書きだよという指示 */
+}
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
     .company-profile-content {
@@ -269,18 +286,46 @@
     }
     
     .company-image-container {
-        max-width: 500px;
-        margin: 0 auto;
+        width: 50%;
+        position: relative;
+        /* PC画角の男性画像が入っている箱 */
+      }
     }
-}
+
 
 @media (max-width: 768px) {
     .company-hero-content h1 {
-        font-size: 36px;
+        font-size: 38px;
     }
     
     .company-hero-content p {
-        font-size: 18px;
+        font-size: 20px;
+    }
+
+    .company-image-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        /* 画像を囲っている箱 */
+    }
+    .company-image-container img {
+        width: 100%;
+        position: relative;
+        right: -30%;
+        /* 女性画像の大きさと位置 */
+    }
+    .vertical-container2 {
+        position: absolute;
+        top: 10%;
+        left: 30%;
+        display: flex;
+        flex-direction: column;
+        /* 縦書きコメントの位置調整 */
+    }
+
+    .vertical-text-char {
+        writing-mode: vertical-rl;
+        /* 縦書きだよという指示 */
     }
     
     .company-info h2 {
