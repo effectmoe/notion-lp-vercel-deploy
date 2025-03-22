@@ -353,9 +353,6 @@
 }
 
 @media (max-width: 480px) {
-    .company-hero {
-        padding: 80px 0 40px;
-    }
     
     .company-hero-content h1 {
         font-size: 30px;
