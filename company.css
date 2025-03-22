@@ -26,7 +26,7 @@
 
 /* Company Profile Section */
 .company-profile {
-    padding: 80px 0;
+    padding: 0 40px;
     background-color: #fff;
 }
 
@@ -126,7 +126,7 @@
 
 /* Company Values Section */
 .company-values {
-    padding: 80px 0;
+    padding: 0 20px;
     background-color: #f7f7f7;
 }
 
@@ -182,7 +182,7 @@
 
 /* Services Section */
 .company-services {
-    padding: 80px 0;
+    padding: 0 40px;
     background-color: #fff;
 }
 
