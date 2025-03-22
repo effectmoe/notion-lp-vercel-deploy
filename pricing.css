@@ -689,7 +689,7 @@
     .vertical-container {
         position: absolute;
         flex-direction: column;
-        top: -5%;
+        top: 0;
         left: 20%;
         /* 縦書きコメントの位置調整 */
     }
