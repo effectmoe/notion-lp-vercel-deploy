@@ -32,11 +32,13 @@
 }
 
 .company-hero-content h1 {
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 700;
-    color: #37352f;
     margin-bottom: 16px;
-    letter-spacing: -0.025em;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: #37352f;
 }
 
 .company-hero-content p {
