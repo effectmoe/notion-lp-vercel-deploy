@@ -5,10 +5,17 @@
     background-color: #f7f7f7;
     /* padding: 100px 0 60px; */
     text-align: center;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
 }
 
 .company-hero-content {
     width: 50%;
+    padding-right: 40px;
     /* PC画角の左側タイトルが入っている箱 */
 }
 
@@ -306,6 +313,18 @@
 
 
 @media (max-width: 768px) {
+
+    .company-hero-content,
+    .company-image-container {
+        width: 100%;
+        padding-right: 0;
+    }
+    
+    .company-hero-content {
+        margin-bottom: 30px;
+    }
+}
+
     .company-hero-content h1 {
         font-size: 38px;
     }
