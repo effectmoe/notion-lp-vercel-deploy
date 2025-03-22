@@ -7,6 +7,18 @@
     text-align: center;
 }
 
+.company-hero-content {
+    width: 50%;
+    /* PC画角の左側タイトルが入っている箱 */
+}
+
+.company-image-container {
+    width: 50%;
+    position: relative;
+    /* PC画角の女性画像が入っている箱 */
+}
+
+
 .company-hero-content h1 {
     font-size: 48px;
     font-weight: 700;
