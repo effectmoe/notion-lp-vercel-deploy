@@ -5,10 +5,17 @@
     background-color: #f7f7f7;
     /* padding: 100px 0 60px; */
     text-align: center;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
 }
 
 .company-hero-content {
     width: 50%;
+    padding-right: 40px;
     /* PC画角の左側タイトルが入っている箱 */
 }
 
@@ -296,20 +303,20 @@
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .company-image-container {
         width: 50%;
         position: relative;
         /* PC画角の男性画像が入っている箱 */
-      }
     }
+}
 
 
 @media (max-width: 768px) {
     .company-hero-content h1 {
         font-size: 38px;
     }
-    
+
     .company-hero-content p {
         font-size: 20px;
     }
@@ -320,12 +327,14 @@
         position: relative;
         /* 画像を囲っている箱 */
     }
+
     .company-image-container img {
         width: 100%;
         position: relative;
         right: -30%;
         /* 女性画像の大きさと位置 */
     }
+
     .vertical-container2 {
         position: absolute;
         top: 10%;
@@ -334,46 +343,47 @@
         flex-direction: column;
         /* 縦書きコメントの位置調整 */
     }
+
     .vertical-text-char {
         writing-mode: vertical-rl;
         /* 縦書きだよという指示 */
     }
-    
+
     .company-info h2 {
         font-size: 28px;
     }
-    
+
     .values-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .service-item {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    
+
     .service-icon {
         margin-right: 0;
         margin-bottom: 20px;
     }
-    
+
     .cta-content h2 {
         font-size: 30px;
     }
 }
 
 @media (max-width: 480px) {
-    
+
     .company-hero-content h1 {
         font-size: 30px;
     }
-    
+
     .vertical-text {
         font-size: 16px;
         padding: 15px 8px;
     }
-    
+
     /* .vertical-text-container {
         right: 15px;
     } */
@@ -384,12 +394,14 @@
         position: relative;
         /* 画像を囲っている箱 */
     }
+
     .company-image-container img {
         width: 100%;
         position: relative;
         right: -30%;
         /* 女性画像の大きさと位置 */
     }
+
     .vertical-container2 {
         position: absolute;
         top: 10%;
@@ -398,18 +410,19 @@
         flex-direction: column;
         /* 縦書きコメントの位置調整 */
     }
+
     .vertical-text-char {
         writing-mode: vertical-rl;
         /* 縦書きだよという指示 */
     }
-    
+
     .company-philosophy h3,
     .company-vision h3,
     .value-card h3,
     .service-details h3 {
         font-size: 20px;
     }
-    
+
     .service-item {
         padding: 20px;
     }
