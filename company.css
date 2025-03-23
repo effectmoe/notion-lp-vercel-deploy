@@ -402,11 +402,11 @@
 
 @media (max-width: 480px) {
     .company-hero-content h1 {
-        font-size: 30px;
+        font-size: 30px!important;
     }
 
     .vertical-text {
-        font-size: 16px;
+        font-size: 16px!important;
         padding: 15px 8px;
     }
 
