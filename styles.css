@@ -1353,6 +1353,44 @@ body {
 }
 
 
+/* パンくずリストのスタイル */
+.breadcrumb-nav {
+    background-color: #f5f5f5;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.breadcrumb {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb-item {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+    content: '/';
+    margin: 0 8px;
+    color: #ccc;
+}
+
+.breadcrumb-item a {
+    color: #2f5b8e;
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+}
+
 /* TOPの女性画像のパディング調整 */
 @media screen and (max-width:576px) {
     .hero-box {
