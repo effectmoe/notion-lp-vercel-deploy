@@ -191,8 +191,8 @@ body {
 }
 
 .hero-text h1 {
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.3;
     /* ロゴサイズの基準となる幅 */
@@ -200,7 +200,7 @@ body {
 
 .hero-text h1 span {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .hero-text p {
