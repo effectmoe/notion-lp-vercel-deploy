@@ -61,6 +61,12 @@
     max-width: 500px;
 }
 
+.faq-tab {
+    margin: 5px;
+    font-size: 16px;
+    padding: 8px 16px;
+}
+
 @media screen and (max-width:768px) {
     .pricing-hero-content {
         width: 100%;
@@ -596,12 +602,6 @@
         flex-direction: row;
         flex-wrap: wrap;
         padding: 0 10px;
-    }
-
-    .faq-tab {
-        margin: 5px;
-        font-size: 14px;
-        padding: 8px 16px;
     }
 
     .cta-content h2 {
