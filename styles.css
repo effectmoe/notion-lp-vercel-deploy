@@ -1312,6 +1312,10 @@ body {
     text-align: center;
 }
 
+.cta-button-price-container {
+    margin-top: 0 auto;
+}
+
 .cta-button:hover {
     background-color: #6d95a7;
     transform: translateY(-2px);
