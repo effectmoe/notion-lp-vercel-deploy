@@ -296,15 +296,80 @@
                 </div>
             </div>
         </section>
-
-
-
     </main>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">お問い合わせ</h2>
+            <p class="section-desc">Notionシステムに関するご質問やご相談は、お気軽にお問い合わせください。</p>
+
+            <div class="contact-content">
+                <div class="company-info">
+                    <div class="company-logo">EFFECT</div>
+                    <div class="company-details">
+                        <p><strong>Notionセットアップサービス</strong></p>
+                        <p>お客様のニーズに合わせたNotionワークスペースのセットアップと構築をお手伝いします。</p>
+                        <ul class="company-links">
+                            <li><a href="#">導入事例</a></li>
+                            <li><a href="#">Notionシステム開発について</a></li>
+                            <li><a href="pricing.html">料金プラン</a></li>
+                            <li><a href="#">よくあるご質問</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="inquiry-form">
+                        <div class="form-group">
+                            <label for="name">お名前 <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">会社名</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">電話番号</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">お問い合わせ内容 <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">無料相談を申し込む</button>
+                        <div id="form-success" style="display: none; color: green; margin-top: 15px;">
+                            お問い合わせを受け付けました。担当者より折り返しご連絡いたします。
+                        </div>
+                        <div id="form-error" style="display: none; color: red; margin-top: 15px;">
+                            送信中にエラーが発生しました。しばらく経ってから再度お試しください。
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">EFFECT Co. Ltd.</div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="pricing.html">料金</a></li>
+                        <li><a href="#">事例</a></li>
+                        <li><a href="#">会社概要</a></li>
+                        <li><a href="#contact">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="X"><i class="fab fa-twitter" style="color: #ffffff;"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
             <div class="copyright">
                 <p>&copy; 2025 EFFECT Co. Ltd. All Rights Reserved.</p>
