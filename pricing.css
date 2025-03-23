@@ -69,6 +69,10 @@
         /* 画像上のテキスト */
     }
 
+    .pricing-hero-content p {
+        padding-right: 0;
+    }
+
     .hero-image2 {
         width: 100%;
         overflow: hidden;
@@ -642,6 +646,10 @@
 
     .pricing-hero{
         padding: 0;
+    }
+
+    .pricing-hero-content p {
+        padding-right: 0;
     }
 
     /* 公式情報源セクションのスタイル */
