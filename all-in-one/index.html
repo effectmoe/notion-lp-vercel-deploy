@@ -1,260 +1,666 @@
-<!DOCTYPE html><html lang="ja">
-    <!DOCTYPE html>
-    <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Notionのオールインワン情報管理</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-            }
-            
-            body {
-                background-color: #f7f6f3;
-                color: #37352f;
-                line-height: 1.6;
-            }
-            
-            header {
-                background-color: #2f3437;
-                color: white;
-                padding: 2rem 0;
-                text-align: center;
-            }
-            
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 2rem;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-                font-weight: 700;
-                margin-bottom: 1rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-                margin: 2rem 0 1rem;
-                padding-bottom: 0.5rem;
-                border-bottom: 2px solid #ebeaea;
-            }
-            
-            p {
-                margin-bottom: 1rem;
-                font-size: 1.1rem;
-            }
-            
-            .hero {
-                text-align: center;
-                margin-bottom: 3rem;
-            }
-            
-            .hero p {
-                font-size: 1.3rem;
-                max-width: 800px;
-                margin: 1rem auto;
-            }
-            
-            .features {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                margin: 3rem 0;
-            }
-            
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notionのオールインワン情報管理 | タスク・顧客管理を一元化</title>
+    <meta name="description" content="Notionを活用したオールインワン情報管理システム。タスク管理、プロジェクト管理、会議録、顧客管理などすべてを一元化し、業務効率を大幅に向上します。">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans JP', 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f7f6f3;
+            color: #37352f;
+            line-height: 1.6;
+        }
+        
+        /* ヘッダーとナビゲーション */
+        header {
+            background-color: #2f3437;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .sub-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .home-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s;
+        }
+        
+        .home-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .sub-menu {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .sub-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .sub-link:hover {
+            opacity: 1;
+        }
+        
+        /* パンくずリスト */
+        .breadcrumb-nav {
+            background-color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb {
+            list-style: none;
+            display: flex;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: "/";
+            margin: 0 10px;
+            color: #777;
+        }
+        
+        .breadcrumb-item a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item.active {
+            color: #666;
+        }
+        
+        /* メインコンテンツ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .content-with-sidebar {
+            display: flex;
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        .sidebar {
+            flex: 0 0 250px;
+        }
+        
+        .main-content {
+            flex: 1;
+        }
+        
+        /* サイドバーナビゲーション */
+        .sidebar-nav {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar-nav h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar-nav ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-nav a {
+            color: #555;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .sidebar-nav a:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .sidebar-nav a.active {
+            background-color: #f0f0f0;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ebeaea;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 3rem 0;
+        }
+        
+        .feature {
+            flex-basis: 48%;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f7f6f3;
+            border-radius: 8px;
+        }
+        
+        .diagram {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .diagram h2 {
+            text-align: left;
+        }
+        
+        .diagram-img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem 0;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+            background: #f7f6f3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .workflow {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .workflow-step {
+            flex-basis: 22%;
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .workflow-step h4 {
+            margin: 1rem 0;
+        }
+        
+        .workflow-arrow {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #ebeaea;
+            z-index: 0;
+        }
+        
+        /* 関連コンテンツ */
+        .related-content {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 25px 0;
+        }
+        
+        .related-content h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .related-content ul {
+            list-style: none;
+        }
+        
+        .related-content li {
+            margin-bottom: 8px;
+        }
+        
+        .related-content a {
+            color: #2f3437;
+            text-decoration: none;
+            display: inline-block;
+            padding: 3px 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        .related-content a:hover {
+            border-color: #2f3437;
+        }
+        
+        /* CTA */
+        .cta {
+            background: #2f3437;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+        
+        .cta h2 {
+            border-bottom: none;
+            color: white;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .cta-button.primary {
+            background: #fff;
+            color: #2f3437;
+        }
+        
+        .cta-button.primary:hover {
+            background: #f0f0f0;
+        }
+        
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .related-features {
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+        
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .related-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .related-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        /* 関連記事 */
+        .related-articles {
+            margin: 4rem 0;
+        }
+        
+        .related-articles h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .related-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .related-article {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .related-article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .article-image {
+            height: 180px;
+            background: #eee;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .related-article:hover .article-image img {
+            transform: scale(1.05);
+        }
+        
+        .related-article h3 {
+            padding: 20px 20px 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
+        .related-article p {
+            padding: 0 20px 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        footer {
+            background: #ebeaea;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 0 15px;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #000;
+        }
+        
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .footer-bottom a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-bottom a:hover {
+            color: #000;
+        }
+        
+        /* SVG スタイル */
+        .svg-container {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .all-in-one-diagram {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
             .feature {
-                flex-basis: 48%;
-                background: white;
-                border-radius: 8px;
-                padding: 1.5rem;
-                margin-bottom: 2rem;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                transition: transform 0.3s ease;
-            }
-            
-            .feature:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-            
-            .feature h3 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-                display: flex;
-                align-items: center;
-            }
-            
-            .feature-icon {
-                width: 40px;
-                height: 40px;
-                margin-right: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: #f7f6f3;
-                border-radius: 8px;
-            }
-            
-            .diagram {
-                background: white;
-                border-radius: 8px;
-                padding: 2rem;
-                margin: 3rem 0;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                text-align: center;
-            }
-            
-            .diagram h2 {
-                text-align: left;
-            }
-            
-            .diagram-img {
-                max-width: 100%;
-                height: auto;
-                margin: 2rem 0;
-            }
-            
-            .benefit {
-                display: flex;
-                align-items: flex-start;
-                margin-bottom: 1.5rem;
-            }
-            
-            .benefit-icon {
-                flex-shrink: 0;
-                width: 30px;
-                height: 30px;
-                margin-right: 15px;
-                background: #f7f6f3;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                flex-basis: 100%;
             }
             
             .workflow {
-                display: flex;
-                justify-content: space-between;
-                margin: 2rem 0;
-                position: relative;
+                flex-direction: column;
             }
             
             .workflow-step {
-                flex-basis: 22%;
-                background: white;
-                border-radius: 8px;
-                padding: 1.5rem;
-                text-align: center;
-                position: relative;
-                z-index: 1;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            }
-            
-            .workflow-step h4 {
-                margin: 1rem 0;
+                flex-basis: 100%;
+                margin-bottom: 1.5rem;
             }
             
             .workflow-arrow {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                right: 0;
-                height: 2px;
-                background: #ebeaea;
-                z-index: 0;
+                display: none;
             }
             
-            .cta {
-                background: #2f3437;
-                color: white;
-                text-align: center;
-                padding: 3rem;
-                border-radius: 8px;
-                margin: 3rem 0;
+            .content-with-sidebar {
+                flex-direction: column;
             }
             
-            .cta h2 {
-                border-bottom: none;
-                color: white;
+            .sidebar {
+                order: 2;
             }
             
-            .cta-button {
-                display: inline-block;
-                background: #fff;
-                color: #2f3437;
-                padding: 1rem 2rem;
-                border-radius: 4px;
-                text-decoration: none;
-                font-weight: bold;
-                margin-top: 1.5rem;
-                transition: background 0.3s ease;
+            .main-content {
+                order: 1;
             }
             
-            .cta-button:hover {
-                background: #f7f6f3;
+            .sub-nav {
+                flex-direction: column;
+                gap: 15px;
             }
             
-            footer {
-                background: #ebeaea;
-                padding: 2rem;
-                text-align: center;
-                margin-top: 3rem;
+            .sub-menu {
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
-            /* SVG スタイル */
-            .svg-container {
-                max-width: 100%;
-                height: auto;
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
             }
-            
-            .all-in-one-diagram {
-                max-width: 800px;
-                margin: 0 auto;
-            }
-            
-            /* レスポンシブ対応 */
-            @media (max-width: 768px) {
-                .feature {
-                    flex-basis: 100%;
-                }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="sub-nav">
+                <a href="../index.html" class="home-link">Notionランディングページ トップに戻る</a>
+                <div class="sub-menu">
+                    <a href="../all-in-one/" class="sub-link">オールインワン情報管理</a>
+                    <a href="../internal-tools/" class="sub-link">既存ツールとの連携</a>
+                    <a href="../api-integration/" class="sub-link">API連携とデータ自動化</a>
+                    <a href="../workflow-automation/" class="sub-link">業務フロー自動化</a>
+                    <a href="../multiview-database/" class="sub-link">多角的データ分析</a>
+                    <a href="../security-access/" class="sub-link">セキュアなアクセス管理</a>
+                </div>
+            </nav>
+            <h1>Notionのオールインワン情報管理</h1>
+            <p>業務に必要なすべての情報を一箇所で管理・共有できる統合ワークスペース</p>
+        </div>
+    </header>
+    
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../index.html">ホーム</a></li>
+                <li class="breadcrumb-item active">オールインワン情報管理</li>
+            </ol>
+        </div>
+    </nav>
+    
+    <div class="container content-with-sidebar">
+        <aside class="sidebar">
+            <div class="sidebar-nav">
+                <h3>Notion機能紹介</h3>
+                <ul>
+                    <li><a href="../all-in-one/" class="active">オールインワン情報管理</a></li>
+                    <li><a href="../internal-tools/">既存ツールとの連携</a></li>
+                    <li><a href="../api-integration/">API連携と自動化</a></li>
+                    <li><a href="../workflow-automation/">業務フロー自動化</a></li>
+                    <li><a href="../multiview-database/">多角的データ分析</a></li>
+                    <li><a href="../security-access/">セキュアなアクセス管理</a></li>
+                </ul>
                 
-                .workflow {
-                    flex-direction: column;
-                }
-                
-                .workflow-step {
-                    flex-basis: 100%;
-                    margin-bottom: 1.5rem;
-                }
-                
-                .workflow-arrow {
-                    display: none;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <h1>Notionのオールインワン情報管理</h1>
-                <p>業務に必要なすべての情報を一箇所で管理・共有できる統合ワークスペース</p>
+                <h3>関連リソース</h3>
+                <ul>
+                    <li><a href="../pricing.html#notion-plans">Notionシステム構築プラン</a></li>
+                    <li><a href="../index.html#testimonials">導入企業の声</a></li>
+                    <li><a href="../index.html#contact">お問い合わせ</a></li>
+                </ul>
             </div>
-        </header>
+        </aside>
         
-        <main class="container">
+        <main class="main-content">
             <section class="hero">
                 <h2>情報分散の問題を解決する統合型ワークスペース</h2>
                 <p>タスク管理、会議録、プロジェクト計画、顧客管理など、業務に必要なあらゆる情報をひとつのプラットフォームで統合的に管理できます。複数のツールを行き来する必要がなく、チームの情報共有とコラボレーションの効率が大幅に向上します。</p>
             </section>
             
             <section class="diagram">
-                <h2>Notionのオールインワン情報管理の仕組み</h2>
+                <h2 id="diagram">Notionのオールインワン情報管理の仕組み</h2>
                 <div class="svg-container">
                     <svg class="all-in-one-diagram" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
                         <!-- 中央のNotionプラットフォーム -->
@@ -312,6 +718,15 @@
                     </svg>
                 </div>
                 <p>Notionでは複数の業務機能を一元管理でき、ユーザーとチームが効率的に情報を共有・活用できます。それぞれの情報は独立して存在しながらも、相互に連携し参照することが可能です。</p>
+                
+                <div class="related-content">
+                    <h4>関連する機能と事例：</h4>
+                    <ul>
+                        <li><a href="../workflow-automation/#integration">Notionでの部門間情報連携の自動化事例</a></li>
+                        <li><a href="../multiview-database/#custom-views">業務別カスタムビュー設定方法</a></li>
+                        <li><a href="../pricing.html#all-in-one-plan">オールインワン情報管理導入プラン</a></li>
+                    </ul>
+                </div>
             </section>
             
             <section class="features">
@@ -332,19 +747,37 @@
                 </div>
                 
                 <div class="feature">
-                    <h3>
+                    <h3 id="task-management">
                         <div class="feature-icon">📊</div>
                         プロジェクト計画の可視化
                     </h3>
                     <p>ガントチャートやタイムラインでプロジェクトの進捗を可視化。マイルストーン、依存関係、リソース配分など、計画の全体像を把握できます。リアルタイムで更新され、チーム全体で最新状況を共有できます。</p>
+                    
+                    <div class="related-content">
+                        <h4>関連する機能と事例：</h4>
+                        <ul>
+                            <li><a href="../workflow-automation/#task-workflow">タスク自動割り当てワークフロー</a></li>
+                            <li><a href="../multiview-database/#gantt">ガントチャートによるプロジェクト進捗管理</a></li>
+                            <li><a href="../pricing.html#task-management-plan">タスク管理システム構築プラン</a></li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="feature">
-                    <h3>
+                    <h3 id="customer-management">
                         <div class="feature-icon">👥</div>
                         顧客CRMとの連携
                     </h3>
                     <p>顧客情報、コミュニケーション履歴、提案内容などを体系的に管理。商談状況や案件の進捗状況をデータベースで一覧化し、チーム全体で最新の顧客情報を共有できます。各種文書や会議録と連携することで、顧客対応の質が向上します。</p>
+                    
+                    <div class="related-content">
+                        <h4>関連する機能と事例：</h4>
+                        <ul>
+                            <li><a href="../api-integration/#crm-integration">外部CRMシステムとの連携方法</a></li>
+                            <li><a href="../multiview-database/#customer-view">顧客情報の多角的ビュー活用術</a></li>
+                            <li><a href="../pricing.html#crm-plan">Notion顧客管理システム構築プラン</a></li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="feature">
@@ -365,7 +798,7 @@
             </section>
             
             <section>
-                <h2>情報統合による業務改善の具体例</h2>
+                <h2 id="workflow">情報統合による業務改善の具体例</h2>
                 
                 <div class="workflow">
                     <div class="workflow-arrow"></div>
@@ -396,10 +829,19 @@
                 </div>
                 
                 <p>このように、情報が連携することで、会議での決定事項がすぐにタスクとなり、担当者に割り当てられ、プロジェクト計画に反映されるといった一連の流れがスムーズになります。情報の分断がなくなり、チーム全体の生産性が向上します。</p>
+                
+                <div class="related-content">
+                    <h4>関連する機能と事例：</h4>
+                    <ul>
+                        <li><a href="../workflow-automation/#meeting-automation">会議記録の自動タスク化ワークフロー</a></li>
+                        <li><a href="../api-integration/#task-notification">タスク割り当て通知の自動化</a></li>
+                        <li><a href="../multiview-database/#progress-tracking">進捗トラッキングの可視化方法</a></li>
+                    </ul>
+                </div>
             </section>
             
             <section>
-                <h2>オールインワン情報管理の主なメリット</h2>
+                <h2 id="benefits">オールインワン情報管理の主なメリット</h2>
                 
                 <div class="benefit">
                     <div class="benefit-icon">⏱️</div>
@@ -434,15 +876,89 @@
                 </div>
             </section>
             
+            <section class="related-articles">
+                <h2>関連するNotion活用情報</h2>
+                <div class="related-articles-grid">
+                    <a href="../api-integration/" class="related-article">
+                        <div class="article-image">
+                            <img src="../images/c2H4FQwwcOK49VZIx7Bd0.svg" alt="Notion APIによるデータ連携">
+                        </div>
+                        <h3>Notion APIによるデータ連携とオートメーション</h3>
+                        <p>既存システムとのシームレスな連携方法と自動化事例</p>
+                    </a>
+                    <a href="../workflow-automation/" class="related-article">
+                        <div class="article-image">
+                            <img src="../images/DarQtxGLf7gY1uemSh4kh.svg" alt="Notionワークフロー自動化">
+                        </div>
+                        <h3>業務フロー自動化でリスキリングを促進</h3>
+                        <p>ビジネスプロセスに合わせた効率的なワークフロー構築法</p>
+                    </a>
+                    <a href="../pricing.html#implementation" class="related-article">
+                        <div class="article-image">
+                            <img src="../images/IV1a10yiDc8nTChCmtXpV.svg" alt="Notion導入プラン">
+                        </div>
+                        <h3>Notionシステム導入・構築プラン</h3>
+                        <p>あなたのビジネスに最適なNotion導入プランと料金体系</p>
+                    </a>
+                </div>
+            </section>
+            
             <section class="cta">
                 <h2>すべての業務情報を一箇所に統合しませんか？</h2>
                 <p>情報管理の煩雑さから解放され、本来の業務に集中できる環境を手に入れましょう。</p>
-                <a href="#" class="cta-button">Notionを始める</a>
+                <div class="cta-buttons">
+                    <a href="../pricing.html#all-in-one-plan" class="cta-button primary">Notionシステム構築サービスの料金を見る</a>
+                    <a href="../index.html#contact" class="cta-button secondary">Notion導入相談・お問い合わせ</a>
+                </div>
+                <div class="related-features">
+                    <p>他のNotion機能も確認する：</p>
+                    <div class="related-links">
+                        <a href="../api-integration/" class="related-link">Notion APIによるデータ連携</a>
+                        <a href="../workflow-automation/" class="related-link">業務フロー自動化</a>
+                        <a href="../multiview-database/" class="related-link">多角的データ分析</a>
+                    </div>
+                </div>
             </section>
         </main>
-        
-        <footer>
-            <p>© 2025 Notion情報管理ソリューション | プライバシーポリシー | 利用規約</p>
-        </footer>
-    </body>
-    </html>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-nav">
+                <div class="footer-section">
+                    <h4>Notion機能紹介</h4>
+                    <ul>
+                        <li><a href="../all-in-one/">オールインワン情報管理</a></li>
+                        <li><a href="../internal-tools/">既存ツールとの連携</a></li>
+                        <li><a href="../api-integration/">API連携と自動化</a></li>
+                        <li><a href="../workflow-automation/">業務フロー自動化</a></li>
+                        <li><a href="../multiview-database/">多角的データ分析</a></li>
+                        <li><a href="../security-access/">セキュアなアクセス管理</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス情報</h4>
+                    <ul>
+                        <li><a href="../pricing.html">Notionシステム構築料金</a></li>
+                        <li><a href="../pricing.html#custom-plan">カスタムプラン</a></li>
+                        <li><a href="../pricing.html#pricing-faq">よくある質問</a></li>
+                        <li><a href="../company.html">会社概要</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>活用事例</h4>
+                    <ul>
+                        <li><a href="../index.html#testimonials">お客様の声</a></li>
+                        <li><a href="../pricing.html#case-studies">導入事例</a></li>
+                        <li><a href="../index.html#why-notion">なぜNotionが選ばれるのか</a></li>
+                        <li><a href="../index.html#contact">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 EFFECT Co. Ltd. | <a href="#">プライバシーポリシー</a> | <a href="#">利用規約</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

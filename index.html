@@ -94,6 +94,68 @@
             opacity: 0;
             line-height: 1;
         }
+        
+        /* 関連機能セクションのスタイル */
+        .related-features-section {
+            background: #f7f6f3;
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-top: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .related-features-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .related-features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            list-style: none;
+        }
+        
+        .related-features-list li {
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .related-features-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #333;
+        }
+        
+        .related-features-list a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+        
+        .related-features-list a:hover {
+            color: #000;
+            border-bottom-color: #000;
+        }
+        
+        /* Read More リンクのスタイル */
+        .read-more {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .feature-card:hover .read-more {
+            color: #000;
+        }
 
         @keyframes fadeIn {
             from {
@@ -423,6 +485,7 @@
                         </div>
                         <h3>オールインワンのタスク・顧客管理</h3>
                         <p>タスク管理、プロジェクト管理、ナレッジベース、顧客管理、営業管理などをひとつのプラットフォームで統合。孤立したデータを活用可能な情報資産に変換します。</p>
+                        <span class="read-more">オールインワン管理について詳しく見る →</span>
                     </a>
                     <a href="./internal-tools/" class="feature-card">
                         <div class="feature-icon">
@@ -431,6 +494,7 @@
                         <h3>既存ツールとのシームレスな連携</h3>
                         <p>Slack, Google Apps, Officeなど、既に使用している社内ツールとノーコードで連携。AIを組み込むことで、業務プロセスを効率化し、デジタルトランスフォーメーションを推進します。
                         </p>
+                        <span class="read-more">Notionの外部連携機能について詳しく見る →</span>
                     </a>
                     <a href="./api-integration/" class="feature-card">
                         <div class="feature-icon">
@@ -438,6 +502,7 @@
                         </div>
                         <h3>APIによるデータ連携とオートメーション</h3>
                         <p>APIコネクタを使用して既存システムやサードパーティツールとNotionを連携。データフローを自動化し、手動入力を削減することでヒューマンエラーを防止します。</p>
+                        <span class="read-more">Notion APIの活用方法について詳しく見る →</span>
                     </a>
                     <a href="./workflow-automation/" class="feature-card">
                         <div class="feature-icon">
@@ -445,6 +510,7 @@
                         </div>
                         <h3>業務フロー自動化でリスキリングを促進</h3>
                         <p>ビジネスプロセスに合わせたワークフローをNotionで自動化。ステータス変更、通知、承認フローなど、煩雑な業務をスムーズに処理し、社員のリスキリングを支援します。</p>
+                        <span class="read-more">Notionのワークフロー自動化について詳しく見る →</span>
                     </a>
                     <a href="./multiview-database/" class="feature-card">
                         <div class="feature-icon">
@@ -452,6 +518,7 @@
                         </div>
                         <h3>多角的データ分析とガントチャート</h3>
                         <p>同じデータを複数の視点で表示。カレンダー、ガントチャート、カンバン、リスト、ギャラリーなど、用途に応じた最適な表示形式で情報を整理し、プロジェクト進捗を可視化します。</p>
+                        <span class="read-more">多角的データ分析手法について詳しく見る →</span>
                     </a>
                     <a href="./security-access/" class="feature-card">
                         <div class="feature-icon">
@@ -459,7 +526,21 @@
                         </div>
                         <h3>セキュアなデータ管理と権限設定</h3>
                         <p>詳細な権限設定と監査ログ機能を実装。機密情報を適切に保護しながら、必要な情報を必要な人にだけ共有できる安全なデータベース管理を実現します。</p>
+                        <span class="read-more">Notionのセキュリティ機能について詳しく見る →</span>
                     </a>
+                </div>
+                
+                <!-- 関連機能セクションの追加 -->
+                <div class="related-features-section">
+                    <h3>詳細なNotion機能ガイド</h3>
+                    <ul class="related-features-list">
+                        <li><a href="./all-in-one/#task-management">Notionでのタスク管理システム構築</a></li>
+                        <li><a href="./multiview-database/#gantt">ガントチャートによるプロジェクト進捗管理</a></li>
+                        <li><a href="./api-integration/#crm-integration">顧客管理システムとの連携方法</a></li>
+                        <li><a href="./workflow-automation/#meeting-automation">会議記録の自動タスク化ワークフロー</a></li>
+                        <li><a href="./all-in-one/#customer-management">Notionでの効率的な顧客情報管理</a></li>
+                        <li><a href="./security-access/#permissions">部門別アクセス権限設定ガイド</a></li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -851,26 +932,96 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">EFFECT Co. Ltd.</div>
-                <!-- <div class="footer-links">
-                    <ul>
-                        <li><a href="#">ホーム</a></li>
-                        <li><a href="#">サービス</a></li>
-                        <li><a href="#">事例</a></li>
-                        <li><a href="#">会社概要</a></li>
-                        <li><a href="#">お問い合わせ</a></li>
-                    </ul>
+                <div class="footer-nav">
+                    <div class="footer-section">
+                        <h4>Notion機能紹介</h4>
+                        <ul>
+                            <li><a href="./all-in-one/">オールインワン情報管理</a></li>
+                            <li><a href="./internal-tools/">既存ツールとの連携</a></li>
+                            <li><a href="./api-integration/">API連携と自動化</a></li>
+                            <li><a href="./workflow-automation/">業務フロー自動化</a></li>
+                            <li><a href="./multiview-database/">多角的データ分析</a></li>
+                            <li><a href="./security-access/">セキュアなアクセス管理</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>サービス情報</h4>
+                        <ul>
+                            <li><a href="./pricing.html">Notionシステム構築料金</a></li>
+                            <li><a href="./pricing.html#custom-plan">カスタムプラン</a></li>
+                            <li><a href="./pricing.html#pricing-faq">よくある質問</a></li>
+                            <li><a href="./company.html">会社概要</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>活用事例</h4>
+                        <ul>
+                            <li><a href="#testimonials">お客様の声</a></li>
+                            <li><a href="./pricing.html#case-studies">導入事例</a></li>
+                            <li><a href="#why-notion">なぜNotionが選ばれるのか</a></li>
+                            <li><a href="#contact">お問い合わせ</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="footer-social">
-                    <a href="#" aria-label="X"><i class="fab fa-twitter" style="color: #ffffff;"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div> -->
             </div>
             <div class="copyright">
                 <p>&copy; 2025 EFFECT Co. Ltd. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
+    
+    <style>
+        /* フッタースタイル */
+        .footer-nav {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 0 15px;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #fff;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-nav {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
 
     <script src="script.js"></script>
     <script>

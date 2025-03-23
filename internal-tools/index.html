@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notionの内部ツール連携</title>
+    <title>Notionの既存ツール連携 | シームレスな業務システム統合</title>
+    <meta name="description" content="Notionと既存の業務ツールを連携して効率化を実現。Slack、Google Apps、Officeなど、様々な外部システムとシームレスに連携し、DXを加速します。">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-family: 'Noto Sans JP', 'Segoe UI', 'Helvetica Neue', sans-serif;
         }
         
         body {
@@ -18,6 +21,7 @@
             line-height: 1.6;
         }
         
+        /* ヘッダーとナビゲーション */
         header {
             background-color: #2f3437;
             color: white;
@@ -25,10 +29,141 @@
             text-align: center;
         }
         
+        .sub-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .home-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s;
+        }
+        
+        .home-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .sub-menu {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .sub-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .sub-link:hover {
+            opacity: 1;
+        }
+        
+        /* パンくずリスト */
+        .breadcrumb-nav {
+            background-color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb {
+            list-style: none;
+            display: flex;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: "/";
+            margin: 0 10px;
+            color: #777;
+        }
+        
+        .breadcrumb-item a {
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item.active {
+            color: #666;
+        }
+        
+        /* メインコンテンツ */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+        }
+        
+        .content-with-sidebar {
+            display: flex;
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        .sidebar {
+            flex: 0 0 250px;
+        }
+        
+        .main-content {
+            flex: 1;
+        }
+        
+        /* サイドバーナビゲーション */
+        .sidebar-nav {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar-nav h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar-nav ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-nav a {
+            color: #555;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .sidebar-nav a:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .sidebar-nav a.active {
+            background-color: #f0f0f0;
+            font-weight: 500;
+            color: #333;
         }
         
         h1 {
@@ -60,47 +195,48 @@
             margin: 1rem auto;
         }
         
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        .tools-section {
             margin: 3rem 0;
         }
         
-        .feature {
-            flex-basis: 48%;
+        .tool-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+        
+        .tool-card {
             background: white;
             border-radius: 8px;
             padding: 1.5rem;
-            margin-bottom: 2rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .feature:hover {
+        .tool-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .feature h3 {
-            font-size: 1.5rem;
+        .tool-logo {
+            width: 60px;
+            height: 60px;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f7f6f3;
-            border-radius: 8px;
+            font-size: 2rem;
+            background: #f5f5f5;
         }
         
-        .diagram {
+        .tool-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .integration-diagram {
             background: white;
             border-radius: 8px;
             padding: 2rem;
@@ -109,66 +245,86 @@
             text-align: center;
         }
         
-        .diagram h2 {
-            text-align: left;
-        }
-        
-        .diagram-img {
+        .integration-image {
             max-width: 100%;
             height: auto;
             margin: 2rem 0;
         }
         
-        .benefit {
+        .workflow-steps {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-        
-        .benefit-icon {
-            flex-shrink: 0;
-            width: 30px;
-            height: 30px;
-            margin-right: 15px;
-            background: #f7f6f3;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .workflow {
-            display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 25px;
             margin: 2rem 0;
-            position: relative;
         }
         
         .workflow-step {
-            flex-basis: 22%;
             background: white;
             border-radius: 8px;
             padding: 1.5rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
+            display: flex;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
-        .workflow-step h4 {
-            margin: 1rem 0;
+        .step-number {
+            flex: 0 0 50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 20px;
         }
         
-        .workflow-arrow {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: #ebeaea;
-            z-index: 0;
+        .step-content {
+            flex: 1;
         }
         
+        .step-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 関連コンテンツ */
+        .related-content {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 25px 0;
+        }
+        
+        .related-content h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .related-content ul {
+            list-style: none;
+        }
+        
+        .related-content li {
+            margin-bottom: 8px;
+        }
+        
+        .related-content a {
+            color: #2f3437;
+            text-decoration: none;
+            display: inline-block;
+            padding: 3px 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        .related-content a:hover {
+            border-color: #2f3437;
+        }
+        
+        /* CTA */
         .cta {
             background: #2f3437;
             color: white;
@@ -183,20 +339,125 @@
             color: white;
         }
         
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
         .cta-button {
             display: inline-block;
-            background: #fff;
-            color: #2f3437;
             padding: 1rem 2rem;
             border-radius: 4px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 1.5rem;
             transition: background 0.3s ease;
         }
         
-        .cta-button:hover {
-            background: #f7f6f3;
+        .cta-button.primary {
+            background: #fff;
+            color: #2f3437;
+        }
+        
+        .cta-button.primary:hover {
+            background: #f0f0f0;
+        }
+        
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .related-features {
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+        
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .related-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .related-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        /* 関連記事 */
+        .related-articles {
+            margin: 4rem 0;
+        }
+        
+        .related-articles h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .related-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .related-article {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .related-article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .article-image {
+            height: 180px;
+            background: #eee;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .related-article:hover .article-image img {
+            transform: scale(1.05);
+        }
+        
+        .related-article h3 {
+            padding: 20px 20px 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
+        .related-article p {
+            padding: 0 20px 20px;
+            font-size: 0.9rem;
+            color: #666;
         }
         
         footer {
@@ -206,79 +467,99 @@
             margin-top: 3rem;
         }
         
-        /* 新規追加: 統合アプリ一覧のスタイル */
-        .integrations {
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-nav {
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
+            margin-bottom: 30px;
         }
         
-        .integration-card {
-            flex-basis: 160px;
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 0 15px;
         }
         
-        .integration-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #333;
         }
         
-        .integration-icon {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f7f6f3;
-            border-radius: 50%;
+        .footer-section ul {
+            list-style: none;
         }
         
-        .integration-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .footer-section li {
+            margin-bottom: 8px;
         }
         
-        .integration-category {
+        .footer-section a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #000;
+        }
+        
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
             font-size: 0.9rem;
             color: #666;
         }
         
-        /* SVG スタイル */
-        .svg-container {
-            max-width: 100%;
-            height: auto;
+        .footer-bottom a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
         }
         
-        .integration-diagram {
-            max-width: 800px;
-            margin: 0 auto;
+        .footer-bottom a:hover {
+            color: #000;
         }
         
         /* レスポンシブ対応 */
         @media (max-width: 768px) {
-            .feature {
-                flex-basis: 100%;
-            }
-            
-            .workflow {
+            .content-with-sidebar {
                 flex-direction: column;
             }
             
-            .workflow-step {
-                flex-basis: 100%;
-                margin-bottom: 1.5rem;
+            .sidebar {
+                order: 2;
             }
             
-            .workflow-arrow {
-                display: none;
+            .main-content {
+                order: 1;
+            }
+            
+            .tool-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .sub-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .sub-menu {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
@@ -286,297 +567,318 @@
 <body>
     <header>
         <div class="container">
-            <h1>Notionの内部ツール連携</h1>
-            <p>既存の社内ツールとノーコードで情報連携し、業務を効率化するプラットフォーム</p>
+            <nav class="sub-nav">
+                <a href="../index.html" class="home-link">Notionランディングページ トップに戻る</a>
+                <div class="sub-menu">
+                    <a href="../all-in-one/" class="sub-link">オールインワン情報管理</a>
+                    <a href="../internal-tools/" class="sub-link">既存ツールとの連携</a>
+                    <a href="../api-integration/" class="sub-link">API連携とデータ自動化</a>
+                    <a href="../workflow-automation/" class="sub-link">業務フロー自動化</a>
+                    <a href="../multiview-database/" class="sub-link">多角的データ分析</a>
+                    <a href="../security-access/" class="sub-link">セキュアなアクセス管理</a>
+                </div>
+            </nav>
+            <h1>Notionと既存ツールのシームレスな連携</h1>
+            <p>すでに使用している業務ツールとNotionをつなげて、情報の分断を解消</p>
         </div>
     </header>
     
-    <main class="container">
-        <section class="hero">
-            <h2>社内ツールの分断を解消するシームレスな連携</h2>
-            <p>Slack、Google Apps、Teams、Outlookなど、既に社内で使用しているツールとノーコードで連携し、情報の流れをスムーズにします。開発スキル不要で設定でき、追加コストをかけることなく、Notionを中心とした統合的な情報環境を構築できます。</p>
-        </section>
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../index.html">ホーム</a></li>
+                <li class="breadcrumb-item active">既存ツールとの連携</li>
+            </ol>
+        </div>
+    </nav>
+    
+    <div class="container content-with-sidebar">
+        <aside class="sidebar">
+            <div class="sidebar-nav">
+                <h3>Notion機能紹介</h3>
+                <ul>
+                    <li><a href="../all-in-one/">オールインワン情報管理</a></li>
+                    <li><a href="../internal-tools/" class="active">既存ツールとの連携</a></li>
+                    <li><a href="../api-integration/">API連携と自動化</a></li>
+                    <li><a href="../workflow-automation/">業務フロー自動化</a></li>
+                    <li><a href="../multiview-database/">多角的データ分析</a></li>
+                    <li><a href="../security-access/">セキュアなアクセス管理</a></li>
+                </ul>
+                
+                <h3>関連リソース</h3>
+                <ul>
+                    <li><a href="../pricing.html#notion-plans">Notionシステム構築プラン</a></li>
+                    <li><a href="../index.html#testimonials">導入企業の声</a></li>
+                    <li><a href="../index.html#contact">お問い合わせ</a></li>
+                </ul>
+            </div>
+        </aside>
         
-        <section class="diagram">
-            <h2>Notionの内部ツール連携の仕組み</h2>
-            <div class="svg-container">
-                <svg class="integration-diagram" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
-                    <!-- 中央のNotionプラットフォーム -->
-                    <rect x="300" y="200" width="200" height="100" rx="15" fill="#2f3437" />
-                    <text x="400" y="255" font-size="24" fill="white" text-anchor="middle">Notion</text>
-                    
-                    <!-- 外側のプラットフォームグループ -->
-                    <ellipse cx="400" cy="250" rx="320" ry="200" fill="none" stroke="#ebeaea" stroke-width="2" stroke-dasharray="5,5" />
-                    
-                    <!-- 連携ツール -->
-                    <!-- Slack -->
-                    <circle cx="170" cy="150" r="50" fill="#4A154B" />
-                    <text x="170" y="155" font-size="16" fill="white" text-anchor="middle">Slack</text>
-                    
-                    <!-- Google Apps -->
-                    <circle cx="170" cy="350" r="50" fill="#0F9D58" />
-                    <text x="170" y="345" font-size="14" fill="white" text-anchor="middle">Google</text>
-                    <text x="170" y="365" font-size="14" fill="white" text-anchor="middle">Apps</text>
-                    
-                    <!-- Microsoft Teams -->
-                    <circle cx="630" cy="150" r="50" fill="#6264A7" />
-                    <text x="630" y="145" font-size="14" fill="white" text-anchor="middle">Microsoft</text>
-                    <text x="630" y="165" font-size="14" fill="white" text-anchor="middle">Teams</text>
-                    
-                    <!-- Outlook -->
-                    <circle cx="630" cy="350" r="50" fill="#0078D4" />
-                    <text x="630" y="355" font-size="16" fill="white" text-anchor="middle">Outlook</text>
-                    
-                    <!-- Trello -->
-                    <circle cx="400" cy="100" r="40" fill="#0079BF" />
-                    <text x="400" y="105" font-size="14" fill="white" text-anchor="middle">Trello</text>
-                    
-                    <!-- Jira -->
-                    <circle cx="520" cy="130" r="40" fill="#0052CC" />
-                    <text x="520" y="135" font-size="14" fill="white" text-anchor="middle">Jira</text>
-                    
-                    <!-- GitHub -->
-                    <circle cx="280" cy="130" r="40" fill="#24292E" />
-                    <text x="280" y="135" font-size="14" fill="white" text-anchor="middle">GitHub</text>
-                    
-                    <!-- Asana -->
-                    <circle cx="280" cy="370" r="40" fill="#FC636B" />
-                    <text x="280" y="375" font-size="14" fill="white" text-anchor="middle">Asana</text>
-                    
-                    <!-- Dropbox -->
-                    <circle cx="520" cy="370" r="40" fill="#0061FF" />
-                    <text x="520" y="375" font-size="14" fill="white" text-anchor="middle">Dropbox</text>
-                    
-                    <!-- Zoom -->
-                    <circle cx="400" cy="400" r="40" fill="#2D8CFF" />
-                    <text x="400" y="405" font-size="14" fill="white" text-anchor="middle">Zoom</text>
-                    
-                    <!-- 接続線 -->
-                    <line x1="300" y1="200" x2="220" y2="150" stroke="#ebeaea" stroke-width="2" />
-                    <line x1="300" y1="300" x2="220" y2="350" stroke="#ebeaea" stroke-width="2" />
-                    <line x1="500" y1="200" x2="580" y2="150" stroke="#ebeaea" stroke-width="2" />
-                    <line x1="500" y1="300" x2="580" y2="350" stroke="#ebeaea" stroke-width="2" />
-                    <line x1="400" y1="200" x2="400" y2="140" stroke="#ebeaea" stroke-width="2" />
-                    <line x1="400" y1="300" x2="400" y2="360" stroke="#ebeaea" stroke-width="2" />
-                    <line x1="480" y1="200" x2="520" y2="170" stroke="#ebeaea" stroke-width="2" />
-                    <line x1="320" y1="200" x2="280" y2="170" stroke="#ebeaea" stroke-width="2" />
-                    <line x1="320" y1="300" x2="280" y2="330" stroke="#ebeaea" stroke-width="2" />
-                    <line x1="480" y1="300" x2="520" y2="330" stroke="#ebeaea" stroke-width="2" />
-                    
-                    <!-- データフローを示す矢印 (例) -->
-                    <path d="M220,150 L250,170" fill="none" stroke="#4A154B" stroke-width="2" marker-end="url(#arrowhead)" />
-                    <path d="M350,200 L320,170" fill="none" stroke="#24292E" stroke-width="2" marker-end="url(#arrowhead)" />
-                    
-                    <!-- 矢印マーカー定義 -->
-                    <defs>
-                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" />
-                        </marker>
-                    </defs>
-                    
-                    <!-- ノーコード連携を強調するテキスト -->
-                    <rect x="300" y="50" width="200" height="30" rx="15" fill="#FFD700" opacity="0.8" />
-                    <text x="400" y="70" font-size="14" fill="#333" text-anchor="middle">ノーコードで簡単連携</text>
-                </svg>
-            </div>
-            <p>Notionは各種社内ツールとAPIを通じてシームレスに連携し、それぞれのプラットフォームからのデータや通知を一元管理します。ノーコードで設定できるため、開発リソースを使わずに情報の流れを統合できます。</p>
-        </section>
-        
-        <section>
-            <h2>主要な連携ツール</h2>
-            <div class="integrations">
-                <div class="integration-card">
-                    <div class="integration-icon">🔔</div>
-                    <div class="integration-name">Slack</div>
-                    <div class="integration-category">コミュニケーション</div>
-                </div>
-                
-                <div class="integration-card">
-                    <div class="integration-icon">📊</div>
-                    <div class="integration-name">Google Sheets</div>
-                    <div class="integration-category">スプレッドシート</div>
-                </div>
-                
-                <div class="integration-card">
-                    <div class="integration-icon">📝</div>
-                    <div class="integration-name">Google Docs</div>
-                    <div class="integration-category">文書作成</div>
-                </div>
-                
-                <div class="integration-card">
-                    <div class="integration-icon">👥</div>
-                    <div class="integration-name">Teams</div>
-                    <div class="integration-category">コラボレーション</div>
-                </div>
-                
-                <div class="integration-card">
-                    <div class="integration-icon">📧</div>
-                    <div class="integration-name">Outlook</div>
-                    <div class="integration-category">メール・カレンダー</div>
-                </div>
-                
-                <div class="integration-card">
-                    <div class="integration-icon">📋</div>
-                    <div class="integration-name">Trello</div>
-                    <div class="integration-category">タスク管理</div>
-                </div>
-                
-                <div class="integration-card">
-                    <div class="integration-icon">🔄</div>
-                    <div class="integration-name">Jira</div>
-                    <div class="integration-category">プロジェクト管理</div>
-                </div>
-                
-                <div class="integration-card">
-                    <div class="integration-icon">💻</div>
-                    <div class="integration-name">GitHub</div>
-                    <div class="integration-category">コード管理</div>
-                </div>
-                
-                <div class="integration-card">
-                    <div class="integration-icon">📁</div>
-                    <div class="integration-name">Dropbox</div>
-                    <div class="integration-category">ファイル共有</div>
-                </div>
-                
-                <div class="integration-card">
-                    <div class="integration-icon">🎯</div>
-                    <div class="integration-name">Asana</div>
-                    <div class="integration-category">プロジェクト管理</div>
-                </div>
-            </div>
-            <p>上記以外にも、400以上の外部サービスと連携可能。APIを通じてカスタム連携も実現できます。</p>
-        </section>
-        
-        <section class="features">
-            <div class="feature">
-                <h3>
-                    <div class="feature-icon">🔄</div>
-                    双方向データ同期
-                </h3>
-                <p>Notionと外部ツール間でデータをリアルタイムに同期。例えば、Slackでの会話内容を自動的にNotionのデータベースに記録したり、NotionのタスクをGoogle Calendarに予定として追加したりできます。情報の二重管理や手動での転記作業が不要になります。</p>
-            </div>
+        <main class="main-content">
+            <section class="hero">
+                <h2>既存ツールを活かしたNotionとの統合環境</h2>
+                <p>Notionはスタンドアロンでも強力ですが、既存のSaaS/社内ツールと連携することでその真価を発揮します。複数のツールを行き来する時間を削減し、情報の一貫性を保ちながら業務効率を劇的に向上させます。</p>
+            </section>
             
-            <div class="feature">
-                <h3>
-                    <div class="feature-icon">🔔</div>
-                    通知の一元管理
-                </h3>
-                <p>複数のツールからの通知をNotionに集約。重要な更新や進捗報告をカスタマイズした形で受け取り、必要な情報を見逃すことなく把握できます。例えば、特定のプロジェクトに関連するSlackの会話やGitHubのコミットが自動的にNotionに記録されます。</p>
-            </div>
-            
-            <div class="feature">
-                <h3>
-                    <div class="feature-icon">🧩</div>
-                    ノーコード設定
-                </h3>
-                <p>プログラミングの知識がなくても、直感的なインターフェースを使って連携を設定できます。ドラッグ＆ドロップの操作やシンプルな条件設定で、複雑な連携ワークフローも実現可能です。IT部門に依頼することなく、業務担当者自身が必要な連携を即座に構築できます。</p>
-            </div>
-            
-            <div class="feature">
-                <h3>
-                    <div class="feature-icon">⚙️</div>
-                    自動化ワークフロー
-                </h3>
-                <p>「もし〜なら〜する」という条件に基づいた自動化ワークフローを設定可能。例えば、Notionのタスクが完了したらSlackに通知を送る、メールで受け取った添付ファイルを自動的にNotion内の適切な場所に保存するなど、反復的な作業を自動化できます。</p>
-            </div>
-            
-            <div class="feature">
-                <h3>
-                    <div class="feature-icon">🔐</div>
-                    セキュアな接続
-                </h3>
-                <p>企業レベルのセキュリティ基準に準拠した安全な連携。OAuth認証による安全なアクセス管理、データ暗号化、詳細な権限設定など、情報セキュリティを確保しながらツール間の連携を実現します。社内の機密情報を保護しつつ、必要な連携を実現できます。</p>
-            </div>
-            
-            <div class="feature">
-                <h3>
-                    <div class="feature-icon">📈</div>
-                    拡張性と柔軟性
-                </h3>
-                <p>ビジネスの成長や変化に合わせて連携を拡張・調整できる柔軟性。新しいツールの導入や既存の連携の見直しも、開発コストをかけることなく迅速に対応できます。組織の変化やプロジェクトの変更にも柔軟に適応できる環境を実現します。</p>
-            </div>
-        </section>
-        
-        <section>
-            <h2>連携を活用した業務効率化の例</h2>
-            
-            <div class="workflow">
-                <div class="workflow-arrow"></div>
+            <section id="integration-tools" class="tools-section">
+                <h2>Notionと連携できる主なツール</h2>
+                <p>Notionは以下のような様々なツールと連携可能です。各ツールとの連携により、Notionを中心とした統合的な業務環境を構築できます。</p>
                 
-                <div class="workflow-step">
-                    <div class="feature-icon">💬</div>
-                    <h4>Slackでの議論</h4>
-                    <p>チャットで出たアイデアや決定事項</p>
+                <div class="tool-cards">
+                    <div class="tool-card">
+                        <div class="tool-logo">
+                            <span>🔄</span>
+                        </div>
+                        <h3>Slack</h3>
+                        <p>チャットとタスク管理の連携。Slackのメッセージから直接Notionタスクを作成したり、Notionデータベースの更新をSlackに通知できます。</p>
+                        
+                        <div class="related-content">
+                            <h4>活用ポイント:</h4>
+                            <ul>
+                                <li><a href="../workflow-automation/#slack-integration">Slack通知の自動化設定方法</a></li>
+                                <li><a href="../api-integration/#slack-notion">SlackメッセージからNotionへのタスク連携</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-logo">
+                            <span>📊</span>
+                        </div>
+                        <h3>Google スプレッドシート</h3>
+                        <p>データの双方向同期。Google スプレッドシートのデータをNotionデータベースに取り込んだり、逆にNotionからデータをエクスポートして高度な計算を行えます。</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-logo">
+                            <span>📅</span>
+                        </div>
+                        <h3>Google カレンダー</h3>
+                        <p>スケジュール管理の一元化。NotionのデータベースとGoogle カレンダーを同期させ、予定の重複管理を防ぎます。会議のカレンダー予定から自動的にNotionの会議ページを作成することも可能です。</p>
+                        
+                        <div class="related-content">
+                            <h4>関連機能:</h4>
+                            <ul>
+                                <li><a href="../multiview-database/#calendar-view">Notionカレンダービューの活用法</a></li>
+                                <li><a href="../workflow-automation/#calendar-sync">カレンダー同期の自動化設定</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-logo">
+                            <span>📨</span>
+                        </div>
+                        <h3>メール (Gmail/Outlook)</h3>
+                        <p>メールからNotionへのシームレスな情報移行。特定のメールを自動的にNotionのデータベースに取り込み、顧客対応や問い合わせ管理を効率化します。</p>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-logo">
+                            <span>📝</span>
+                        </div>
+                        <h3>Google ドキュメント</h3>
+                        <p>文書作成の統合。Google ドキュメントとNotionページを連携させ、どちらで編集してもシームレスに更新できます。チームでの文書作成効率が向上します。</p>
+                    </div>
+                    
+                    <div class="tool-card" id="crm-integration">
+                        <div class="tool-logo">
+                            <span>👥</span>
+                        </div>
+                        <h3>CRMシステム (Salesforce等)</h3>
+                        <p>顧客情報の統合管理。CRMシステムの顧客データをNotionに連携させ、営業活動の記録や顧客対応の履歴をNotionで一元管理できます。</p>
+                        
+                        <div class="related-content">
+                            <h4>関連ガイド:</h4>
+                            <ul>
+                                <li><a href="../all-in-one/#customer-management">Notionでの効率的な顧客情報管理</a></li>
+                                <li><a href="../api-integration/#crm-integration">外部CRMシステムとの連携方法</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="implementation" class="integration-diagram">
+                <h2>Notionを中心とした情報統合の仕組み</h2>
+                <p>Notionは各種ツールから情報を集約し、必要な時に適切なツールへと情報を伝達します。これにより、情報の分断を防ぎ、業務プロセス全体を効率化します。</p>
+                
+                <div class="integration-image">
+                    <svg width="100%" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 中央のNotion -->
+                        <circle cx="400" cy="200" r="80" fill="#2f3437" />
+                        <text x="400" y="205" font-size="24" fill="white" text-anchor="middle">Notion</text>
+                        
+                        <!-- 周辺のツール -->
+                        <!-- Slack -->
+                        <circle cx="200" cy="100" r="50" fill="#4A154B" />
+                        <text x="200" y="105" font-size="16" fill="white" text-anchor="middle">Slack</text>
+                        <line x1="265" y1="135" x2="335" y2="175" stroke="#ccc" stroke-width="2" />
+                        
+                        <!-- Google -->
+                        <circle cx="600" cy="100" r="50" fill="#4285F4" />
+                        <text x="600" y="105" font-size="16" fill="white" text-anchor="middle">Google</text>
+                        <line x1="535" y1="135" x2="465" y2="175" stroke="#ccc" stroke-width="2" />
+                        
+                        <!-- CRM -->
+                        <circle cx="200" cy="300" r="50" fill="#00A1E0" />
+                        <text x="200" y="305" font-size="16" fill="white" text-anchor="middle">CRM</text>
+                        <line x1="265" y1="265" x2="335" y2="225" stroke="#ccc" stroke-width="2" />
+                        
+                        <!-- Office -->
+                        <circle cx="600" cy="300" r="50" fill="#D83B01" />
+                        <text x="600" y="305" font-size="16" fill="white" text-anchor="middle">Office</text>
+                        <line x1="535" y1="265" x2="465" y2="225" stroke="#ccc" stroke-width="2" />
+                        
+                        <!-- 矢印と説明 -->
+                        <text x="290" y="130" font-size="12" fill="#333" text-anchor="middle">通知</text>
+                        <text x="510" y="130" font-size="12" fill="#333" text-anchor="middle">カレンダー同期</text>
+                        <text x="290" y="270" font-size="12" fill="#333" text-anchor="middle">顧客データ</text>
+                        <text x="510" y="270" font-size="12" fill="#333" text-anchor="middle">文書連携</text>
+                    </svg>
                 </div>
                 
-                <div class="workflow-step">
-                    <div class="feature-icon">📝</div>
-                    <h4>Notionに自動記録</h4>
-                    <p>重要な会話が自動的にデータベース化</p>
+                <div class="related-content">
+                    <h4>各種連携に関するガイド:</h4>
+                    <ul>
+                        <li><a href="../api-integration/#integration-architecture">Notion APIによる連携アーキテクチャ</a></li>
+                        <li><a href="../workflow-automation/#data-sync">ツール間のデータ同期自動化</a></li>
+                        <li><a href="../pricing.html#integration-plan">ツール連携構築サービスのプラン</a></li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="workflow-example" class="workflow-section">
+                <h2>連携ツールを活用した業務フロー例</h2>
+                <p>既存ツールとNotionを連携させることで、以下のような効率的な業務フローが実現できます。</p>
+                
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Slackでの会議決定</h3>
+                            <p>Slackで会議の日程が決まると、専用コマンドやボットを使ってGoogle カレンダーに予定が登録され、同時にNotionに会議ページが自動作成されます。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>会議の実施と記録</h3>
+                            <p>会議中はNotionページに議事録をリアルタイムで記録。決定事項やアクションアイテムを直接タスクデータベースとして管理します。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>タスクの割り当てと通知</h3>
+                            <p>会議で決まったタスクは自動的に担当者に割り当てられ、Slackに通知が送信されます。期限が近づくとリマインダーも自動送信されます。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>進捗の追跡と共有</h3>
+                            <p>タスクの進捗状況はNotionで管理され、定期的にGoogle スプレッドシートにエクスポートされて進捗レポートが自動生成。重要な更新はSlackに自動通知されます。</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="workflow-step">
-                    <div class="feature-icon">✅</div>
-                    <h4>タスク自動生成</h4>
-                    <p>決定事項から自動的にタスク作成</p>
+                <div class="related-content">
+                    <h4>関連ワークフロー:</h4>
+                    <ul>
+                        <li><a href="../workflow-automation/#meeting-automation">会議記録の自動タスク化ワークフロー</a></li>
+                        <li><a href="../api-integration/#task-notification">タスク割り当て通知の自動化</a></li>
+                        <li><a href="../multiview-database/#progress-tracking">進捗トラッキングの可視化方法</a></li>
+                    </ul>
                 </div>
-                
-                <div class="workflow-step">
-                    <div class="feature-icon">📅</div>
-                    <h4>カレンダー連携</h4>
-                    <p>タスクが自動的にOutlookに反映</p>
-                </div>
-            </div>
+            </section>
             
-            <p>このような連携により、情報の転記や手動での更新作業が不要になり、チーム全体の生産性が向上します。複数のツール間での情報の整合性が自動的に保たれ、余計な確認作業や調整の手間を省くことができます。</p>
-        </section>
-        
-        <section>
-            <h2>内部ツール連携のメリット</h2>
-            
-            <div class="benefit">
-                <div class="benefit-icon">💰</div>
-                <div>
-                    <h3>コスト削減</h3>
-                    <p>追加の開発コストなしで連携を実現できるため、システム統合にかかる費用を大幅に削減できます。また、業務効率化による人件費の節約や、複数のツールを統廃合できることによるライセンス費用の最適化も可能になります。</p>
+            <section class="related-articles">
+                <h2>関連するNotion活用情報</h2>
+                <div class="related-articles-grid">
+                    <a href="../api-integration/" class="related-article">
+                        <div class="article-image">
+                            <img src="../images/c2H4FQwwcOK49VZIx7Bd0.svg" alt="Notion APIによるデータ連携">
+                        </div>
+                        <h3>Notion APIによるデータ連携とオートメーション</h3>
+                        <p>既存システムとのシームレスな連携方法と自動化事例</p>
+                    </a>
+                    <a href="../workflow-automation/" class="related-article">
+                        <div class="article-image">
+                            <img src="../images/DarQtxGLf7gY1uemSh4kh.svg" alt="Notionワークフロー自動化">
+                        </div>
+                        <h3>業務フロー自動化でリスキリングを促進</h3>
+                        <p>ビジネスプロセスに合わせた効率的なワークフロー構築法</p>
+                    </a>
+                    <a href="../pricing.html#integration-service" class="related-article">
+                        <div class="article-image">
+                            <img src="../images/IV1a10yiDc8nTChCmtXpV.svg" alt="Notionツール連携サービス">
+                        </div>
+                        <h3>Notionシステム連携構築サービス</h3>
+                        <p>既存ツールとの連携を実現するプロフェッショナルサービス</p>
+                    </a>
                 </div>
-            </div>
+            </section>
             
-            <div class="benefit">
-                <div class="benefit-icon">⏱️</div>
-                <div>
-                    <h3>時間の節約</h3>
-                    <p>手動でのデータ入力や情報の転記作業が不要になり、本来の業務に集中できる時間が増えます。また、情報を探す時間も短縮され、迅速な意思決定や対応が可能になります。チーム全体の作業効率が向上し、プロジェクトの進行スピードが加速します。</p>
+            <section class="cta">
+                <h2>既存ツールとNotionを連携し、業務効率を劇的に向上させませんか？</h2>
+                <p>社内の既存ツールやSaaSサービスとNotionをシームレスに連携し、情報の分断を解消します。</p>
+                <div class="cta-buttons">
+                    <a href="../pricing.html#integration-plan" class="cta-button primary">Notionツール連携サービスの料金を見る</a>
+                    <a href="../index.html#contact" class="cta-button secondary">Notion連携相談・お問い合わせ</a>
                 </div>
-            </div>
-            
-            <div class="benefit">
-                <div class="benefit-icon">🚀</div>
-                <div>
-                    <h3>業務プロセスの最適化</h3>
-                    <p>ツール間の連携により、業務プロセス全体を見直し最適化する機会が生まれます。無駄な作業や重複した処理を削減し、より効率的なワークフローを構築できます。自動化できる作業を特定し、人間はより価値の高い創造的な業務に注力できるようになります。</p>
+                <div class="related-features">
+                    <p>他のNotion機能も確認する：</p>
+                    <div class="related-links">
+                        <a href="../all-in-one/" class="related-link">オールインワン情報管理</a>
+                        <a href="../api-integration/" class="related-link">API連携と自動化</a>
+                        <a href="../multiview-database/" class="related-link">多角的データ分析</a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="benefit">
-                <div class="benefit-icon">🔄</div>
-                <div>
-                    <h3>情報の一貫性確保</h3>
-                    <p>複数のツールに分散していた情報が自動的に同期されるため、情報の不一致や矛盾を防ぐことができます。常に最新かつ正確な情報に基づいた判断が可能になり、誤った情報による手戻りやミスコミュニケーションを減らせます。</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="cta">
-            <h2>社内ツールを統合し、情報の流れを最適化しませんか？</h2>
-            <p>既存のツールはそのままに、情報連携の力でチームの生産性を向上させましょう。</p>
-            <a href="#" class="cta-button">Notionで始める</a>
-        </section>
-    </main>
+            </section>
+        </main>
+    </div>
     
     <footer>
-        <p>© 2025 Notion情報管理ソリューション | プライバシーポリシー | 利用規約</p>
+        <div class="footer-container">
+            <div class="footer-nav">
+                <div class="footer-section">
+                    <h4>Notion機能紹介</h4>
+                    <ul>
+                        <li><a href="../all-in-one/">オールインワン情報管理</a></li>
+                        <li><a href="../internal-tools/">既存ツールとの連携</a></li>
+                        <li><a href="../api-integration/">API連携と自動化</a></li>
+                        <li><a href="../workflow-automation/">業務フロー自動化</a></li>
+                        <li><a href="../multiview-database/">多角的データ分析</a></li>
+                        <li><a href="../security-access/">セキュアなアクセス管理</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス情報</h4>
+                    <ul>
+                        <li><a href="../pricing.html">Notionシステム構築料金</a></li>
+                        <li><a href="../pricing.html#custom-plan">カスタムプラン</a></li>
+                        <li><a href="../pricing.html#pricing-faq">よくある質問</a></li>
+                        <li><a href="../company.html">会社概要</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>活用事例</h4>
+                    <ul>
+                        <li><a href="../index.html#testimonials">お客様の声</a></li>
+                        <li><a href="../pricing.html#case-studies">導入事例</a></li>
+                        <li><a href="../index.html#why-notion">なぜNotionが選ばれるのか</a></li>
+                        <li><a href="../index.html#contact">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 EFFECT Co. Ltd. | <a href="#">プライバシーポリシー</a> | <a href="#">利用規約</a></p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
