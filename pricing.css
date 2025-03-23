@@ -572,7 +572,7 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .pricing-hero-content h1 {
-        font-size: 38px;
+        font-size: 38px!important;
     }
 
     .pricing-hero{
@@ -580,7 +580,7 @@
     }
 
     .pricing-hero-content p {
-        font-size: 18px;
+        font-size: 18px!important;
     }
 
     .pricing-grid {
@@ -658,11 +658,11 @@
     }
     
     .pricing-hero-content h1 {
-        font-size: 30px;
+        font-size: 30px!important;
     }
 
     .pricing-hero-content p {
-        font-size: 16px;
+        font-size: 16px!important;
     }
 
     .official-sources h3 {
