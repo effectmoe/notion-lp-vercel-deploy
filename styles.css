@@ -218,11 +218,8 @@ body {
 }
 
 .hero-image img {
-    /* max-width: 100%;
-    height: auto; */
-    width: 65%;
-    display: block;
-    margin-left: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 
