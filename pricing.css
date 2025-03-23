@@ -575,6 +575,10 @@
         font-size: 38px;
     }
 
+    .pricing-hero{
+        padding: 0;
+    }
+
     .pricing-hero-content p {
         font-size: 18px;
     }
@@ -637,6 +641,10 @@
     .pricing-tab {
         /* padding: 8px 16px; */
         font-size: 16px;
+    }
+
+    .pricing-hero{
+        padding: 0;
     }
 
     /* 公式情報源セクションのスタイル */
