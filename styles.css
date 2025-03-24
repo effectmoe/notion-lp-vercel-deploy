@@ -1066,7 +1066,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 10px 20px 0 20px;
 }
 
 /* ヘッダー */
@@ -1376,7 +1376,7 @@ body {
 }
 
 .breadcrumb-item {
-    font-size: 10px;
+    font-size: 14px;
     color: #6c757d;
     line-height: 1.1;
 }
