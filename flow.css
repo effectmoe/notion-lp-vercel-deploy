@@ -1,0 +1,218 @@
+/* Global Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    background-color: #f8f8f8;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #718096;
+    font-weight: 500;
+}
+
+/* Workflow Diagram Styles */
+.workflow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Phase Styles */
+.phase {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.phase:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Phase Icon Styles */
+.phase-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ebf8ff;
+    color: #3182ce;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Different colors for different phases */
+#requirements .phase-icon {
+    background-color: #ebf8ff;
+    color: #3182ce;
+}
+
+#planning .phase-icon {
+    background-color: #e9f5f8;
+    color: #319795;
+}
+
+#design .phase-icon {
+    background-color: #fefcbf;
+    color: #d69e2e;
+}
+
+#development .phase-icon {
+    background-color: #e9d8fd;
+    color: #805ad5;
+}
+
+#testing .phase-icon {
+    background-color: #fed7d7;
+    color: #e53e3e;
+}
+
+#deployment .phase-icon {
+    background-color: #c6f6d5;
+    color: #38a169;
+}
+
+#maintenance .phase-icon {
+    background-color: #feebc8;
+    color: #dd6b20;
+}
+
+/* Phase Content Styles */
+.phase-content {
+    flex-grow: 1;
+}
+
+.phase h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #2d3748;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.phase p {
+    margin-bottom: 15px;
+    color: #718096;
+}
+
+/* Task List Styles */
+.phase-tasks {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.phase-tasks li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-size: 0.95rem;
+}
+
+.phase-tasks li i {
+    color: #68D391;
+}
+
+/* Connector Styles */
+.connector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    color: #a0aec0;
+    font-size: 1.2rem;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 30px 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .phase {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .phase-icon {
+        margin-bottom: 15px;
+    }
+    
+    .phase-tasks {
+        width: 100%;
+    }
+    
+    .phase-tasks li {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px 10px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .phase {
+        padding: 20px 15px;
+    }
+    
+    .phase h2 {
+        font-size: 1.3rem;
+    }
+}
+ 
