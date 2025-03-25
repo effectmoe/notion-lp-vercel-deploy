@@ -258,7 +258,7 @@ body {
 }
 
 .secondary-btn:hover {
-    background-color: #4DB6AC;
+    background-color: #4db6aca7;
 }
 
 .orange-btn {
@@ -267,7 +267,7 @@ body {
 }
 
 .orange-btn:hover {
-    background-color: #d15249;
+    background-color: #f0b159a8;
 }
 
 .flow-btn {
@@ -276,7 +276,7 @@ body {
 }
 
 .flow-btn:hover {
-    background-color: #d15249;
+    background-color: rgba(98, 138, 238, 0.661);
 }
 
 /* Vertical Text */
