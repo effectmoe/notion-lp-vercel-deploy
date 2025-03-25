@@ -761,7 +761,7 @@ footer {
 }
 
 #contact {
-    padding: 0 40px;
+    padding: 10px 40px 50px 40px;
 }
 
 /* Responsive */
@@ -1025,6 +1025,7 @@ footer {
     .instructor-content {
         flex-direction: column;
         align-items: center;
+        padding-top: 30px;
     }
 
     .instructor-image {
@@ -1075,7 +1076,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 10px 20px 10px 20px;
+    padding: 30px 20px 10px 20px;
 }
 
 /* ヘッダー */
@@ -1412,6 +1413,7 @@ body {
 /* TOPの女性画像のパディング調整 */
 @media screen and (max-width:576px) {
     .hero-box {
+        padding-top: 30px;
         padding-left: 0;
         padding-right: 0;
         padding-bottom: 0;
