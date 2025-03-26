@@ -1,5 +1,17 @@
 // pages/api/submit-to-notion.js
 import { Client } from '@notionhq/client';
+import nodemailer from 'nodemailer';
+
+// メール送信のための設定
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST || 'smtp.gmail.com',
+  port: parseInt(process.env.SMTP_PORT || '587'),
+  secure: process.env.SMTP_SECURE === 'true',
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASSWORD,
+  },
+});
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -117,6 +129,38 @@ export default async function handler(req, res) {
       });
 
       console.log('Notion API レスポンス:', response.id);
+      
+      // メール送信処理
+      try {
+        // フォームからのデータを元にメール本文を作成
+        const emailContent = `
+          以下の内容でお問い合わせがありました。
+          
+          名前: ${name}
+          メールアドレス: ${email}
+          会社名: ${company || '(未入力)'}
+          電話番号: ${phone || '(未入力)'}
+          
+          【お問い合わせ内容】
+          ${message}
+          
+          NotionページID: ${response.id}
+          送信日時: ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
+        `;
+        
+        // メールの送信
+        await transporter.sendMail({
+          from: process.env.SMTP_FROM || process.env.SMTP_USER,
+          to: 'info@effect.moe',
+          subject: `【サイトからのお問い合わせ】${name}様`,
+          text: emailContent,
+        });
+        
+        console.log('メール送信成功');
+      } catch (emailError) {
+        // メール送信に失敗してもNotionへの保存は成功しているので、エラーログだけ出力
+        console.error('メール送信エラー:', emailError);
+      }
       
       return res.status(200).json({ 
         success: true, 
