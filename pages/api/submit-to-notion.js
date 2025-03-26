@@ -132,6 +132,16 @@ export default async function handler(req, res) {
       
       // メール送信処理
       try {
+        // SMTP設定情報のログを出力（デバッグ用）
+        console.log('SMTP設定情報:', {
+          host: process.env.SMTP_HOST || 'smtp.gmail.com',
+          port: process.env.SMTP_PORT || '587',
+          secure: process.env.SMTP_SECURE === 'true',
+          user: process.env.SMTP_USER ? '設定済み' : '未設定',
+          pass: process.env.SMTP_PASSWORD ? '設定済み' : '未設定',
+          from: process.env.SMTP_FROM || process.env.SMTP_USER || '未設定',
+        });
+
         // フォームからのデータを元にメール本文を作成
         const emailContent = `
           以下の内容でお問い合わせがありました。
@@ -148,18 +158,35 @@ export default async function handler(req, res) {
           送信日時: ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}
         `;
         
+        // トランスポーターの検証（接続テスト）
+        console.log('SMTPサーバー接続テスト開始...');
+        try {
+          await transporter.verify();
+          console.log('SMTPサーバー接続テスト成功');
+        } catch (verifyError) {
+          console.error('SMTPサーバー接続テスト失敗:', verifyError);
+          throw verifyError;
+        }
+        
         // メールの送信
-        await transporter.sendMail({
+        console.log('メール送信処理開始...');
+        const mailResult = await transporter.sendMail({
           from: process.env.SMTP_FROM || process.env.SMTP_USER,
           to: 'info@effect.moe',
           subject: `【サイトからのお問い合わせ】${name}様`,
           text: emailContent,
         });
         
-        console.log('メール送信成功');
+        console.log('メール送信成功:', mailResult);
       } catch (emailError) {
         // メール送信に失敗してもNotionへの保存は成功しているので、エラーログだけ出力
-        console.error('メール送信エラー:', emailError);
+        console.error('メール送信エラー詳細:', {
+          message: emailError.message,
+          code: emailError.code,
+          command: emailError.command,
+          responseCode: emailError.responseCode,
+          stack: emailError.stack
+        });
       }
       
       return res.status(200).json({ 
