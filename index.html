@@ -44,32 +44,144 @@
     <meta name="twitter:creator" content="@effect_moe">
 
     <!-- 構造化データ JSON-LD -->
+    <!-- 組織情報 -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "EFFECT Co. Ltd.",
-      "url": "https://effect.co.jp",
-      "logo": "https://effect.co.jp/logo.png",
+      "alternateName": "Notion Effect",
+      "url": "https://notion.effect.moe/",
+      "logo": "https://notion.effect.moe/images/logo.png",
+      "sameAs": ["https://www.street-academy.com/steachers/271053"],
+      "email": "info@effect.moe",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "福岡市中央区",
+        "addressRegion": "福岡県",
+        "postalCode": "8100001",
+        "streetAddress": "天神2丁目2番12号 T&Jビルディング7F",
+        "addressCountry": "JP"
+      },
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "",
-        "contactType": "customer service"
-      }
+        "contactType": "customer service",
+        "email": "info@effect.moe",
+        "availableLanguage": ["Japanese"]
+      },
+      "description": "Notion Effectは企業のDX・タスク管理・プロジェクト管理を支援するサービスを提供するEFFECT Co. Ltd.のブランドです。"
     }
     </script>
     
+    <!-- Webサイト情報 -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Notionで実現するDX・業務効率化・プロジェクト管理",
-      "url": "https://effect.co.jp/notion/",
-      "description": "Notionを活用したDX・業務効率化・プロジェクト管理システムを低コストで構築。ノーコードで顧客管理やタスク管理、データベース自動化を実現し、企業のDXを加速します。AIを活用したタスク管理とプロジェクト管理で業務効率化を実現。",
+      "name": "Notion Effect",
+      "alternateName": "ノーション エフェクト",
+      "url": "https://notion.effect.moe/",
+      "description": "Notion Effectはビジネスの効率化を促進するDXプラットフォームです。AI活用とガントチャートによるタスク管理・プロジェクト管理・業務管理を低コストで実現。企業向けシステム開発でビジネスを変革します。",
+      "inLanguage": "ja-JP",
       "publisher": {
         "@type": "Organization",
-        "name": "EFFECT Co. Ltd."
+        "name": "EFFECT Co. Ltd.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://notion.effect.moe/images/logo.png"
+        }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://notion.effect.moe/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
+    }
+    </script>
+    
+    <!-- サービス情報 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Notion Effect DXソリューション",
+      "serviceType": "システム開発・業務効率化",
+      "description": "Notionを活用したDX・業務効率化・プロジェクト管理システムを低コストで構築。ノーコードで顧客管理やタスク管理、データベース自動化を実現し、企業のDXを加速します。AIを活用したタスク管理とプロジェクト管理で業務効率化を実現。",
+      "provider": {
+        "@type": "Organization",
+        "name": "EFFECT Co. Ltd."
+      },
+      "areaServed": "JP",
+      "offers": {
+        "@type": "Offer",
+        "price": "50000",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://notion.effect.moe/"
+      },
+      "termsOfService": "https://notion.effect.moe/terms.html",
+      "category": ["DX推進", "業務効率化", "システム開発", "タスク管理", "プロジェクト管理"]
+    }
+    </script>
+    
+    <!-- パンくずリスト -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://notion.effect.moe/"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- FAQページ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Notion Effectはどのようなサービスですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Notion Effectは、Notionを活用して企業のDX推進・タスク管理・プロジェクト管理をサポートするサービスです。AIやガントチャートを活用した業務効率化システムを低コストで構築し、企業の業務管理を効率化します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "導入にはどのくらいの期間がかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "基本的なシステムは2週間〜1ヶ月程度で導入可能です。規模や要件によって期間は異なりますが、従来のシステム開発と比較して短期間での導入が可能です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "料金はどのくらいかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "基本プランは5万円から、フルカスタマイズの場合は50万円からとなっています。詳細は料金プランページをご覧いただくか、お問い合わせください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "既存システムとの連携は可能ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、API連携によって既存システムとのデータ連携が可能です。Slack、Google Apps、Office製品など、多くの外部サービスとシームレスに連携できます。"
+          }
+        }
+      ]
     }
     </script>
 
