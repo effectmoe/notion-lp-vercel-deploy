@@ -1,21 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- メインページ -->
   <url>
-    <loc>https://notion.effect.moe/index.html</loc>
-    <lastmod>2025-03-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://notion.effect.moe/</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://notion.effect.moe/images/notion-screenshot.png</image:loc>
+      <image:title>Notion EffectによるDX・タスク管理・プロジェクト管理のシステム開発</image:title>
+    </image:image>
   </url>
+  
+  <!-- 料金プラン -->
   <url>
     <loc>https://notion.effect.moe/pricing.html</loc>
-    <lastmod>2025-03-24</lastmod>
+    <lastmod>2025-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://notion.effect.moe/images/1957c8febb1a5.png</image:loc>
+      <image:title>Notion Effect 料金プラン</image:title>
+    </image:image>
   </url>
+  
+  <!-- 企業情報 -->
   <url>
     <loc>https://notion.effect.moe/company.html</loc>
-    <lastmod>2025-03-24</lastmod>
+    <lastmod>2025-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://notion.effect.moe/images/195b51f1f4ec2.png</image:loc>
+      <image:title>Notion Effect - EFFECT Co. Ltd.</image:title>
+    </image:image>
+  </url>
+  
+  <!-- 機能説明ページ -->
+  <url>
+    <loc>https://notion.effect.moe/all-in-one/</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://notion.effect.moe/internal-tools/</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://notion.effect.moe/api-integration/</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://notion.effect.moe/workflow-automation/</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://notion.effect.moe/multiview-database/</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://notion.effect.moe/security-access/</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- 導入フロー -->
+  <url>
+    <loc>https://notion.effect.moe/flow.html</loc>
+    <lastmod>2025-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

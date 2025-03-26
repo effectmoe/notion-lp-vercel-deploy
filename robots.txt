@@ -1,3 +1,67 @@
+# robots.txt for notion.effect.moe
+# 最終更新日: 2025-03-27
+
+# 全てのクローラーに対する設定
 User-agent: *
 Allow: /
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /package-lock.json
+Disallow: /package.json
+Disallow: /next.config.js
+Disallow: /vercel.json
+Disallow: /wrangler.toml
+Disallow: /*.lock$
+Disallow: /*.log$
+Disallow: /.env*
+Disallow: /template_config.json
+
+# Google独自のクローラー
+User-agent: Googlebot
+Allow: /
+
+# 画像検索
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.gif$
+
+# AI関連のクローラー
+User-agent: GPTBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Anthropic-AI
+Allow: /
+User-agent: Bard
+Allow: /
+
+# インデックスに不要なメディアファイル
+User-agent: *
+Disallow: *.pdf$
+Disallow: *.doc$
+Disallow: *.docx$
+Disallow: *.xls$
+Disallow: *.xlsx$
+Disallow: *.ppt$
+Disallow: *.pptx$
+Disallow: *.zip$
+Disallow: *.rar$
+Disallow: *.7z$
+
+# クロールの頻度調整（オプション）
+Crawl-delay: 10
+
+# サイトマップの場所
 Sitemap: https://notion.effect.moe/sitemap.xml
+
+# ホスト設定
+Host: notion.effect.moe
