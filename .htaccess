@@ -11,6 +11,42 @@ RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [L,R=301]
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
 RewriteRule ^index\.html$ / [R=301,L]
 
+# セキュリティヘッダーの設定
+<IfModule mod_headers.c>
+  # HSTS (HTTP Strict Transport Security) を有効化
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  
+  # XSS Protection を有効化
+  Header always set X-XSS-Protection "1; mode=block"
+  
+  # Clickjacking対策
+  Header always set X-Frame-Options "SAMEORIGIN"
+  
+  # MIMEタイプスニッフィング防止
+  Header always set X-Content-Type-Options "nosniff"
+  
+  # Referrer-Policyの設定
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Content-Security-Policy (CSP) の設定
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://www.googleadservices.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://notion-form-api.vercel.app; frame-src 'self' https://www.youtube.com https://www.jicoo.com https://www.street-academy.com; object-src 'none'"
+  
+  # Permissions-Policy の設定
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  
+  # Feature-Policy の設定 (レガシーサポート用)
+  Header always set Feature-Policy "camera 'none'; microphone 'none'; geolocation 'none'"
+  
+  # クロスオリジンリソース共有 (CORS) 設定
+  Header always set Access-Control-Allow-Origin "https://notion.effect.moe"
+  Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+  Header always set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+  
+  # サーバー情報を隠す
+  Header unset Server
+  Header unset X-Powered-By
+</IfModule>
+
 # GZIPで圧縮
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json
@@ -36,4 +72,25 @@ RewriteRule ^index\.html$ / [R=301,L]
   ExpiresByType font/ttf "access plus 1 year"
   ExpiresByType font/woff "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ディレクトリインデックスの無効化
+Options -Indexes
+
+# 重要なファイルへのアクセス制限
+<FilesMatch "^(\.|wp-config\.php|config\.php|configuration\.php|\.env|\.htaccess)">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# PHPエラー表示の無効化（本番環境用）
+php_flag display_errors off
+php_value error_reporting 0
+
+# SQLインジェクション対策
+<IfModule mod_rewrite.c>
+  RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+  RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+  RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+  RewriteRule .* index.php [F,L]
 </IfModule>
