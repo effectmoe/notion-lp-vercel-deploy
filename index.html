@@ -22,7 +22,7 @@
     <link rel="manifest" href="site.webmanifest">
     <title>Notion Effect | DX・タスク管理・プロジェクト管理のシステム開発</title>
     <meta name="description"
-        content="Notion Effectはビジネスの効率化を促進するDXプラットフォームです。AI活用とガントチャートによるタスク管理・プロジェクト管理・業務管理を低コストで実現。企業向けシステム開発でビジネスを変革します。">
+        content="Notion Effectは業務効率化とDXを促進するプラットフォームです。AI活用とガントチャートによるタスク管理・プロジェクト管理システムを低コストで構築。Notionによる企業向け業務システム開発でビジネスプロセスを変革します。">
     <meta name="keywords"
         content="Notion, ノーション, デジタルトランスフォーメーション(DX), タスク管理, プロジェクト管理, ガントチャート, AI, システム開発, 業務管理, 企業, リスキリング, 効率化, ノーコード, 顧客管理, データベース, 自動化, オートメーション">
     <meta name="robots" content="index, follow">
@@ -33,12 +33,13 @@
     <!-- OGP タグ -->
     <meta property="og:title" content="Notion Effect | DX・タスク管理・プロジェクト管理のシステム開発">
     <meta property="og:description"
-        content="Notion Effectはビジネスの効率化を促進するDXプラットフォームです。AI活用とガントチャートによるタスク管理・プロジェクト管理・業務管理を低コストで実現。企業向けシステム開発でビジネスを変革します。">
+        content="Notion Effectは業務効率化とDXを促進するプラットフォームです。AI活用とガントチャートによるタスク管理・プロジェクト管理システムを低コストで構築。Notionによる企業向け業務システム開発でビジネスプロセスを変革します。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://notion.effect.moe/">
-    <meta property="og:image" content="https://notion.effect.moe/images/notion-screenshot.png">
+    <meta property="og:image" content="https://notion.effect.moe/images/notion-screenshot.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/webp">
     <meta property="og:site_name" content="Notion Effect">
     <meta property="og:locale" content="ja_JP">
 
@@ -46,8 +47,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Notion Effect | DX・タスク管理・プロジェクト管理のシステム開発">
     <meta name="twitter:description"
-        content="Notion Effectはビジネスの効率化を促進するDXプラットフォームです。AI活用とガントチャートによるタスク管理・プロジェクト管理・業務管理を低コストで実現。企業向けシステム開発でビジネスを変革します。">
-    <meta name="twitter:image" content="https://notion.effect.moe/images/notion-screenshot.png">
+        content="Notion Effectは業務効率化とDXを促進するプラットフォームです。AI活用とガントチャートによるタスク管理・プロジェクト管理システムを低コストで構築。Notionによる企業向け業務システム開発でビジネスプロセスを変革します。">
+    <meta name="twitter:image" content="https://notion.effect.moe/images/notion-screenshot.webp">
     <meta name="twitter:creator" content="@effect_moe">
 
     <!-- ファビコン設定 -->
@@ -191,10 +192,17 @@
     }
     </script>
 
+    <!-- Preload critical assets -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="images/notion-logo.webp" as="image" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* インラインでスタイルを定義して確実に適用 */
@@ -394,8 +402,7 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
-        gtag('config', 'G-DJMH9QWPHL');
+        gtag('config', 'G-DJMH9QWPHL', { 'anonymize_ip': true });
     </script>
 
     <!-- Microsoft Clarity -->
@@ -415,19 +422,21 @@
     <!-- End Google Tag Manager (noscript) -->
     <header class="header">
         <div class="header-container">
-            <a href="#" class="logo">EFFECT<br>Co. Ltd.</a>
+            <a href="#" class="logo" aria-label="EFFECT Co. Ltd.">EFFECT<br>Co. Ltd.</a>
 
             <!-- Desktop Menu -->
-            <nav class="nav-menu">
-                <a href="#">ホーム</a>
-                <a href="pricing.html">料金プラン</a>
-                <a href="pricing.html#pricing-faq">よくある質問</a>
-                <a href="company.html">企業情報</a>
-                <a href="#contact" class="contact-btn">お問い合わせ</a>
+            <nav class="nav-menu" aria-label="メインナビゲーション">
+                <ul>
+                    <li><a href="#" aria-current="page">ホーム</a></li>
+                    <li><a href="pricing.html">料金プラン</a></li>
+                    <li><a href="pricing.html#pricing-faq">よくある質問</a></li>
+                    <li><a href="company.html">企業情報</a></li>
+                    <li><a href="#contact" class="contact-btn">お問い合わせ</a></li>
+                </ul>
             </nav>
 
             <!-- Hamburger Menu Button -->
-            <button class="hamburger" id="hamburger-btn">
+            <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -435,12 +444,14 @@
         </div>
 
         <!-- Mobile Menu -->
-        <nav class="mobile-menu" id="mobile-menu">
-            <a href="#">ホーム</a>
-            <a href="pricing.html">料金プラン</a>
-            <a href="pricing.html#pricing-faq">よくある質問</a>
-            <a href="company.html">企業情報</a>
-            <a href="#contact" class="contact-btn">お問い合わせ</a>
+        <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="モバイルナビゲーション">
+            <ul>
+                <li><a href="#" aria-current="page">ホーム</a></li>
+                <li><a href="pricing.html">料金プラン</a></li>
+                <li><a href="pricing.html#pricing-faq">よくある質問</a></li>
+                <li><a href="company.html">企業情報</a></li>
+                <li><a href="#contact" class="contact-btn">お問い合わせ</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -472,7 +483,11 @@
                     <div class="hero-text">
                         <div class="notion-logo">
                             <div class="logo-container">
+<<<<<<< HEAD
                                 <img src="images/notion-logo.webp" alt="Notion ロゴ - 業務効率化・DX推進ツール" class="notion-img" width="200" height="40">
+=======
+                                <img src="images/notion-logo.webp" alt="Notion ロゴ - 業務効率化・DX推進ツール" class="notion-img" width="200" height="40" loading="eager">
+>>>>>>> 1d5c2141f823945f85541234fe6461e4de8a425e
                             </div>
                         </div>
                         <h1>Notionで実現する<br><span>DXと業務効率化システム</span></h1>
@@ -489,7 +504,7 @@
                     </div>
 
                     <div class="hero-image">
-                        <img src="images/notion-screenshot.png" alt="Notionを活用した業務効率化・プロジェクト管理システムの画面例">
+                        <img src="images/notion-screenshot.webp" alt="Notionを活用した業務効率化・プロジェクト管理システムの画面例" loading="lazy" width="600" height="400">
 
                         <!-- 新しい構造での縦書きテキスト - 位置調整済み -->
                         <div class="vertical-container">
@@ -844,8 +859,8 @@
                         </ul>
                     </div>
                     <div class="benefits-image">
-                        <img src="images/database-icon.png" alt="Notionデータベースで実現する低コストDX - 業務効率化とプロジェクト管理"
-                            class="database-icon">
+                        <img src="images/database-icon.webp" alt="Notionデータベースで実現する低コストDX - 業務効率化とプロジェクト管理"
+                            class="database-icon" loading="lazy" width="400" height="300">
                     </div>
                 </div>
             </div>
@@ -865,7 +880,7 @@
 
                 <div class="instructor-content">
                     <div class="instructor-image">
-                        <img src="images/profile-img.png" alt="Notionを活用した業務効率化・プロジェクト管理の専門講師" class="profile-img">
+                        <img src="images/profile-img.webp" alt="Notionを活用した業務効率化・プロジェクト管理の専門講師" class="profile-img" loading="lazy" width="300" height="300">
                         <div class="badges">
                             <span class="badge"><i class="fas fa-trophy"></i> ストアカ人気講師</span>
                             <span class="badge"><i class="fas fa-medal"></i> 5つ星評価</span>
@@ -1020,23 +1035,11 @@
                 </p>
 
                 <div class="contact-content">
-                    <!-- <div class="company-info">
-                        <div class="company-logo">EFFECT</div>
-                        <div class="company-details">
-                            <p><strong>Notionセットアップサービス</strong></p>
-                            <p>お客様のニーズに合わせたNotionワークスペースのセットアップと構築をお手伝いします。</p>
-                            <ul class="company-links">
-                                <li><a href="#">導入事例</a></li>
-                                <li><a href="#">Notionシステム開発について</a></li>
-                                <li><a href="#">料金プラン</a></li>
-                                <li><a href="#">よくあるご質問</a></li>
-                            </ul>
-                        </div>
-                    </div> -->
                     <div class="contact-form">
                         <form id="inquiry-form" aria-labelledby="contact-form-title" novalidate>
                             <div class="form-group">
                                 <label for="name">お名前 <span class="required" aria-label="必須">*</span></label>
+<<<<<<< HEAD
                                 <input type="text" id="name" name="name" required aria-required="true" pattern=".{1,100}" autocomplete="name">
                                 <div class="error-message" id="name-error" aria-live="polite"></div>
                             </div>
@@ -1044,6 +1047,15 @@
                                 <label for="email">メールアドレス <span class="required" aria-label="必須">*</span></label>
                                 <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
                                 <div class="error-message" id="email-error" aria-live="polite"></div>
+=======
+                                <input type="text" id="name" name="name" required aria-required="true" pattern=".{1,100}" autocomplete="name" aria-describedby="name-error">
+                                <div class="error-message" id="name-error" aria-live="assertive" role="alert"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">メールアドレス <span class="required" aria-label="必須">*</span></label>
+                                <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" aria-describedby="email-error">
+                                <div class="error-message" id="email-error" aria-live="assertive" role="alert"></div>
+>>>>>>> 1d5c2141f823945f85541234fe6461e4de8a425e
                             </div>
                             <div class="form-group">
                                 <label for="company">会社名</label>
@@ -1051,6 +1063,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone">電話番号</label>
+<<<<<<< HEAD
                                 <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="[0-9\-+\s()]*">
                                 <div class="error-message" id="phone-error" aria-live="polite"></div>
                             </div>
@@ -1058,6 +1071,18 @@
                                 <label for="message">お問い合わせ内容 <span class="required" aria-label="必須">*</span></label>
                                 <textarea id="message" name="message" rows="5" required aria-required="true" minlength="10" maxlength="1000"></textarea>
                                 <div class="error-message" id="message-error" aria-live="polite"></div>
+=======
+                                <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="[0-9\-+\s()]*" aria-describedby="phone-error">
+                                <div class="error-message" id="phone-error" aria-live="assertive" role="alert"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">お問い合わせ内容 <span class="required" aria-label="必須">*</span></label>
+                                <textarea id="message" name="message" rows="5" required aria-required="true" minlength="10" maxlength="1000" aria-describedby="message-error"></textarea>
+                                <div class="error-message" id="message-error" aria-live="assertive" role="alert"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="required-field-note" id="required-fields-note">* は必須項目です</div>
+>>>>>>> 1d5c2141f823945f85541234fe6461e4de8a425e
                             </div>
                             <button type="submit" class="submit-btn">お問い合わせを送信</button>
                             <div id="form-success" style="display: none; color: green; margin-top: 15px;">
@@ -1076,38 +1101,38 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">EFFECT Co. Ltd.</div>
-                <div class="footer-nav">
+                <div class="footer-logo" aria-label="会社ロゴ">EFFECT Co. Ltd.</div>
+                <nav class="footer-nav" aria-label="フッターナビゲーション">
                     <div class="footer-section">
                         <h4>Notion機能紹介</h4>
                         <ul>
-                            <li><a href="./all-in-one/">オールインワン情報管理</a></li>
-                            <li><a href="./internal-tools/">既存ツールとの連携</a></li>
-                            <li><a href="./api-integration/">API連携と自動化</a></li>
-                            <li><a href="./workflow-automation/">業務フロー自動化</a></li>
-                            <li><a href="./multiview-database/">多角的データ分析</a></li>
-                            <li><a href="./security-access/">セキュアなアクセス管理</a></li>
+                            <li><a href="./all-in-one/" aria-label="オールインワン情報管理ページへ">オールインワン情報管理</a></li>
+                            <li><a href="./internal-tools/" aria-label="既存ツールとの連携ページへ">既存ツールとの連携</a></li>
+                            <li><a href="./api-integration/" aria-label="API連携と自動化ページへ">API連携と自動化</a></li>
+                            <li><a href="./workflow-automation/" aria-label="業務フロー自動化ページへ">業務フロー自動化</a></li>
+                            <li><a href="./multiview-database/" aria-label="多角的データ分析ページへ">多角的データ分析</a></li>
+                            <li><a href="./security-access/" aria-label="セキュアなアクセス管理ページへ">セキュアなアクセス管理</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
                         <h4>サービス情報</h4>
                         <ul>
-                            <li><a href="./pricing.html">Notionシステム構築料金</a></li>
-                            <li><a href="./pricing.html#custom-plan">カスタムプラン</a></li>
-                            <li><a href="./pricing.html#pricing-faq">よくある質問</a></li>
-                            <li><a href="./company.html">会社概要</a></li>
+                            <li><a href="./pricing.html" aria-label="料金ページへ">Notionシステム構築料金</a></li>
+                            <li><a href="./pricing.html#custom-plan" aria-label="カスタムプランのセクションへ">カスタムプラン</a></li>
+                            <li><a href="./pricing.html#pricing-faq" aria-label="よくある質問セクションへ">よくある質問</a></li>
+                            <li><a href="./company.html" aria-label="会社概要ページへ">会社概要</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
                         <h4>活用事例</h4>
                         <ul>
-                            <li><a href="#testimonials">お客様の声</a></li>
-                            <li><a href="./pricing.html#case-studies">導入事例</a></li>
-                            <li><a href="#why-notion">なぜNotionが選ばれるのか</a></li>
-                            <li><a href="#contact">お問い合わせ</a></li>
+                            <li><a href="#testimonials" aria-label="お客様の声セクションへ">お客様の声</a></li>
+                            <li><a href="./pricing.html#case-studies" aria-label="導入事例セクションへ">導入事例</a></li>
+                            <li><a href="#why-notion" aria-label="なぜNotionが選ばれるのかセクションへ">なぜNotionが選ばれるのか</a></li>
+                            <li><a href="#contact" aria-label="お問い合わせセクションへ">お問い合わせ</a></li>
                         </ul>
                     </div>
-                </div>
+                </nav>
             </div>
             <div class="copyright">
                 <p>&copy; 2025 EFFECT Co. Ltd. All Rights Reserved.</p>
@@ -1168,110 +1193,9 @@
         }
     </style>
 
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('inquiry-form');
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const formData = new FormData(form);
-
-                // フォームデータをオブジェクトに変換
-                const formDataObj = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    company: formData.get('company') || '',
-                    phone: formData.get('phone') || '',
-                    message: formData.get('message'),
-                    source: window.location.href,
-                    timestamp: new Date().toISOString()
-                };
-
-                // デバッグ用：送信データをコンソールに出力
-                console.log('送信データ:', formDataObj);
-
-                // Notionへのデータ送信
-                const requestData = {
-                    data: formDataObj
-                };
-
-                console.log('送信データ:', requestData);
-
-                // フォーム送信中の表示
-                const submitBtn = form.querySelector('.submit-btn');
-                const originalBtnText = submitBtn.textContent;
-                submitBtn.textContent = '送信中...';
-                submitBtn.disabled = true;
-
-                fetch('https://notion-form-api.vercel.app/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(requestData)
-                })
-                    .then(response => {
-                        console.log('レスポンスステータス:', response.status);
-
-                        if (response.ok) {
-                            // 成功
-                            document.getElementById('form-success').style.display = 'block';
-                            document.getElementById('form-error').style.display = 'none';
-                            form.reset();
-                        } else {
-                            // エラー
-                            console.error('サーバーエラー:', response.status);
-                            document.getElementById('form-error').style.display = 'block';
-                            document.getElementById('form-success').style.display = 'none';
-                        }
-                    })
-                    .catch(error => {
-                        // ネットワークエラーなど
-                        console.error('通信エラー:', error);
-                        document.getElementById('form-error').style.display = 'block';
-                        document.getElementById('form-success').style.display = 'none';
-                    })
-                    .finally(() => {
-                        // ボタンを元に戻す
-                        submitBtn.textContent = originalBtnText;
-                        submitBtn.disabled = false;
-
-                        // 5秒後にメッセージを非表示
-                        setTimeout(() => {
-                            document.getElementById('form-success').style.display = 'none';
-                            document.getElementById('form-error').style.display = 'none';
-                        }, 5000);
-                    });
-            });
-        });
-    </script>
-
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "effect.moe",
-          "url": "https://notion.effect.moe/",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://notion.effect.moe/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        }
-    </script>
-
-    <script>
-        // Mobile menu toggle functionality
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        hamburgerBtn.addEventListener('click', function () {
-            mobileMenu.classList.toggle('active');
-        });
-    </script>
+    <script src="script.js" defer></script>
+    
+    <!-- script.jsに統合しました -->
 </body>
 
 </html>
