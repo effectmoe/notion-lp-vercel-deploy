@@ -427,7 +427,7 @@
             </nav>
 
             <!-- Hamburger Menu Button -->
-            <button class="hamburger" id="hamburger-btn">
+            <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -435,7 +435,7 @@
         </div>
 
         <!-- Mobile Menu -->
-        <nav class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
             <a href="#">ホーム</a>
             <a href="pricing.html">料金プラン</a>
             <a href="pricing.html#pricing-faq">よくある質問</a>
@@ -1169,84 +1169,80 @@
     </style>
 
     <script src="script.js"></script>
+    
+    <!-- 動作確認用の最小限のインラインスクリプト（正常動作確認後は削除可能） -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('inquiry-form');
-
-            form.addEventListener('submit', function (e) {
+    document.addEventListener('DOMContentLoaded', function() {
+        // ハンバーガーメニュー処理
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (hamburgerBtn && mobileMenu) {
+            hamburgerBtn.addEventListener('click', function() {
+                const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true' || false;
+                hamburgerBtn.setAttribute('aria-expanded', !expanded);
+                mobileMenu.classList.toggle('active');
+                mobileMenu.setAttribute('aria-hidden', expanded);
+            });
+        }
+        
+        // フォーム送信処理のバックアップ実装
+        const contactForm = document.getElementById('inquiry-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-
-                const formData = new FormData(form);
-
-                // フォームデータをオブジェクトに変換
-                const formDataObj = {
+                
+                // フォームデータ収集
+                const formData = new FormData(contactForm);
+                const formValues = {
                     name: formData.get('name'),
                     email: formData.get('email'),
                     company: formData.get('company') || '',
                     phone: formData.get('phone') || '',
-                    message: formData.get('message'),
-                    source: window.location.href,
-                    timestamp: new Date().toISOString()
+                    message: formData.get('message')
                 };
-
-                // デバッグ用：送信データをコンソールに出力
-                console.log('送信データ:', formDataObj);
-
-                // Notionへのデータ送信
-                const requestData = {
-                    data: formDataObj
-                };
-
-                console.log('送信データ:', requestData);
-
-                // フォーム送信中の表示
-                const submitBtn = form.querySelector('.submit-btn');
-                const originalBtnText = submitBtn.textContent;
+                
+                // 必須フィールドチェック
+                if (!formValues.name || !formValues.email || !formValues.message) {
+                    alert('必須項目を入力してください');
+                    return;
+                }
+                
+                // 送信ボタン状態変更
+                const submitBtn = contactForm.querySelector('.submit-btn');
                 submitBtn.textContent = '送信中...';
                 submitBtn.disabled = true;
-
-                fetch('https://notion-form-api.vercel.app/api/submit', {
+                
+                // API送信
+                fetch('/api/submit-to-notion', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(requestData)
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(formValues)
                 })
-                    .then(response => {
-                        console.log('レスポンスステータス:', response.status);
-
-                        if (response.ok) {
-                            // 成功
-                            document.getElementById('form-success').style.display = 'block';
-                            document.getElementById('form-error').style.display = 'none';
-                            form.reset();
-                        } else {
-                            // エラー
-                            console.error('サーバーエラー:', response.status);
-                            document.getElementById('form-error').style.display = 'block';
-                            document.getElementById('form-success').style.display = 'none';
-                        }
-                    })
-                    .catch(error => {
-                        // ネットワークエラーなど
-                        console.error('通信エラー:', error);
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('form-success').style.display = 'block';
+                        contactForm.reset();
+                    } else {
                         document.getElementById('form-error').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('送信エラー:', error);
+                    document.getElementById('form-error').style.display = 'block';
+                })
+                .finally(() => {
+                    submitBtn.textContent = 'お問い合わせを送信';
+                    submitBtn.disabled = false;
+                    
+                    setTimeout(() => {
                         document.getElementById('form-success').style.display = 'none';
-                    })
-                    .finally(() => {
-                        // ボタンを元に戻す
-                        submitBtn.textContent = originalBtnText;
-                        submitBtn.disabled = false;
-
-                        // 5秒後にメッセージを非表示
-                        setTimeout(() => {
-                            document.getElementById('form-success').style.display = 'none';
-                            document.getElementById('form-error').style.display = 'none';
-                        }, 5000);
-                    });
+                        document.getElementById('form-error').style.display = 'none';
+                    }, 5000);
+                });
             });
-        });
+        }
+    });
     </script>
 
     <script type="application/ld+json">
@@ -1263,15 +1259,6 @@
         }
     </script>
 
-    <script>
-        // Mobile menu toggle functionality
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        hamburgerBtn.addEventListener('click', function () {
-            mobileMenu.classList.toggle('active');
-        });
-    </script>
 </body>
 
 </html>
