@@ -427,7 +427,7 @@
             </nav>
 
             <!-- Hamburger Menu Button -->
-            <button class="hamburger" id="hamburger-btn">
+            <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -435,7 +435,7 @@
         </div>
 
         <!-- Mobile Menu -->
-        <nav class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
             <a href="#">ホーム</a>
             <a href="pricing.html">料金プラン</a>
             <a href="pricing.html#pricing-faq">よくある質問</a>
@@ -1265,11 +1265,26 @@
 
     <script>
         // Mobile menu toggle functionality
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        hamburgerBtn.addEventListener('click', function () {
-            mobileMenu.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', function() {
+                    // ARIA属性の切り替え
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    mobileMenu.setAttribute('aria-hidden', isExpanded);
+                    
+                    // クラスの切り替えでメニュー表示/非表示
+                    mobileMenu.classList.toggle('active');
+                    
+                    console.log('ハンバーガーメニュークリック:', { 
+                        active: mobileMenu.classList.contains('active'),
+                        expanded: !isExpanded
+                    });
+                });
+            }
         });
     </script>
 </body>
