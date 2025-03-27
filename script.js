@@ -1,48 +1,6 @@
+// ハンバーガーメニュー機能はindex.html内に直接実装
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded イベント発火 (script.js)');
-    
-    // ハンバーガーメニュー機能
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (hamburgerBtn && mobileMenu) {
-        hamburgerBtn.addEventListener('click', function() {
-            const isActive = mobileMenu.classList.contains('active');
-            mobileMenu.classList.toggle('active');
-            hamburgerBtn.setAttribute('aria-expanded', !isActive);
-            mobileMenu.setAttribute('aria-hidden', isActive);
-            
-            // ESCキーでモバイルメニューを閉じる機能
-            const onKeyDown = (e) => {
-                if (e.key === 'Escape') {
-                    mobileMenu.classList.remove('active');
-                    hamburgerBtn.setAttribute('aria-expanded', 'false');
-                    mobileMenu.setAttribute('aria-hidden', 'true');
-                    document.removeEventListener('keydown', onKeyDown);
-                }
-            };
-            
-            if (!isActive) {
-                document.addEventListener('keydown', onKeyDown);
-                
-                // モバイルメニュー内の最初のリンクにフォーカスを移動
-                const firstLink = mobileMenu.querySelector('a');
-                if (firstLink) {
-                    setTimeout(() => firstLink.focus(), 100);
-                }
-            }
-        });
-        
-        // モバイルメニュー内のリンククリック時にメニューを閉じる
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                hamburgerBtn.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-            });
-        });
-    }
     
     // ヒーローセクションのフェードイン効果
     const heroText = document.querySelector('.hero-text');
@@ -87,88 +45,45 @@ document.addEventListener('DOMContentLoaded', function () {
     // フォーム送信処理
     const contactForm = document.getElementById('inquiry-form');
     if (contactForm) {
-        // 入力フィールドごとのバリデーション関数
-        const validators = {
-            name: value => {
-                if (!value.trim()) return '必須項目です';
-                if (value.length > 100) return '100文字以内で入力してください';
-                return '';
-            },
-            email: value => {
-                if (!value.trim()) return '必須項目です';
-                if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) 
-                    return '有効なメールアドレスを入力してください';
-                return '';
-            },
-            phone: value => {
-                if (value.trim() && !/^[0-9\-+\s()]*$/.test(value)) 
-                    return '有効な電話番号を入力してください';
-                return '';
-            },
-            message: value => {
-                if (!value.trim()) return '必須項目です';
-                if (value.length < 10) return '10文字以上入力してください';
-                if (value.length > 1000) return '1000文字以内で入力してください';
-                return '';
-            }
-        };
-
-        // インプットフィールドのリアルタイムバリデーション
-        const fields = ['name', 'email', 'phone', 'message'];
-        fields.forEach(fieldId => {
-            const field = document.getElementById(fieldId);
-            const errorElement = document.getElementById(`${fieldId}-error`);
-            
-            if (field && errorElement) {
-                field.addEventListener('blur', function() {
-                    const error = validators[fieldId]?.(field.value) || '';
-                    errorElement.textContent = error;
-                    errorElement.style.display = error ? 'block' : 'none';
-                    field.setAttribute('aria-invalid', error ? 'true' : 'false');
-                    
-                    if (error) {
-                        field.classList.add('error');
-                    } else {
-                        field.classList.remove('error');
-                    }
-                });
-            }
-        });
-        
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // すべてのフィールドを検証
+            // 必須項目の検証
+            const requiredFields = contactForm.querySelectorAll('[required]');
             let isValid = true;
-            const formValues = {};
             
-            fields.forEach(fieldId => {
-                const field = document.getElementById(fieldId);
-                const errorElement = document.getElementById(`${fieldId}-error`);
-                
-                if (field && errorElement && validators[fieldId]) {
-                    const error = validators[fieldId](field.value);
-                    errorElement.textContent = error;
-                    errorElement.style.display = error ? 'block' : 'none';
-                    field.setAttribute('aria-invalid', error ? 'true' : 'false');
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
                     
-                    if (error) {
-                        field.classList.add('error');
-                        isValid = false;
-                    } else {
-                        field.classList.remove('error');
-                        formValues[fieldId] = field.value;
+                    const errorElement = document.getElementById(`${field.id}-error`);
+                    if (errorElement) {
+                        errorElement.textContent = '必須項目です';
+                        errorElement.style.display = 'block';
+                    }
+                } else {
+                    field.classList.remove('error');
+                    
+                    const errorElement = document.getElementById(`${field.id}-error`);
+                    if (errorElement) {
+                        errorElement.textContent = '';
+                        errorElement.style.display = 'none';
                     }
                 }
             });
             
-            // 会社名フィールドの追加（必須ではない）
-            const companyField = document.getElementById('company');
-            if (companyField) {
-                formValues.company = companyField.value || '';
-            }
-            
             if (isValid) {
+                // フォームデータの取得
+                const formData = new FormData(contactForm);
+                const formValues = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    company: formData.get('company') || '',
+                    phone: formData.get('phone') || '',
+                    message: formData.get('message')
+                };
+                
                 // 送信ボタンの状態変更
                 const submitBtn = contactForm.querySelector('.submit-btn');
                 const originalText = submitBtn.textContent;
@@ -201,9 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(error => {
                     console.error('送信エラー:', error);
-                    const errorElement = document.getElementById('form-error');
-                    errorElement.textContent = error.message || '送信中にエラーが発生しました。しばらく経ってから再度お試しください。';
-                    errorElement.style.display = 'block';
+                    document.getElementById('form-error').style.display = 'block';
                     document.getElementById('form-success').style.display = 'none';
                 })
                 .finally(() => {
