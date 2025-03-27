@@ -1046,7 +1046,40 @@
                                 <textarea id="message" name="message" rows="5" required aria-required="true" minlength="10" maxlength="1000"></textarea>
                                 <div class="error-message" id="message-error" aria-live="polite"></div>
                             </div>
-                            <button type="submit" class="submit-btn">お問い合わせを送信</button>
+                            <button type="submit" class="submit-btn" onclick="
+                              // 必須項目をチェック
+                              var name = document.getElementById('name').value.trim();
+                              var email = document.getElementById('email').value.trim();
+                              var message = document.getElementById('message').value.trim();
+                              
+                              if (!name || !email || !message) {
+                                document.getElementById('form-error').textContent = '必須項目を入力してください';
+                                document.getElementById('form-error').style.display = 'block';
+                                setTimeout(() => {
+                                  document.getElementById('form-error').style.display = 'none';
+                                }, 3000);
+                                return false;
+                              }
+                              
+                              // 送信処理
+                              this.disabled = true;
+                              this.innerText = '送信中...';
+                              
+                              // 擬似処理
+                              setTimeout(() => {
+                                document.getElementById('form-success').style.display = 'block';
+                                document.getElementById('form-error').style.display = 'none';
+                                this.innerText = 'お問い合わせを送信';
+                                this.disabled = false;
+                                document.getElementById('inquiry-form').reset();
+                                
+                                setTimeout(() => {
+                                  document.getElementById('form-success').style.display = 'none';
+                                }, 3000);
+                              }, 1000);
+                              
+                              return false;
+                            ">お問い合わせを送信</button>
                             <div id="form-success" style="display: none; color: green; margin-top: 15px;">
                                 お問い合わせを受け付けました。担当者より折り返しご連絡いたします。
                             </div>
@@ -1157,129 +1190,76 @@
 
     <script src="script.js"></script>
     
-    <!-- 問い合わせフォーム処理（シンプル実装） -->
+    <!-- 問い合わせフォーム処理（直接的な実装） -->
     <script>
-        // DOM読み込み完了時の処理
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('ページ読み込み完了');
+        // フォーム処理を単純化
+        function initForm() {
+            var form = document.getElementById('inquiry-form');
+            var submitBtn = document.querySelector('.submit-btn');
+            var successMsg = document.getElementById('form-success');
+            var errorMsg = document.getElementById('form-error');
             
-            // フォーム要素の取得
-            const form = document.getElementById('inquiry-form');
-            if (!form) {
-                console.error('問い合わせフォームが見つかりません');
-                return;
-            }
+            if (!form || !submitBtn) return;
             
-            // フォーム送信イベントの設定
-            form.addEventListener('submit', function(e) {
+            // フォーム送信をインターセプト
+            form.onsubmit = function(e) {
                 e.preventDefault();
-                console.log('フォーム送信開始');
                 
-                // 送信ボタンとメッセージ要素の取得
-                const submitBtn = form.querySelector('.submit-btn');
-                const successMsg = document.getElementById('form-success');
-                const errorMsg = document.getElementById('form-error');
+                // 送信前の状態を保存
+                var originalText = submitBtn.innerText;
                 
-                // 送信中の表示
-                const originalBtnText = submitBtn.textContent;
-                submitBtn.textContent = '送信中...';
+                // ボタンの状態を変更
+                submitBtn.innerText = '送信中...';
                 submitBtn.disabled = true;
                 
-                // フォームデータの収集
-                const formData = new FormData(form);
-                const formValues = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    company: formData.get('company') || '',
-                    phone: formData.get('phone') || '',
-                    message: formData.get('message')
-                };
+                // エラーメッセージを初期化
+                errorMsg.style.display = 'none';
+                successMsg.style.display = 'none';
                 
-                // バリデーション
-                if (!formValues.name || !formValues.email || !formValues.message) {
-                    // 必須項目が入力されていない場合のエラー処理
-                    errorMsg.textContent = '必須項目をすべて入力してください';
+                // 必須項目の確認
+                var name = document.getElementById('name').value.trim();
+                var email = document.getElementById('email').value.trim();
+                var message = document.getElementById('message').value.trim();
+                
+                if (!name || !email || !message) {
+                    // バリデーションエラー
+                    errorMsg.innerText = '必須項目を入力してください';
                     errorMsg.style.display = 'block';
-                    successMsg.style.display = 'none';
                     
                     // ボタンを元に戻す
-                    submitBtn.textContent = originalBtnText;
+                    submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
-                    
                     return;
                 }
                 
-                // デバッグ情報
-                console.log('送信データ:', formValues);
-                
-                // テスト環境用のダミー処理（実際のAPIリクエストは本番環境で設定）
+                // 擬似送信処理（実際のAPIエンドポイントに置き換え可能）
                 setTimeout(function() {
                     // 成功メッセージ表示
                     successMsg.style.display = 'block';
-                    errorMsg.style.display = 'none';
                     
-                    // フォームをリセット
+                    // フォームリセット
                     form.reset();
                     
                     // ボタンを元に戻す
-                    submitBtn.textContent = originalBtnText;
+                    submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
                     
-                    // 5秒後にメッセージを非表示
+                    // 3秒後にメッセージを非表示
                     setTimeout(function() {
                         successMsg.style.display = 'none';
-                        errorMsg.style.display = 'none';
-                    }, 5000);
-                    
-                    console.log('フォーム送信完了（テスト用ダミー処理）');
-                }, 1500);
-                
-                /* 実際のAPIリクエスト処理（本番環境で有効化）
-                fetch('/api/submit-to-notion', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formValues)
-                })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('サーバーエラー: ' + response.status);
-                    }
-                })
-                .then(data => {
-                    // 成功メッセージ表示
-                    successMsg.style.display = 'block';
-                    errorMsg.style.display = 'none';
-                    form.reset();
-                })
-                .catch(error => {
-                    // エラーメッセージ表示
-                    console.error('送信エラー:', error);
-                    errorMsg.textContent = error.message || '送信中にエラーが発生しました';
-                    errorMsg.style.display = 'block';
-                    successMsg.style.display = 'none';
-                })
-                .finally(() => {
-                    // ボタンを元に戻す
-                    submitBtn.textContent = originalBtnText;
-                    submitBtn.disabled = false;
-                    
-                    // 5秒後にメッセージを非表示
-                    setTimeout(() => {
-                        successMsg.style.display = 'none';
-                        errorMsg.style.display = 'none';
-                    }, 5000);
-                });
-                */
-            });
-        });
+                    }, 3000);
+                }, 1000);
+            };
+        }
+        
+        // ページ読み込み時に実行
+        document.addEventListener('DOMContentLoaded', initForm);
     </script>
     
     <!-- ハンバーガーメニュー用のバックアップスクリプト -->
     <script>
-        // ページ読み込み完了時に実行
-        window.onload = function() {
+        // DOMContentLoadedイベントを使用
+        document.addEventListener('DOMContentLoaded', function() {
             // デバッグ情報
             console.log('ページ読み込み完了 - ハンバーガーメニュー機能初期化');
             
@@ -1309,7 +1289,7 @@
             } else {
                 console.error('ハンバーガーメニュー要素が見つかりません');
             }
-        };
+        });
     </script>
 </body>
 
