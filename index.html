@@ -472,7 +472,7 @@
                     <div class="hero-text">
                         <div class="notion-logo">
                             <div class="logo-container">
-                                <img src="images/notion-logo.png" alt="Notion ロゴ - 業務効率化・DX推進ツール" class="notion-img">
+                                <img src="images/notion-logo.webp" alt="Notion ロゴ - 業務効率化・DX推進ツール" class="notion-img" width="200" height="40">
                             </div>
                         </div>
                         <h1>Notionで実現する<br><span>DXと業務効率化システム</span></h1>
@@ -1034,26 +1034,30 @@
                         </div>
                     </div> -->
                     <div class="contact-form">
-                        <form id="inquiry-form">
+                        <form id="inquiry-form" aria-labelledby="contact-form-title" novalidate>
                             <div class="form-group">
-                                <label for="name">お名前 <span class="required">*</span></label>
-                                <input type="text" id="name" name="name" required>
+                                <label for="name">お名前 <span class="required" aria-label="必須">*</span></label>
+                                <input type="text" id="name" name="name" required aria-required="true" pattern=".{1,100}" autocomplete="name">
+                                <div class="error-message" id="name-error" aria-live="polite"></div>
                             </div>
                             <div class="form-group">
-                                <label for="email">メールアドレス <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required>
+                                <label for="email">メールアドレス <span class="required" aria-label="必須">*</span></label>
+                                <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                                <div class="error-message" id="email-error" aria-live="polite"></div>
                             </div>
                             <div class="form-group">
                                 <label for="company">会社名</label>
-                                <input type="text" id="company" name="company">
+                                <input type="text" id="company" name="company" autocomplete="organization">
                             </div>
                             <div class="form-group">
                                 <label for="phone">電話番号</label>
-                                <input type="tel" id="phone" name="phone">
+                                <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="[0-9\-+\s()]*">
+                                <div class="error-message" id="phone-error" aria-live="polite"></div>
                             </div>
                             <div class="form-group">
-                                <label for="message">お問い合わせ内容 <span class="required">*</span></label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message">お問い合わせ内容 <span class="required" aria-label="必須">*</span></label>
+                                <textarea id="message" name="message" rows="5" required aria-required="true" minlength="10" maxlength="1000"></textarea>
+                                <div class="error-message" id="message-error" aria-live="polite"></div>
                             </div>
                             <button type="submit" class="submit-btn">お問い合わせを送信</button>
                             <div id="form-success" style="display: none; color: green; margin-top: 15px;">

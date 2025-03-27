@@ -7,11 +7,11 @@
 :root {
     --primary-color: #37352f;
     --secondary-color: #e16259;
-    --accent-color: #2eaadc;
+    --accent-color: #2684a9;  /* より暗い青色で高コントラスト */
     --bg-light: #f7f7f7;
     --text-color: #37352f;
-    --text-light: #6b7280;
-    --border-color: #e5e7eb;
+    --text-light: #555555;  /* より暗いグレーで読みやすさ向上 */
+    --border-color: #d1d5db;  /* より暗い境界線 */
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --container-width: 1200px;
 }
@@ -60,7 +60,15 @@ body {
 .nav-menu {
     display: flex;
     align-items: center;
+}
+
+.nav-menu ul {
+    display: flex;
+    align-items: center;
     gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-menu a {
@@ -70,8 +78,10 @@ body {
     transition: color 0.3s;
 }
 
-.nav-menu a:hover {
+.nav-menu a:hover,
+.nav-menu a:focus {
     color: #F0B259;
+    outline: none;
 }
 
 .contact-btn {
@@ -116,16 +126,35 @@ body {
     display: flex;
 }
 
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.mobile-menu li {
+    width: 100%;
+}
+
 .mobile-menu a {
     color: #ffffff;
     text-decoration: none;
     padding: 12px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     font-weight: 500;
+    display: block;
+    width: 100%;
 }
 
-.mobile-menu a:last-child {
+.mobile-menu li:last-child a {
     border-bottom: none;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:focus {
+    color: #F0B259;
+    outline: none;
 }
 
 @media (max-width: 768px) {
@@ -327,13 +356,19 @@ body {
 
 /* Sections */
 section {
-    /* padding: 40px 0; */
+    padding: 60px 0;
     width: 100%;
     overflow: hidden;
 }
 
 section:nth-child(even) {
     background-color: var(--bg-light);
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 40px 0;
+    }
 }
 
 .section-title {
@@ -682,10 +717,36 @@ a.feature-card h3 {
     border: 1px solid var(--border-color);
     border-radius: 4px;
     font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #445e82;
+    box-shadow: 0 0 0 2px rgba(68, 94, 130, 0.2);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #e16259;
+}
+
+.error-message {
+    color: #e16259;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
 }
 
 .required {
     color: #e16259;
+}
+
+.required-field-note {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
 }
 
 .submit-btn {
