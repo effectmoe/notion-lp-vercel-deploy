@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                   Math.random().toString(36).substring(2, 15);
                 
                 // APIリクエスト送信
-                fetch('https://notion-form-api.vercel.app/api/submit', {
+                fetch('/api/submit-to-notion', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -212,20 +212,40 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify(requestData)
                 })
                 .then(response => {
-                    if (response.ok) {
-                        // 成功
-                        document.getElementById('form-success').style.display = 'block';
-                        document.getElementById('form-error').style.display = 'none';
-                        form.reset();
-                    } else {
-                        // エラー
-                        document.getElementById('form-error').style.display = 'block';
-                        document.getElementById('form-success').style.display = 'none';
-                    }
+                    console.log('API応答:', response.status);
+                    // レスポンスのJSONを解析
+                    return response.json().then(data => {
+                        console.log('API応答データ:', data);
+                        if (response.ok) {
+                            // 成功
+                            document.getElementById('form-success').style.display = 'block';
+                            document.getElementById('form-error').style.display = 'none';
+                            form.reset();
+                        } else {
+                            // エラー
+                            console.error('サーバーエラー:', response.status, data);
+                            document.getElementById('form-error').style.display = 'block';
+                            document.getElementById('form-success').style.display = 'none';
+                        }
+                    }).catch(error => {
+                        console.error('JSON解析エラー:', error);
+                        if (response.ok) {
+                            // JSONではないがレスポンスは成功
+                            document.getElementById('form-success').style.display = 'block';
+                            document.getElementById('form-error').style.display = 'none';
+                            form.reset();
+                        } else {
+                            // エラー
+                            document.getElementById('form-error').style.display = 'block';
+                            document.getElementById('form-success').style.display = 'none';
+                        }
+                    });
                 })
                 .catch(error => {
                     // ネットワークエラー
+                    console.error('通信エラー:', error);
                     document.getElementById('form-error').style.display = 'block';
+                    document.getElementById('form-error').textContent = '通信エラーが発生しました。ネットワーク接続を確認してください。';
                     document.getElementById('form-success').style.display = 'none';
                 })
                 .finally(() => {
