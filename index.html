@@ -427,7 +427,7 @@
             </nav>
 
             <!-- Hamburger Menu Button -->
-            <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
+            <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く" onclick="document.getElementById('mobile-menu').classList.toggle('active');">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -1264,28 +1264,28 @@
     </script>
 
     <script>
-        // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
+        // Mobile menu toggle functionality - 徹底的にシンプル化
+        window.onload = function() {
+            console.log('ページ読み込み完了');
+            var hamburgerBtn = document.getElementById('hamburger-btn');
+            var mobileMenu = document.getElementById('mobile-menu');
             
-            if (hamburgerBtn && mobileMenu) {
-                hamburgerBtn.addEventListener('click', function() {
-                    // ARIA属性の切り替え
-                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                    this.setAttribute('aria-expanded', !isExpanded);
-                    mobileMenu.setAttribute('aria-hidden', isExpanded);
-                    
-                    // クラスの切り替えでメニュー表示/非表示
+            // デバッグ情報
+            console.log('ハンバーガーボタン:', hamburgerBtn ? '存在します' : '見つかりません');
+            console.log('モバイルメニュー:', mobileMenu ? '存在します' : '見つかりません');
+            
+            // クリックイベントの直接設定（最もシンプルな方法）
+            if(hamburgerBtn && mobileMenu) {
+                hamburgerBtn.onclick = function() {
+                    console.log('クリックされました');
                     mobileMenu.classList.toggle('active');
                     
-                    console.log('ハンバーガーメニュークリック:', { 
-                        active: mobileMenu.classList.contains('active'),
-                        expanded: !isExpanded
-                    });
-                });
+                    // モバイルメニューが表示されているか確認
+                    var isActive = mobileMenu.classList.contains('active');
+                    console.log('メニュー表示状態:', isActive ? '表示中' : '非表示');
+                };
             }
-        });
+        };
     </script>
 </body>
 

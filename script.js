@@ -1,5 +1,6 @@
+// ハンバーガーメニュー機能はindex.html内に直接実装
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('DOMContentLoaded イベント発火');
+    console.log('DOMContentLoaded イベント発火 (script.js)');
     
     // ヒーローセクションのフェードイン効果
     const heroText = document.querySelector('.hero-text');
@@ -15,39 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             heroImage.style.opacity = '1';
         }, 600);
-    }
-    
-    // ハンバーガーメニュー処理
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    console.log('モバイルメニュー要素:', {
-        hamburgerBtn: hamburgerBtn ? '見つかりました' : '見つかりません',
-        mobileMenu: mobileMenu ? '見つかりました' : '見つかりません'
-    });
-    
-    if (hamburgerBtn && mobileMenu) {
-        console.log('ハンバーガーメニューのイベントリスナーを設定します');
-        
-        hamburgerBtn.addEventListener('click', function() {
-            console.log('ハンバーガーがクリックされました');
-            
-            // aria-expanded属性の切り替え
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', !isExpanded);
-            
-            // メニューの表示/非表示
-            mobileMenu.classList.toggle('active');
-            
-            // aria-hidden属性の切り替え
-            mobileMenu.setAttribute('aria-hidden', isExpanded);
-            
-            console.log('メニュー状態:', {
-                active: mobileMenu.classList.contains('active'),
-                'aria-expanded': !isExpanded,
-                'aria-hidden': isExpanded
-            });
-        });
     }
     
     // スムーススクロール
