@@ -309,7 +309,7 @@ body {
     margin: 0;
     font-weight: 500;
     font-size: 16px;
-    color: #333;
+    color: #222; /* より濃い色でコントラスト向上 */
     animation: fadeIn 0.15s forwards;
     opacity: 0;
     line-height: 1;
@@ -350,7 +350,8 @@ section:nth-child(even) {
     max-width: 800px;
     margin: 0 auto 20px;
     text-align: center;
-    color: var(--text-light);
+    color: #444; /* コントラスト比の改善 */
+    font-size: 1.05rem; /* 少し大きめのフォントサイズ */
 }
 
 /* Features Section */
@@ -675,17 +676,44 @@ a.feature-card h3 {
     font-weight: 500;
 }
 
+.form-group {
+    position: relative;
+}
+
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #666; /* より視認性の高い色に変更 */
     border-radius: 4px;
     font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #333;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(68, 94, 130, 0.25); /* フォーカス状態を明確に */
+}
+
+/* 無効な入力のスタイル */
+.form-group input.invalid,
+.form-group textarea.invalid {
+    border-color: #d00;
+    background-color: #fff8f8;
+}
+
+/* エラーメッセージスタイル */
+.error-message {
+    color: #d00;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    min-height: 1.2em;
 }
 
 .required {
-    color: #e16259;
+    color: #d00; /* より高いコントラスト比 */
 }
 
 .submit-btn {
@@ -697,11 +725,26 @@ a.feature-card h3 {
     font-weight: 500;
     cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .submit-btn:hover {
     background-color: #90b1c0;
+}
+
+.submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(68, 94, 130, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* 無効化されたボタンのスタイル */
+.submit-btn:disabled {
+    background-color: #999;
+    cursor: not-allowed;
 }
 
 /* Footer */
