@@ -14,8 +14,28 @@ const transporter = nodemailer.createTransport({
 });
 
 export default async function handler(req, res) {
+  // CORS ヘッダーを設定
+  res.setHeader('Access-Control-Allow-Origin', process.env.ALLOWED_ORIGIN || 'https://notion.effect.moe');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+  // OPTIONSリクエスト（プリフライトリクエスト）の処理
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
+  }
+  
+  // リファラーチェック
+  const referer = req.headers.referer || '';
+  const allowedDomains = ['notion.effect.moe', 'localhost'];
+  const isAllowedReferer = allowedDomains.some(domain => referer.includes(domain));
+  
+  if (!isAllowedReferer) {
+    console.error(`不正なリファラー: ${referer}`);
+    return res.status(403).json({ message: 'アクセスが拒否されました' });
   }
 
   try {
