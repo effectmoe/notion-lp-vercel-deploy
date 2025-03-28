@@ -397,107 +397,190 @@
     font-style: italic;
 }
 
-/* CTA Section */
-.pricing-cta, .contact {
-    background: #d0d2d6;
-    padding: 60px 0;
-    text-align: center;
-    color: #333;
-}
-
-.contact {
-    background: #f7f7f7;
-}
-
-.pricing-cta .container, .contact .container {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.cta-content, .contact .container {
-    max-width: 700px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Buttons */
+.pricing-btn {
     width: 100%;
+    padding: 12px;
+    font-weight: 500;
 }
 
-.cta-content h2, .contact h2.section-title {
+/* FAQ Section */
+.pricing-faq {
+    background: var(--bg-secondary);
+    padding: 80px 0;
+}
+
+/* 公式情報源セクションのスタイル */
+.official-sources {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.official-sources h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.official-sources h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 25px 0 15px;
+    color: var(--text-color);
+}
+
+.official-sources h5 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 10px;
+    color: var(--text-color);
+}
+
+.official-sources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px;
+}
+
+.official-sources li {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.official-sources a {
+    color: #2f5b8e;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.official-sources a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .official-sources {
+        padding: 20px;
+        margin: 0 15px 40px;
+    }
+
+    .official-sources h3 {
+        font-size: 16px;
+    }
+
+    .official-sources h4 {
+        font-size: 18px;
+    }
+
+    .official-sources h5 {
+        font-size: 15px;
+    }
+
+    .official-sources li {
+        font-size: 13px;
+    }
+}
+
+/* FAQ Tabs - Similar to pricing tabs */
+.faq-tabs {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.faq-tab {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-tab:hover {
+    background: rgba(55, 53, 47, 0.08);
+}
+
+.faq-tab.active {
+    background: #2f5b8e;
+    color: white;
+    border-color: #2f5b8e;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: none;
+    /* Initially hide all items, they will be shown based on active tab */
+}
+
+.faq-item.active {
+    display: block;
+}
+
+.faq-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--text-color);
+}
+
+.faq-item p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* CTA Section */
+.pricing-cta {
+    background: #d0d2d6;
+    /* padding: 80px 0; */
+    text-align: center;
+    color: white;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 16px;
-    color: #333;
-    text-align: center;
 }
 
-.cta-content p, .section-desc {
+.cta-content p {
     font-size: 18px;
-    margin-bottom: 30px;
-    line-height: 1.5;
-    color: var(--text-secondary);
-    text-align: center;
-}
-
-/* 2つのボタンのスタイル統一 */
-.cta-btn, .cta-button {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    min-width: 250px;
-    width: 250px;
-    height: 48px;
-    padding: 0 25px;
-    margin: 20px auto;
-    font-size: 16px !important;
-    font-weight: 500;
-    text-align: center;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-    position: relative;
-    line-height: 48px;
+    margin-bottom: 32px;
+    opacity: 0.9;
 }
 
 .cta-btn {
-    background-color: #007BFF;
-    color: white;
-}
-
-.cta-button {
-    background-color: #4a5568;
-    color: white;
-}
-
-.cta-btn:hover, .cta-button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
-/* spanタグのスタイルを統一 */
-.cta-btn span, .cta-button span {
-    font-size: 16px !important;
+    padding: 14px 32px;
+    font-size: 18px;
     font-weight: 500;
-    display: inline-block;
-    white-space: nowrap;
-    vertical-align: middle;
-    line-height: normal;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
-.contact-message {
-    margin-top: 30px;
-}
-
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .pricing-hero-content h1 {
         font-size: 38px!important;
@@ -521,23 +604,12 @@
         padding: 0 10px;
     }
 
-    .cta-content h2, .contact h2.section-title {
+    .cta-content h2 {
         font-size: 30px;
     }
 
-    .cta-content p, .section-desc {
+    .cta-content p {
         font-size: 16px;
-        margin-bottom: 20px;
-    }
-
-    .pricing-cta, .contact {
-        padding: 40px 0;
-    }
-
-    .section-desc {
-        font-size: 15px;
-        margin: 0 auto 20px;
-        padding: 0 15px;
     }
 
     .official-sources {
@@ -561,19 +633,10 @@
         font-size: 13px;
     }
 
-    .cta-btn, .cta-button {
-        min-width: 220px;
-        width: 220px;
-        height: 42px;
-        padding: 0 20px;
-        font-size: 14px !important;
-        line-height: 42px;
-    }
-    
-    .cta-btn span, .cta-button span {
-        font-size: 14px !important;
-    }
 }
+
+
+
 
 @media (max-width: 480px) {
     .pricing-tab {
@@ -587,37 +650,6 @@
 
     .pricing-hero-content p {
         padding-right: 0;
-    }
-
-    .section-desc {
-        font-size: 14px;
-        margin: 0 auto 15px;
-        padding: 0 10px;
-    }
-
-    .pricing-cta, .contact {
-        padding: 30px 0;
-    }
-
-    .cta-content h2, .contact h2.section-title {
-        font-size: 24px;
-    }
-
-    .cta-content p, .section-desc {
-        font-size: 14px;
-    }
-
-    .cta-btn, .cta-button {
-        min-width: 220px;
-        width: 220px;
-        height: 42px;
-        padding: 0 20px;
-        font-size: 14px !important;
-        line-height: 42px;
-    }
-    
-    .cta-btn span, .cta-button span {
-        font-size: 14px !important;
     }
 
     /* 公式情報源セクションのスタイル */
@@ -680,8 +712,9 @@
     .vertical-container {
         position: absolute;
         flex-direction: column;
-        top: -10px;
+        top: 0;
         left: 20%;
         /* 縦書きコメントの位置調整 */
     }
+
 }
