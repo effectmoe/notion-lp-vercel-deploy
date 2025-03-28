@@ -279,16 +279,18 @@
             <a href="index.html" class="logo">EFFECT<br>Co. Ltd.</a>
 
             <!-- Desktop Menu -->
-            <nav class="nav-menu">
-                <a href="index.html">ホーム</a>
-                <a href="pricing.html">料金プラン</a>
-                <a href="pricing.html#pricing-faq">よくある質問</a>
-                <a href="company.html">企業情報</a>
-                <a href="#contact" class="contact-btn">お問い合わせ</a>
+            <nav class="nav-menu" aria-label="メインナビゲーション">
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="pricing.html" aria-current="page">料金プラン</a></li>
+                    <li><a href="pricing.html#pricing-faq">よくある質問</a></li>
+                    <li><a href="company.html">企業情報</a></li>
+                    <li><a href="#contact" class="contact-btn">お問い合わせ</a></li>
+                </ul>
             </nav>
 
             <!-- Hamburger Menu Button -->
-            <button class="hamburger" id="hamburger-btn">
+            <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -296,12 +298,14 @@
         </div>
 
         <!-- Mobile Menu -->
-        <nav class="mobile-menu" id="mobile-menu">
-            <a href="index.html">ホーム</a>
-            <a href="pricing.html">料金プラン</a>
-            <a href="pricing.html#pricing-faq">よくある質問</a>
-            <a href="company.html">企業情報</a>
-            <a href="#contact" class="contact-btn">お問い合わせ</a>
+        <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="モバイルナビゲーション">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="pricing.html" aria-current="page">料金プラン</a></li>
+                <li><a href="pricing.html#pricing-faq">よくある質問</a></li>
+                <li><a href="company.html">企業情報</a></li>
+                <li><a href="#contact" class="contact-btn">お問い合わせ</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -692,56 +696,22 @@
                 <p class="section-desc">タスク管理、プロジェクト管理、顧客管理など、Notionを活用したノーコードDXソリューションについてのご相談・お見積もりは、お気軽にお問い合わせください。</p>
 
                 <div class="contact-content">
-                    <!-- <div class="company-info">
-                        <div class="company-logo">EFFECT</div>
-                        <div class="company-details">
-                            <p><strong>Notionセットアップサービス</strong></p>
-                            <p>お客様のニーズに合わせたNotionワークスペースのセットアップと構築をお手伝いします。</p>
-                            <ul class="company-links">
-                                <li><a href="#">導入事例</a></li>
-                                <li><a href="#">Notionシステム開発について</a></li>
-                                <li><a href="#">料金プラン</a></li>
-                                <li><a href="#">よくあるご質問</a></li>
+                    <div class="contact-redirect">
+                        <div class="contact-message">
+                            <h3>お問い合わせはトップページのフォームからお願いします</h3>
+                            <p>当サイトでは、お問い合わせフォームをトップページに集約しています。以下のボタンからトップページのお問い合わせフォームにアクセスしてください。</p>
+                            <a href="index.html#contact" class="cta-button">
+                                <span>トップページのお問い合わせフォームへ</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="contact-alternative">
+                            <h4>その他のお問い合わせ方法</h4>
+                            <ul>
+                                <li><i class="fas fa-envelope"></i> <a href="mailto:info@effect.moe">info@effect.moe</a></li>
+                                <li><i class="fas fa-calendar-alt"></i> <a href="https://www.jicoo.com/t/effect/e/effect" target="_blank" rel="noopener noreferrer">無料相談を予約する</a></li>
                             </ul>
                         </div>
-                    </div> -->
-                    <div class="contact-form">
-                        <form id="inquiry-form" aria-labelledby="contact-form-title" novalidate>
-                            <div class="form-group">
-                                <label for="name">お名前 <span class="required" aria-label="必須">*</span></label>
-                                <input type="text" id="name" name="name" required aria-required="true" pattern=".{1,100}" autocomplete="name" aria-describedby="name-error">
-                                <div class="error-message" id="name-error" aria-live="assertive" role="alert"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">メールアドレス <span class="required" aria-label="必須">*</span></label>
-                                <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" aria-describedby="email-error">
-                                <div class="error-message" id="email-error" aria-live="assertive" role="alert"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="company">会社名</label>
-                                <input type="text" id="company" name="company" autocomplete="organization">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">電話番号</label>
-                                <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="[0-9\-+\s()]*" aria-describedby="phone-error">
-                                <div class="error-message" id="phone-error" aria-live="assertive" role="alert"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">お問い合わせ内容 <span class="required" aria-label="必須">*</span></label>
-                                <textarea id="message" name="message" rows="5" required aria-required="true" minlength="10" maxlength="1000" aria-describedby="message-error"></textarea>
-                                <div class="error-message" id="message-error" aria-live="assertive" role="alert"></div>
-                            </div>
-                            <div class="form-group">
-                                <div class="required-field-note" id="required-fields-note">* は必須項目です</div>
-                            </div>
-                            <button type="submit" class="submit-btn">お問い合わせを送信</button>
-                            <div id="form-success" style="display: none; color: green; margin-top: 15px;">
-                                お問い合わせを受け付けました。担当者より折り返しご連絡いたします。
-                            </div>
-                            <div id="form-error" style="display: none; color: red; margin-top: 15px;">
-                                送信中にエラーが発生しました。しばらく経ってから再度お試しください。
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -851,65 +821,7 @@
                 });
             }
 
-            // フォーム送信の処理
-            const form = document.getElementById('inquiry-form');
-            if (form) {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    const formData = new FormData(form);
-                    const formDataObj = {
-                        name: formData.get('name'),
-                        email: formData.get('email'),
-                        company: formData.get('company') || '',
-                        phone: formData.get('phone') || '',
-                        message: formData.get('message'),
-                        source: window.location.href,
-                        timestamp: new Date().toISOString()
-                    };
-
-                    const requestData = {
-                        data: formDataObj
-                    };
-
-                    const submitBtn = form.querySelector('.submit-btn');
-                    const originalBtnText = submitBtn.textContent;
-                    submitBtn.textContent = '送信中...';
-                    submitBtn.disabled = true;
-
-                    fetch('https://notion-form-api.vercel.app/api/submit', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify(requestData)
-                    })
-                        .then(response => {
-                            if (response.ok) {
-                                document.getElementById('form-success').style.display = 'block';
-                                document.getElementById('form-error').style.display = 'none';
-                                form.reset();
-                            } else {
-                                document.getElementById('form-error').style.display = 'block';
-                                document.getElementById('form-success').style.display = 'none';
-                            }
-                        })
-                        .catch(error => {
-                            document.getElementById('form-error').style.display = 'block';
-                            document.getElementById('form-success').style.display = 'none';
-                        })
-                        .finally(() => {
-                            submitBtn.textContent = originalBtnText;
-                            submitBtn.disabled = false;
-
-                            setTimeout(() => {
-                                document.getElementById('form-success').style.display = 'none';
-                                document.getElementById('form-error').style.display = 'none';
-                            }, 5000);
-                        });
-                });
-            }
+            // script.jsでフォーム送信処理を一元管理
         });
     </script>
 
