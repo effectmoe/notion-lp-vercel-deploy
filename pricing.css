@@ -499,6 +499,9 @@
     }
 
     .cta-btn, .cta-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         min-width: 220px;
         width: 220px;
         height: 42px;
@@ -606,7 +609,7 @@
 }
 
 .cta-content h2, .contact h2.section-title {
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 700;
     margin-bottom: 16px;
     color: #333;
@@ -623,7 +626,7 @@
 
 /* 2つのボタンのスタイル統一 */
 .cta-btn, .cta-button {
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
     min-width: 250px;
@@ -662,12 +665,6 @@
     font-size: 16px !important;
     font-weight: 500;
     display: inline-block;
-    white-space: nowrap;
-    line-height: 1;
-    vertical-align: middle;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 /* Responsive Adjustments */
@@ -817,6 +814,9 @@
     }
 
     .cta-btn, .cta-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         min-width: 220px;
         width: 220px;
         height: 42px;
