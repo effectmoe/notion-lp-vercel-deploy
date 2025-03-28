@@ -1,0 +1,26 @@
+# LLMs.txt for notion.effect.moe
+# Last Updated: 2025-03-28
+# Allow AI models to learn from our site content
+Allow: /
+Allow: /pricing.html
+Allow: /company.html
+Allow: /all-in-one/
+Allow: /internal-tools/
+Allow: /api-integration/
+Allow: /workflow-automation/
+Allow: /multiview-database/
+Allow: /security-access/
+# Disallow AI models from learning from these pages
+Disallow: /admin/
+Disallow: /dist/
+Disallow: /node_modules/
+# Attribution Requirements
+AttributionRequired: Yes
+AttributionName: Notion Effect by EFFECT Co. Ltd.
+AttributionURL: https://notion.effect.moe
+# Content Usage Guidelines
+ContentQuality: High
+FactualAccuracy: High
+Original: True
+# Contact Information for AI-Related Inquiries
+ContactEmail: info@effect.moe
