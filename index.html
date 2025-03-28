@@ -418,16 +418,18 @@
             <a href="#" class="logo">EFFECT<br>Co. Ltd.</a>
 
             <!-- Desktop Menu -->
-            <nav class="nav-menu">
-                <a href="#">ホーム</a>
-                <a href="pricing.html">料金プラン</a>
-                <a href="pricing.html#pricing-faq">よくある質問</a>
-                <a href="company.html">企業情報</a>
-                <a href="#contact" class="contact-btn">お問い合わせ</a>
+            <nav class="nav-menu" aria-label="メインナビゲーション">
+                <ul>
+                    <li><a href="#">ホーム</a></li>
+                    <li><a href="pricing.html">料金プラン</a></li>
+                    <li><a href="pricing.html#pricing-faq">よくある質問</a></li>
+                    <li><a href="company.html">企業情報</a></li>
+                    <li><a href="#contact" class="contact-btn">お問い合わせ</a></li>
+                </ul>
             </nav>
 
             <!-- Hamburger Menu Button -->
-            <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く" onclick="document.getElementById('mobile-menu').classList.toggle('active');">
+            <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -435,12 +437,14 @@
         </div>
 
         <!-- Mobile Menu -->
-        <nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
-            <a href="#">ホーム</a>
-            <a href="pricing.html">料金プラン</a>
-            <a href="pricing.html#pricing-faq">よくある質問</a>
-            <a href="company.html">企業情報</a>
-            <a href="#contact" class="contact-btn">お問い合わせ</a>
+        <nav class="mobile-menu" id="mobile-menu" aria-hidden="true" aria-label="モバイルナビゲーション">
+            <ul>
+                <li><a href="#">ホーム</a></li>
+                <li><a href="pricing.html">料金プラン</a></li>
+                <li><a href="pricing.html#pricing-faq">よくある質問</a></li>
+                <li><a href="company.html">企業情報</a></li>
+                <li><a href="#contact" class="contact-btn">お問い合わせ</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -1188,7 +1192,7 @@
         }
     </style>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     
     <!-- 問い合わせフォーム処理（直接的な実装） -->
     <script>

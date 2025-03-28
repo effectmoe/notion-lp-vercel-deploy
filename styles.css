@@ -63,14 +63,22 @@ body {
     gap: 20px;
 }
 
-.nav-menu a {
+.nav-menu a, .nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a, .nav-menu li a {
     text-decoration: none;
     color: #ffffff;
     font-weight: 500;
     transition: color 0.3s;
 }
 
-.nav-menu a:hover {
+.nav-menu a:hover, .nav-menu li a:hover {
     color: #F0B259;
 }
 
@@ -116,7 +124,7 @@ body {
     display: flex;
 }
 
-.mobile-menu a {
+.mobile-menu a, .mobile-menu li a {
     color: #ffffff;
     text-decoration: none;
     padding: 12px 0;
@@ -124,8 +132,15 @@ body {
     font-weight: 500;
 }
 
-.mobile-menu a:last-child {
+.mobile-menu a:last-child, .mobile-menu li:last-child a {
     border-bottom: none;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
