@@ -354,9 +354,9 @@ section {
     overflow: hidden;
 }
 
-section:nth-child(even) {
+/* section:nth-child(even) {
     background-color: var(--bg-light);
-}
+} */
 
 .section-title {
     font-size: 24px;
@@ -1195,7 +1195,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 30px 50px 30px;
+    padding: 20px 30px 15px 30px;
 }
 
 /* ヘッダー */
