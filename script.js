@@ -45,11 +45,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // フォーム送信処理
     const contactForm = document.getElementById('inquiry-form');
     if (contactForm) {
+        console.log('フォームを初期化しています:', window.location.pathname);
+        
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            console.log('フォーム送信をインターセプトしました');
             
             // 必須項目の検証
             const requiredFields = contactForm.querySelectorAll('[required]');
+            console.log('必須フィールド数:', requiredFields.length);
             let isValid = true;
             
             requiredFields.forEach(field => {
@@ -94,9 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 fetch('/api/submit-to-notion', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
-                    body: JSON.stringify(formValues)
+                    body: JSON.stringify({ data: formValues })
                 })
                 .then(response => {
                     if (!response.ok) {
@@ -105,10 +110,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     return response.json();
                 })
                 .then(data => {
-                    if (data.success) {
+                    console.log('レスポンスデータ:', data);
+                    // 成功判定：data.successがtrueまたはdata.status === 'success'
+                    if (data.success || data.status === 'success') {
                         // 成功メッセージ表示
-                        document.getElementById('form-success').style.display = 'block';
-                        document.getElementById('form-error').style.display = 'none';
+                        const successElement = document.getElementById('form-success');
+                        if (successElement) {
+                            successElement.style.display = 'block';
+                        }
+                        const errorElement = document.getElementById('form-error');
+                        if (errorElement) {
+                            errorElement.style.display = 'none';
+                        }
                         contactForm.reset();
                     } else {
                         throw new Error(data.message || 'フォーム送信に失敗しました');
@@ -116,8 +129,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(error => {
                     console.error('送信エラー:', error);
-                    document.getElementById('form-error').style.display = 'block';
-                    document.getElementById('form-success').style.display = 'none';
+                    const errorElement = document.getElementById('form-error');
+                    if (errorElement) {
+                        errorElement.textContent = error.message || '送信中にエラーが発生しました。しばらく経ってから再度お試しください。';
+                        errorElement.style.display = 'block';
+                    }
+                    const successElement = document.getElementById('form-success');
+                    if (successElement) {
+                        successElement.style.display = 'none';
+                    }
                 })
                 .finally(() => {
                     // ボタンを元に戻す
@@ -126,8 +146,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     
                     // 5秒後にメッセージを非表示
                     setTimeout(() => {
-                        document.getElementById('form-success').style.display = 'none';
-                        document.getElementById('form-error').style.display = 'none';
+                        const successElement = document.getElementById('form-success');
+                        const errorElement = document.getElementById('form-error');
+                        if (successElement) successElement.style.display = 'none';
+                        if (errorElement) errorElement.style.display = 'none';
                     }, 5000);
                 });
             }
