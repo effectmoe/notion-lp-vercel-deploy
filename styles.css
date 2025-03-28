@@ -1501,7 +1501,7 @@ body {
 .breadcrumb {
     list-style: none;
     display: flex;
-    padding: 0;
+    padding: 20px 40px 15px 40px;
     margin: 0;
 }
 
@@ -1509,6 +1509,7 @@ body {
     font-size: 14px;
     color: #6c757d;
     line-height: 1.1;
+    font-weight: 500;
 }
 
 .breadcrumb-item:not(:last-child)::after {

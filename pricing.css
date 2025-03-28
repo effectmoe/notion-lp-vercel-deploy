@@ -560,6 +560,19 @@
     .official-sources li {
         font-size: 13px;
     }
+
+    .cta-btn, .cta-button {
+        min-width: 220px;
+        width: 220px;
+        height: 42px;
+        padding: 0 20px;
+        font-size: 14px !important;
+        line-height: 42px;
+    }
+    
+    .cta-btn span, .cta-button span {
+        font-size: 14px !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -600,6 +613,7 @@
         height: 42px;
         padding: 0 20px;
         font-size: 14px !important;
+        line-height: 42px;
     }
     
     .cta-btn span, .cta-button span {
