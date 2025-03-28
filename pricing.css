@@ -614,7 +614,7 @@
 }
 
 .cta-button {
-    background-color: #4a5568;
+    background-color: #9D7AB3;
     color: white;
 }
 
@@ -809,7 +809,7 @@
     .vertical-container {
         position: absolute;
         flex-direction: column;
-        top: 0;
+        top: -10px;
         left: 20%;
         /* 縦書きコメントの位置調整 */
     }
