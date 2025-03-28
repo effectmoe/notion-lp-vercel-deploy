@@ -1260,38 +1260,20 @@
         document.addEventListener('DOMContentLoaded', initForm);
     </script>
     
-    <!-- ハンバーガーメニュー用のバックアップスクリプト -->
+    <!-- バックアップハンバーガーメニュー用スクリプト -->
     <script>
-        // DOMContentLoadedイベントを使用
         document.addEventListener('DOMContentLoaded', function() {
-            // デバッグ情報
-            console.log('ページ読み込み完了 - ハンバーガーメニュー機能初期化');
-            
-            // ハンバーガーボタンとモバイルメニューの取得
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             
-            // ハンバーガーメニュークリック処理
             if (hamburgerBtn && mobileMenu) {
-                console.log('ハンバーガーメニュー要素が見つかりました');
-                
-                // クリックイベントを追加（既存のクリックイベントと重複しないようにする）
-                hamburgerBtn.onclick = function() {
-                    const isActive = mobileMenu.classList.contains('active');
-                    console.log('ハンバーガーメニュークリック:', isActive ? '閉じる' : '開く');
-                    
-                    // メニューの表示/非表示を切り替え
+                hamburgerBtn.addEventListener('click', function() {
                     mobileMenu.classList.toggle('active');
-                    
-                    // aria属性の更新
-                    hamburgerBtn.setAttribute('aria-expanded', !isActive);
-                    mobileMenu.setAttribute('aria-hidden', isActive);
-                    
-                    // デバッグ情報
-                    console.log('メニューの新しい状態:', mobileMenu.classList.contains('active') ? '表示' : '非表示');
-                };
-            } else {
-                console.error('ハンバーガーメニュー要素が見つかりません');
+                    const isActive = mobileMenu.classList.contains('active');
+                    hamburgerBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+                    mobileMenu.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+                    console.log('ハンバーガーメニュークリック: メニューの状態', isActive ? '表示' : '非表示');
+                });
             }
         });
     </script>

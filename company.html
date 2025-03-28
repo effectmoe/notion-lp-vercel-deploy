@@ -537,6 +537,23 @@
     </footer>
 
     <script src="script.js" defer></script>
+    
+    <!-- バックアップハンバーガーメニュー用スクリプト -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    const isActive = mobileMenu.classList.contains('active');
+                    hamburgerBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+                    mobileMenu.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
