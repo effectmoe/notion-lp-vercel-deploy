@@ -550,37 +550,97 @@
 }
 
 /* CTA Section */
-.pricing-cta {
+.pricing-cta, .contact {
     background: #d0d2d6;
-    /* padding: 80px 0; */
+    padding: 60px 0;
     text-align: center;
-    color: white;
+    color: #333;
 }
 
-.cta-content {
+.contact {
+    background: #f7f7f7;
+}
+
+.pricing-cta .container, .contact .container {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.cta-content, .contact .container {
     max-width: 700px;
     margin: 0 auto;
 }
 
-.cta-content h2 {
+.cta-content h2, .contact h2.section-title {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 16px;
+    color: #333;
 }
 
-.cta-content p {
+.cta-content p, .section-desc {
     font-size: 18px;
-    margin-bottom: 32px;
-    opacity: 0.9;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+/* 2つのボタンのスタイル統一 */
+.cta-btn, .cta-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+    width: 250px;
+    height: 48px;
+    padding: 0 25px;
+    margin: 10px auto;
+    font-size: 16px !important;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .cta-btn {
-    padding: 14px 32px;
-    font-size: 18px;
-    font-weight: 500;
+    background-color: #007BFF;
+    color: white;
 }
 
-/* Responsive Adjustments */
+.cta-button {
+    background-color: #4a5568;
+    color: white;
+}
+
+.cta-btn:hover, .cta-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* spanタグのスタイルを統一 */
+.cta-btn span, .cta-button span {
+    font-size: 16px !important;
+    font-weight: 500;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 2;
+    vertical-align: middle;
+    margin: auto 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.contact-message {
+    margin-top: 30px;
+}
+
 @media (max-width: 768px) {
     .pricing-hero-content h1 {
         font-size: 38px!important;
@@ -604,12 +664,23 @@
         padding: 0 10px;
     }
 
-    .cta-content h2 {
+    .cta-content h2, .contact h2.section-title {
         font-size: 30px;
     }
 
-    .cta-content p {
+    .cta-content p, .section-desc {
         font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .pricing-cta, .contact {
+        padding: 40px 0;
+    }
+
+    .section-desc {
+        font-size: 15px;
+        margin: 0 auto 20px;
+        padding: 0 15px;
     }
 
     .official-sources {
@@ -632,11 +703,7 @@
     .official-sources li {
         font-size: 13px;
     }
-
 }
-
-
-
 
 @media (max-width: 480px) {
     .pricing-tab {
@@ -650,6 +717,36 @@
 
     .pricing-hero-content p {
         padding-right: 0;
+    }
+
+    .section-desc {
+        font-size: 14px;
+        margin: 0 auto 15px;
+        padding: 0 10px;
+    }
+
+    .pricing-cta, .contact {
+        padding: 30px 0;
+    }
+
+    .cta-content h2, .contact h2.section-title {
+        font-size: 24px;
+    }
+
+    .cta-content p, .section-desc {
+        font-size: 14px;
+    }
+
+    .cta-btn, .cta-button {
+        min-width: 220px;
+        width: 220px;
+        height: 42px;
+        padding: 0 20px;
+        font-size: 14px !important;
+    }
+    
+    .cta-btn span, .cta-button span {
+        font-size: 14px !important;
     }
 
     /* 公式情報源セクションのスタイル */
@@ -716,5 +813,4 @@
         left: 20%;
         /* 縦書きコメントの位置調整 */
     }
-
 }

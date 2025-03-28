@@ -151,7 +151,7 @@
 }
 
 .cta-content h2 {
-    font-size: 42px;
+    font-size: 24px;
     font-weight: 700;
     color: #37352f;
     margin-bottom: 16px;
@@ -161,7 +161,6 @@
 .cta-content p {
     font-size: 20px;
     color: #6b7280;
-    margin-bottom: 32px;
     font-weight: 400;
 }
 
@@ -211,11 +210,12 @@ body.modal-open {
     }
     
     .cta-content h2 {
-        font-size: 36px;
+        font-size: 24px;
     }
     
     .cta-content p {
-        font-size: 18px;
+        font-size: 16px;
+        padding: 0 20px 0 20px;
     }
 }
 
@@ -237,10 +237,11 @@ body.modal-open {
     }
     
     .cta-content h2 {
-        font-size: 28px;
+        font-size: 24px;
+        padding: 0 20px;
     }
     
     .cta-content p {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
