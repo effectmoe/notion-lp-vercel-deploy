@@ -815,7 +815,7 @@ a.feature-card h3 {
     border-radius: 4px;
     font-weight: 500;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
     transition: background-color 0.3s;
 }
 
@@ -1195,7 +1195,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 30px 15px 30px;
+    padding: 20px 30px 40px 30px;
 }
 
 /* ヘッダー */
@@ -1445,7 +1445,7 @@ body {
     align-items: center;
     transition: background-color 0.3s, transform 0.2s;
     text-decoration: none !important;
-    width: 100%;
+    width: 50%;
     text-align: center;
 }
 
