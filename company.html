@@ -293,7 +293,7 @@
                     <li><a href="pricing.html">料金プラン</a></li>
                     <li><a href="pricing.html#pricing-faq">よくある質問</a></li>
                     <li><a href="company.html" aria-current="page">企業情報</a></li>
-                    <li><a href="#contact" class="contact-btn">お問い合わせ</a></li>
+                    <li><a href="index.html#contact" class="contact-btn">お問い合わせ</a></li>
                 </ul>
             </nav>
 
@@ -312,7 +312,7 @@
                 <li><a href="pricing.html">料金プラン</a></li>
                 <li><a href="pricing.html#pricing-faq">よくある質問</a></li>
                 <li><a href="company.html" aria-current="page">企業情報</a></li>
-                <li><a href="#contact" class="contact-btn">お問い合わせ</a></li>
+                <li><a href="index.html#contact" class="contact-btn">お問い合わせ</a></li>
             </ul>
         </nav>
     </header>
@@ -540,7 +540,7 @@
     
     <!-- バックアップハンバーガーメニュー用スクリプト -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             
@@ -550,6 +550,7 @@
                     const isActive = mobileMenu.classList.contains('active');
                     hamburgerBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
                     mobileMenu.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+                    console.log('企業ページのハンバーガーメニュークリック: 状態', isActive ? '表示' : '非表示');
                 });
             }
         });

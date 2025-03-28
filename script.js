@@ -1,42 +1,52 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded イベント発火 (script.js)');
     
-    // ハンバーガーメニュー機能
-    const hamburgerBtn = document.getElementById('hamburger-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (hamburgerBtn && mobileMenu) {
-        console.log('ハンバーガーメニューを初期化');
+    function setupHamburgerMenu() {
+        // ハンバーガーメニュー機能
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
         
-        hamburgerBtn.addEventListener('click', function() {
-            const isActive = mobileMenu.classList.contains('active');
-            console.log('ハンバーガーメニュークリック:', isActive ? '閉じる' : '開く');
+        if (hamburgerBtn && mobileMenu) {
+            console.log('ハンバーガーメニューを初期化');
             
-            mobileMenu.classList.toggle('active');
-            hamburgerBtn.setAttribute('aria-expanded', !isActive);
-            mobileMenu.setAttribute('aria-hidden', isActive);
+            // 既存のイベントリスナーをクリアして重複を防止
+            const newBtn = hamburgerBtn.cloneNode(true);
+            hamburgerBtn.parentNode.replaceChild(newBtn, hamburgerBtn);
             
-            // ESCキーでモバイルメニューを閉じる機能
-            const onKeyDown = (e) => {
-                if (e.key === 'Escape') {
-                    mobileMenu.classList.remove('active');
-                    hamburgerBtn.setAttribute('aria-expanded', 'false');
-                    mobileMenu.setAttribute('aria-hidden', 'true');
-                    document.removeEventListener('keydown', onKeyDown);
-                }
-            };
-            
-            if (!isActive) {
-                document.addEventListener('keydown', onKeyDown);
+            // 新しいイベントリスナーを追加
+            newBtn.addEventListener('click', function() {
+                const isActive = mobileMenu.classList.contains('active');
+                console.log('ハンバーガーメニュークリック:', isActive ? '閉じる' : '開く');
                 
-                // モバイルメニュー内の最初のリンクにフォーカスを移動
-                const firstLink = mobileMenu.querySelector('a');
-                if (firstLink) {
-                    setTimeout(() => firstLink.focus(), 100);
+                mobileMenu.classList.toggle('active');
+                newBtn.setAttribute('aria-expanded', !isActive);
+                mobileMenu.setAttribute('aria-hidden', isActive);
+                
+                // ESCキーでモバイルメニューを閉じる機能
+                const onKeyDown = (e) => {
+                    if (e.key === 'Escape') {
+                        mobileMenu.classList.remove('active');
+                        newBtn.setAttribute('aria-expanded', 'false');
+                        mobileMenu.setAttribute('aria-hidden', 'true');
+                        document.removeEventListener('keydown', onKeyDown);
+                    }
+                };
+                
+                if (!isActive) {
+                    document.addEventListener('keydown', onKeyDown);
+                    
+                    // モバイルメニュー内の最初のリンクにフォーカスを移動
+                    const firstLink = mobileMenu.querySelector('a');
+                    if (firstLink) {
+                        setTimeout(() => firstLink.focus(), 100);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
+    
+    // ハンバーガーメニュー設定を実行
+    setupHamburgerMenu();
     
     // ヒーローセクションのフェードイン効果
     const heroText = document.querySelector('.hero-text');
