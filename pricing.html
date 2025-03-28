@@ -706,26 +706,33 @@
                         </div>
                     </div> -->
                     <div class="contact-form">
-                        <form id="inquiry-form">
+                        <form id="inquiry-form" aria-labelledby="contact-form-title" novalidate>
                             <div class="form-group">
-                                <label for="name">お名前 <span class="required">*</span></label>
-                                <input type="text" id="name" name="name" required>
+                                <label for="name">お名前 <span class="required" aria-label="必須">*</span></label>
+                                <input type="text" id="name" name="name" required aria-required="true" pattern=".{1,100}" autocomplete="name" aria-describedby="name-error">
+                                <div class="error-message" id="name-error" aria-live="assertive" role="alert"></div>
                             </div>
                             <div class="form-group">
-                                <label for="email">メールアドレス <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required>
+                                <label for="email">メールアドレス <span class="required" aria-label="必須">*</span></label>
+                                <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" aria-describedby="email-error">
+                                <div class="error-message" id="email-error" aria-live="assertive" role="alert"></div>
                             </div>
                             <div class="form-group">
                                 <label for="company">会社名</label>
-                                <input type="text" id="company" name="company">
+                                <input type="text" id="company" name="company" autocomplete="organization">
                             </div>
                             <div class="form-group">
                                 <label for="phone">電話番号</label>
-                                <input type="tel" id="phone" name="phone">
+                                <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="[0-9\-+\s()]*" aria-describedby="phone-error">
+                                <div class="error-message" id="phone-error" aria-live="assertive" role="alert"></div>
                             </div>
                             <div class="form-group">
-                                <label for="message">お問い合わせ内容 <span class="required">*</span></label>
-                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message">お問い合わせ内容 <span class="required" aria-label="必須">*</span></label>
+                                <textarea id="message" name="message" rows="5" required aria-required="true" minlength="10" maxlength="1000" aria-describedby="message-error"></textarea>
+                                <div class="error-message" id="message-error" aria-live="assertive" role="alert"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="required-field-note" id="required-fields-note">* は必須項目です</div>
                             </div>
                             <button type="submit" class="submit-btn">お問い合わせを送信</button>
                             <div id="form-success" style="display: none; color: green; margin-top: 15px;">
@@ -906,86 +913,7 @@
         });
     </script>
 
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('inquiry-form');
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const formData = new FormData(form);
-
-                // フォームデータをオブジェクトに変換
-                const formDataObj = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    company: formData.get('company') || '',
-                    phone: formData.get('phone') || '',
-                    message: formData.get('message'),
-                    source: window.location.href,
-                    timestamp: new Date().toISOString()
-                };
-
-                // デバッグ用：送信データをコンソールに出力
-                console.log('送信データ:', formDataObj);
-
-                // Notionへのデータ送信
-                const requestData = {
-                    data: formDataObj
-                };
-
-                console.log('送信データ:', requestData);
-
-                // フォーム送信中の表示
-                const submitBtn = form.querySelector('.submit-btn');
-                const originalBtnText = submitBtn.textContent;
-                submitBtn.textContent = '送信中...';
-                submitBtn.disabled = true;
-
-                fetch('https://notion-form-api.vercel.app/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(requestData)
-                })
-                    .then(response => {
-                        console.log('レスポンスステータス:', response.status);
-
-                        if (response.ok) {
-                            // 成功
-                            document.getElementById('form-success').style.display = 'block';
-                            document.getElementById('form-error').style.display = 'none';
-                            form.reset();
-                        } else {
-                            // エラー
-                            console.error('サーバーエラー:', response.status);
-                            document.getElementById('form-error').style.display = 'block';
-                            document.getElementById('form-success').style.display = 'none';
-                        }
-                    })
-                    .catch(error => {
-                        // ネットワークエラーなど
-                        console.error('通信エラー:', error);
-                        document.getElementById('form-error').style.display = 'block';
-                        document.getElementById('form-success').style.display = 'none';
-                    })
-                    .finally(() => {
-                        // ボタンを元に戻す
-                        submitBtn.textContent = originalBtnText;
-                        submitBtn.disabled = false;
-
-                        // 5秒後にメッセージを非表示
-                        setTimeout(() => {
-                            document.getElementById('form-success').style.display = 'none';
-                            document.getElementById('form-error').style.display = 'none';
-                        }, 5000);
-                    });
-            });
-        });
-    </script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
