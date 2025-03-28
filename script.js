@@ -1,6 +1,42 @@
-// ハンバーガーメニュー機能はindex.html内に直接実装
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded イベント発火 (script.js)');
+    
+    // ハンバーガーメニュー機能
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (hamburgerBtn && mobileMenu) {
+        console.log('ハンバーガーメニューを初期化');
+        
+        hamburgerBtn.addEventListener('click', function() {
+            const isActive = mobileMenu.classList.contains('active');
+            console.log('ハンバーガーメニュークリック:', isActive ? '閉じる' : '開く');
+            
+            mobileMenu.classList.toggle('active');
+            hamburgerBtn.setAttribute('aria-expanded', !isActive);
+            mobileMenu.setAttribute('aria-hidden', isActive);
+            
+            // ESCキーでモバイルメニューを閉じる機能
+            const onKeyDown = (e) => {
+                if (e.key === 'Escape') {
+                    mobileMenu.classList.remove('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                    document.removeEventListener('keydown', onKeyDown);
+                }
+            };
+            
+            if (!isActive) {
+                document.addEventListener('keydown', onKeyDown);
+                
+                // モバイルメニュー内の最初のリンクにフォーカスを移動
+                const firstLink = mobileMenu.querySelector('a');
+                if (firstLink) {
+                    setTimeout(() => firstLink.focus(), 100);
+                }
+            }
+        });
+    }
     
     // ヒーローセクションのフェードイン効果
     const heroText = document.querySelector('.hero-text');
@@ -47,6 +83,51 @@ document.addEventListener('DOMContentLoaded', function () {
     if (contactForm) {
         console.log('フォームを初期化しています:', window.location.pathname);
         
+        // バリデーション関数
+        const validateField = (field) => {
+            let isValid = true;
+            let errorMessage = '';
+            
+            // 空白チェック
+            if (!field.value.trim()) {
+                isValid = false;
+                errorMessage = '必須項目です';
+            } 
+            // メッセージフィールドの場合は追加チェック
+            else if (field.id === 'message') {
+                if (field.value.trim().length < 10) {
+                    isValid = false;
+                    errorMessage = '10文字以上入力してください';
+                }
+            }
+            
+            // エラー表示の更新
+            const errorElement = document.getElementById(`${field.id}-error`);
+            if (errorElement) {
+                errorElement.textContent = errorMessage;
+                errorElement.style.display = errorMessage ? 'block' : 'none';
+            }
+            
+            // 入力フィールドのスタイル更新
+            if (!isValid) {
+                field.classList.add('error');
+                field.setAttribute('aria-invalid', 'true');
+            } else {
+                field.classList.remove('error');
+                field.setAttribute('aria-invalid', 'false');
+            }
+            
+            return isValid;
+        };
+        
+        // リアルタイムバリデーション設定
+        const requiredFields = contactForm.querySelectorAll('[required]');
+        requiredFields.forEach(field => {
+            field.addEventListener('blur', () => {
+                validateField(field);
+            });
+        });
+        
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             console.log('フォーム送信をインターセプトしました');
@@ -57,24 +138,9 @@ document.addEventListener('DOMContentLoaded', function () {
             let isValid = true;
             
             requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.classList.add('error');
-                    
-                    const errorElement = document.getElementById(`${field.id}-error`);
-                    if (errorElement) {
-                        errorElement.textContent = '必須項目です';
-                        errorElement.style.display = 'block';
-                    }
-                } else {
-                    field.classList.remove('error');
-                    
-                    const errorElement = document.getElementById(`${field.id}-error`);
-                    if (errorElement) {
-                        errorElement.textContent = '';
-                        errorElement.style.display = 'none';
-                    }
-                }
+                // フィールドごとのバリデーション実行
+                const fieldValid = validateField(field);
+                isValid = isValid && fieldValid;
             });
             
             if (isValid) {
