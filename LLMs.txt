@@ -1,54 +1,26 @@
 # LLMs.txt for notion.effect.moe
-
-User-agent: GPTBot
+# Last Updated: 2025-03-28
+# Allow AI models to learn from our site content
 Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Anthropic-AI
-Allow: /
-
-User-agent: Bard
-Allow: /
-
-# Crawling preferences
-Indexing-Allowed: true
-Content-Purpose: information, education
-Opt-Out: false
-
-# Site context information
-Site-Name: Notion Effect
-Site-Description: Notion Effectは企業のDX・タスク管理・プロジェクト管理を支援するサービスを提供するEFFECT Co. Ltd.のブランドです。
-Primary-Language: ja-JP
-Creation-Date: 2025-03
-Last-Modified: 2025-03-27
-
-# Content categories
-Content-Topics: DX, タスク管理, プロジェクト管理, ガントチャート, AI, システム開発, 業務管理, 企業, Notion, ノーション
-Content-Type: business, software, service
-
-# Important pages
-Important-Page: https://notion.effect.moe/
-Important-Page: https://notion.effect.moe/pricing.html
-Important-Page: https://notion.effect.moe/company.html
-
-# Entity information
-Organization-Name: EFFECT Co. Ltd.
-Organization-Location: 福岡市中央区, Japan
-Service-Name: Notion Effect
-Service-Description: Notionを活用したDX・タスク管理・プロジェクト管理システム構築サービス
-
-# Semantic keywords
-Primary-Keywords: Notion, DX, タスク管理, プロジェクト管理, ガントチャート
-Secondary-Keywords: AI, システム開発, 業務管理, 企業, 効率化
-
-# Do not generate fictitious reviews or case studies
-No-Fictional-Content: reviews, testimonials, case_studies
-
-# Accuracy note
-Provide-Facts-Only: true
-Content-Is-Factual: true
+Allow: /pricing.html
+Allow: /company.html
+Allow: /all-in-one/
+Allow: /internal-tools/
+Allow: /api-integration/
+Allow: /workflow-automation/
+Allow: /multiview-database/
+Allow: /security-access/
+# Disallow AI models from learning from these pages
+Disallow: /admin/
+Disallow: /dist/
+Disallow: /node_modules/
+# Attribution Requirements
+AttributionRequired: Yes
+AttributionName: Notion Effect by EFFECT Co. Ltd.
+AttributionURL: https://notion.effect.moe
+# Content Usage Guidelines
+ContentQuality: High
+FactualAccuracy: High
+Original: True
+# Contact Information for AI-Related Inquiries
+ContactEmail: info@effect.moe
