@@ -1,1 +1,12 @@
-{\n  \"builds\": [\n    { \"src\": \"*.html\", \"use\": \"@vercel/static\" },\n    { \"src\": \"images/**\", \"use\": \"@vercel/static\" },\n    { \"src\": \"*.css\", \"use\": \"@vercel/static\" },\n    { \"src\": \"*.js\", \"use\": \"@vercel/static\" },\n    { \"src\": \"package.json\", \"use\": \"@vercel/next\" }\n  ],\n  \"routes\": [\n    { \"handle\": \"filesystem\" },\n    { \"src\": \"/api/(.*)\", \"dest\": \"/api/$1\" },\n    { \"src\": \"/(.*)\", \"dest\": \"/$1\" }\n  ]\n}
+{
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "images/**", "use": "@vercel/static" },
+    { "src": "styles.css", "use": "@vercel/static" },
+    { "src": "script.js", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
