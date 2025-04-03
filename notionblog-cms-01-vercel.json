@@ -13,5 +13,11 @@
       "src": "next.config.js",
       "use": "@vercel/next"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/posts/:path*",
+      "destination": "/blog/posts/:path*"
+    }
   ]
 }

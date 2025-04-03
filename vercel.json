@@ -7,6 +7,8 @@
   ],
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/blog/posts/(.*)", "dest": "https://notionblog-cms-01.vercel.app/posts/$1" },
+    { "src": "/blog(.*)", "dest": "https://notionblog-cms-01.vercel.app$1" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }

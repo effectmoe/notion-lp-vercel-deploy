@@ -24,7 +24,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
   
-  // シンプルなリライト設定に戻す
+  // リライト設定を拡張
   async rewrites() {
     return [
       {
@@ -34,6 +34,10 @@ const nextConfig = {
       {
         source: '/api/pdf-proxy',
         destination: '/api/pdf-proxy',
+      },
+      {
+        source: '/posts/:path*',
+        destination: '/blog/posts/:path*',
       },
     ];
   },
